@@ -11,6 +11,7 @@ import WalletView from './components/WalletView'
 import BraintreeDropin from './components/BraintreeDropin'
 import UserDetails from './components/UserDetail'
 import { useNavigate } from 'react-router-dom';
+import appConfig from './config';
 
 
 import { useParams } from 'react-router-dom';
@@ -21,7 +22,7 @@ axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 axios.defaults.withCredentials = true;
 
 const client = axios.create({
-  baseURL: "http://127.0.0.1:8000"
+  baseURL: `${appConfig.SERVER_URL}`
 });
 
 function App() {

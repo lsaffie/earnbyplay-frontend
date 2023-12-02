@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import appConfig from './config';
 
 // Helper Functions
 const formatToE164 = (phone) => {
@@ -9,7 +10,7 @@ const formatToE164 = (phone) => {
 };
 
 const sendSMS = async (formattedPhoneNumber, first_name) => {
-  return axios.post('http://127.0.0.1:8000/api/send_sms/', {
+  return axios.post(`${appConfig.SERVER_URL}`, {
     phone_number: formattedPhoneNumber,
     first_name: first_name,
   });
@@ -18,7 +19,7 @@ const sendSMS = async (formattedPhoneNumber, first_name) => {
 
 const verifyCode = async (verificationCode, formattedPhoneNumber) => {
   try {
-    const response = await axios.post('http://127.0.0.1:8000/api/verify_sms_code/', {
+    const response = await axios.post(`${appConfig.SERVER_URL}/api/verify_sms_code/`, { 
       verification_code: verificationCode,
       phone_number: formattedPhoneNumber,
     });
