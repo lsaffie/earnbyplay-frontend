@@ -1,0 +1,26 @@
+import React from 'react';
+
+//TODO: move this to react secrets?
+const secretToken = "46782b4a-6921-45bc-a9bd-0e8ee7da1814"
+
+const OfferWallIframe = ({ currentUser }) => {
+  console.log(currentUser)
+  const uid = currentUser ? currentUser.id : ''; 
+  const bitlabsUrl = (
+    'https://web.bitlabs.ai/?uid=' + uid +
+    '&token=' + secretToken +
+    '&width=full_width' +
+    '&os=desktop' +
+    '&display_mode=offers'
+  ).replace(/\s+/g, '');
+
+  return(
+      <iframe
+        src={bitlabsUrl}
+        width="100%"
+        height="1100px"
+      > </iframe>
+    );
+}
+
+export default OfferWallIframe;
