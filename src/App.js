@@ -11,10 +11,8 @@ import WalletView from './components/WalletView'
 import BraintreeDropin from './components/BraintreeDropin'
 import UserDetails from './components/UserDetail'
 import { useNavigate } from 'react-router-dom';
-import appConfig from './config';
-
-
 import { useParams } from 'react-router-dom';
+import appConfig from './config';
 
 
 axios.defaults.xsrfCookieName = 'csrftoken';
