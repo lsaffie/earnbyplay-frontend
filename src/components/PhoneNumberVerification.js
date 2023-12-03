@@ -10,7 +10,7 @@ const formatToE164 = (phone) => {
 };
 
 const sendSMS = async (formattedPhoneNumber, first_name) => {
-  return axios.post(`${appConfig.SERVER_URL}`, {
+  return axios.post(`${appConfig.SERVER_URL/api/send_sms/}`, {
     phone_number: formattedPhoneNumber,
     first_name: first_name,
   });
