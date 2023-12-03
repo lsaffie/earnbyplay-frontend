@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import appConfig from './config';
+import appConfig from '../config';
 
 // Helper Functions
 const formatToE164 = (phone) => {
