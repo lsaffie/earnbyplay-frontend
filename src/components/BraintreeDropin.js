@@ -66,7 +66,7 @@ const BraintreeDropin = () => {
         }
 
         // Send nonce to server here
-        axios.post('/api/subscription/', { nonce: payload.nonce },  { 
+        axios.post(`${appConfig.SERVER_URL}/api/subscription/`, { nonce: payload.nonce },  { 
           withCredentials: true,
           headers: {
             'Authorization': `Bearer ${jwtToken}` // Include the JWT token in the Authorization header

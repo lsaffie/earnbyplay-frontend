@@ -15,7 +15,7 @@ const UserDetails = ({ userId }) => {
 
   useEffect(() => {
     // Fetch User Details
-    axios.get(`/api/user`, {
+    axios.get(`${appConfig.SERVER_URL}/api/user`, {
         headers: {
           'Authorization': `Bearer ${getJwtToken()}`
         }
@@ -24,7 +24,7 @@ const UserDetails = ({ userId }) => {
       .catch(error => console.error('Error fetching user data:', error));
 
     // Fetch Subscriptions
-    axios.get(`/api/subscription/`, {
+    axios.get(`${appConfig.SERVER_URL}/api/subscription/`, {
         headers: {
           'Authorization': `Bearer ${getJwtToken()}`
         }
