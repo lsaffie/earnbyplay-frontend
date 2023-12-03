@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import appConfig from '../config';
 
 const BraintreeDropin = () => {
   const [clientToken, setClientToken] = useState(null);
@@ -7,7 +8,7 @@ const BraintreeDropin = () => {
 
   // Effect to fetch client token
   useEffect(() => {
-    axios.get('/api/generate_client_token/') // Adjust this path to match your Django URL
+    axios.get(`${appConfig.SERVER_URL}/api/generate_client_token/`) // Adjust this path to match your Django URL
       .then(response => {
         setClientToken(response.data.client_token);
       })
