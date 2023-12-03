@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import appConfig from '../config';
 
 const Navbar = ({ currentUser }) => {
 
@@ -24,7 +25,7 @@ const Navbar = ({ currentUser }) => {
 
   const handleLogout = async () => {
     try {
-      await axios.post('/api/logout', {
+      await axios.post(`${appConfig.SERVER_URL}/api/logout`, {
         refresh_token: localStorage.getItem('refresh_token')
       }, {
         headers: {

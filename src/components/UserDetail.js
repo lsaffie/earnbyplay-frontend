@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import appConfig from '../config';
 
 const UserDetails = ({ userId }) => {
   const [user, setUser] = useState(null);
@@ -33,7 +34,7 @@ const UserDetails = ({ userId }) => {
       .catch(error => console.error('Error fetching subscriptions:', error));
 
     // Fetch Wallet Details
-    axios.get(`/api/wallet/`, {
+    axios.get(`${appConfig.SERVER_URL}/api/wallet/`, {
         headers: {
           'Authorization': `Bearer ${getJwtToken()}`
         }
@@ -42,7 +43,7 @@ const UserDetails = ({ userId }) => {
       .catch(error => console.error('Error fetching wallet data:', error));
 
     // Fetch Wallet Transactions
-    axios.get(`/api/ledger/`,{
+    axios.get(`${appConfig.SERVER_URL}/api/ledger/`,{
         headers: {
           'Authorization': `Bearer ${getJwtToken()}`
         }
@@ -60,7 +61,7 @@ const UserDetails = ({ userId }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // API call to update user
-    axios.patch(`/api/user`, user, {
+    axios.patch(`${appConfig.SERVER_URL}/api/user`, user, {
       headers: {
         'Authorization': `Bearer ${getJwtToken()}`
       }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import appConfig from '../config';
 
 const WalletView = () => {
   const [wallet, setWallet] = useState(null);
@@ -18,7 +19,7 @@ const WalletView = () => {
         };
 
         // Make the API call to the endpoint (make sure to replace with your actual API URL)
-        const response = await axios.get('/api/wallet/',config);
+        const response = await axios.get(`${appConfig.SERVER_URL}/api/wallet/`,config);
         setWallet(response.data); // Set wallet data
       } catch (error) {
         // Handle error: you can set different error messages based on the error status code

@@ -2,6 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import appConfig from '../config';
+
 
 const AuthForm = ({ isRegistering, onUserChange }) => {
   const [acceptTerms, setAcceptTerms] = useState(false); // Add this state for the checkbox
@@ -21,13 +23,13 @@ const AuthForm = ({ isRegistering, onUserChange }) => {
       return;
     }
     
-    const endpoint = isRegistering ? "/api/register" : "/api/login";
+    const endpoint = isRegistering ? `${appConfig.SERVER_URL}/api/register` : "/api/login";
     try {
       let response;
       if (isRegistering) {
         response = await axios.post(endpoint, { email, username, password });
       } else {
-        response = await axios.post("/api/login", { email, password });
+        response = await axios.post(`${appConfig.SERVER_URL}/api/login`, { email, password });
       }
       // set token 
       if (response.data.access && response.data.refresh) {
