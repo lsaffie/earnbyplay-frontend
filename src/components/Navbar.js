@@ -4,6 +4,10 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import appConfig from '../config';
 
+import { ReactComponent as MoreIcon} from '../assets/icons/more.svg';
+import { ReactComponent as HomeIcon} from '../assets/icons/home.svg';
+import { ReactComponent as AtmCashout} from '../assets/icons/atm-cashout.svg';
+
 const Navbar = ({ currentUser }) => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -93,10 +97,10 @@ const Navbar = ({ currentUser }) => {
 
           <button onClick={toggleDrawer} className="md:hidden">
             {/* SVG for Menu icon */}
-            <svg className="w-6 h-6 mx-auto" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-            <span className="block text-xs text-ebp-text-light">Menu</span>
+            <Link to="/" className="flex-1 text-center py-2">
+              <MoreIcon className="w-16 h-6 mx-auto" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" />
+              <span className="block text-xs text-gray-300">More</span>
+            </Link>
           </button>
 
           {/* Sidebar Drawer */}
@@ -133,13 +137,16 @@ const Navbar = ({ currentUser }) => {
           {/* Backdrop */}
           <Backdrop show={isDrawerOpen} onClick={() => setIsDrawerOpen(false)} />
 
-
-
-
-          <Link to="/wallet" className="flex-1 text-center py-2">
-            <svg className="w-6 h-6 mx-auto" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 7h18v14H3z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 7l6-4 12 4v2H3z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 10l-6-4v6h6z"></path></svg>
-            <span className="block text-xs text-gray-300">Wallet</span>
+          <Link to="/" className="flex-1 text-center py-2">
+            <HomeIcon className="w-6 h-6 mx-auto" fill="#FFF" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" />
+            <span className="block text-xs text-gray-300">Home</span>
           </Link>
+
+          <Link to="/offerwall" className="flex-1 text-center py-2">
+            <AtmCashout className="w-6 h-6 mx-auto" fill="#FFF" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" />
+            <span className="block text-xs text-gray-300">Earn</span>
+          </Link>
+
           <Link to="/offerwall" className="flex-1 text-center py-2 green">
             <svg className="w-6 h-6 mx-auto" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 1v22"></path>
@@ -147,6 +154,7 @@ const Navbar = ({ currentUser }) => {
             </svg>
             <span className="block text-xs text-gray-300">Offerwall</span>
           </Link>
+
           <Link to="/subscribe" className="flex-1 text-center py-2">
             <svg className="w-6 h-6 mx-auto" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3v18h18"></path></svg>
             <span className="block text-xs text-gray-300">Subscribe</span>
