@@ -10,10 +10,11 @@ import PhoneNumberVerification from './components/PhoneNumberVerification';
 import WalletView from './components/WalletView'
 import BraintreeDropin from './components/BraintreeDropin'
 import UserDetails from './components/UserDetail'
+import LedgerEntries from './components/LedgerEntries'
+import Rewards from './components/Rewards'
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import appConfig from './config';
-
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
@@ -102,6 +103,16 @@ function App() {
            <Route path="/user" element={
              <div className="center">
                <UserDetails userId={currentUser}/>
+             </div>
+           } />
+           <Route path="/rewards" element={
+             <div className="center">
+               <Rewards userId={currentUser}/>
+             </div>
+           } />
+           <Route path="/ledger-entries" element={
+             <div className="center">
+               <LedgerEntries userId={currentUser}/>
              </div>
            } />
           </Routes>

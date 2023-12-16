@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import appConfig from '../config';
+import LedgerEntries from './LedgerEntries'
 
 const WalletView = () => {
   const [wallet, setWallet] = useState(null);
@@ -12,7 +13,6 @@ const WalletView = () => {
       try {
         // Get the stored token from localStorage or wherever it's stored
         const token = localStorage.getItem('access_token');
-
         // Include the token in the Authorization header
         const config = {
           headers: { Authorization: `Bearer ${token}` }
@@ -44,6 +44,7 @@ const WalletView = () => {
       ) : (
         <p className="text-gray-600">Loading wallet data...</p>
       )}
+      <LedgerEntries />
     </div>
   );
 };
