@@ -32,10 +32,10 @@ const WalletView = () => {
 
   // Render wallet data or an error message
   return (
-    <div>
+    <div className="px-2 sm:px-4 md:px-6 lg:px-8"> {/* Responsive Padding */}
       {error && <p className="text-red-500">{error}</p>}
       {wallet ? (
-        <div className="bg-white shadow rounded-lg p-6">
+        <div className="bg-white shadow rounded-lg p-4 sm:p-6">
           <h2 className="text-lg font-semibold text-gray-800 mb-4">Wallet Details</h2>
           <p className="text-md text-gray-600">Balance:</p>
           <p className="text-xl font-bold text-gray-900">{wallet.balance}</p>
