@@ -109,7 +109,8 @@ const Navbar = ({ currentUser }) => {
             <div className="p-4 flex flex-col h-full justify-between">
               {/* Top links */}
               <div>
-                <a href="/profile" className="block py-2">Profile</a>
+                <a href="/user" className="block py-2">Profile</a>
+                <a href="/user-subscription" className="block py-2">Manage Membership</a>
                 <a href="/settings" className="block py-2">Settings</a>
                 {/* Add other links */}
               </div>

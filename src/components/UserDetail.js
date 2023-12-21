@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import appConfig from '../config';
+import UserSubscription from './UserSubscription'
+import LedgerEntries from './LedgerEntries'
 
 const UserDetails = ({ userId }) => {
   const [user, setUser] = useState(null);
@@ -139,69 +141,21 @@ const UserDetails = ({ userId }) => {
       )
 
     )}
-
-
-      {subscriptions.length > 0 && (
-        <div className="bg-white shadow overflow-hidden sm:rounded-lg">
-          <div className="px-4 py-5 sm:px-6">
-            <h3 className="text-lg leading-6 font-medium text-gray-900">Subscriptions</h3>
-          </div>
-          <ul className="divide-y divide-gray-200">
-            {subscriptions.map((subscription, index) => (
-              <li key={index} className="px-4 py-4 sm:px-6">
-                <div className="flex flex-col sm:flex-row justify-between">
-                  <div className="mb-2 sm:mb-0">
-                    <p className="text-sm font-medium text-gray-600">Id</p>
-                    <p className="mt-1 text-sm text-gray-900">{subscription.id}</p>
-                  </div>
-                  <div className="mb-2 sm:mb-0">
-                    <p className="text-sm font-medium text-gray-600">Plan Name</p>
-                    <p className="mt-1 text-sm text-gray-900">{subscription.plan_name}</p>
-                  </div>
-                  <div className="mb-2 sm:mb-0">
-                    <p className="text-sm font-medium text-gray-600">Start Date</p>
-                    <p className="mt-1 text-sm text-gray-900">{subscription.start_date}</p>
-                  </div>
-                  <div className="mb-2 sm:mb-0">
-                    <p className="text-sm font-medium text-gray-600">End Date</p>
-                    <p className="mt-1 text-sm text-gray-900">{subscription.end_date}</p>
-                  </div>
-                  <div className="mb-2 sm:mb-0">
-                    <p className="text-sm font-medium text-gray-600">Status</p>
-                    <p className="mt-1 text-sm text-gray-900">{subscription.status}</p>
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-gray-600">Braintree Subscription ID</p>
-                    <p className="mt-1 text-sm text-gray-900">{subscription.braintree_subscription_id}</p>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
+    <UserSubscription userId={userId}/>
+    {wallet && (
+      <div className="bg-white shadow rounded-lg p-6">
+        <div className="mb-4">
+          <h3 className="text-lg font-semibold text-gray-800">Wallet</h3>
+        </div>
+        <div>
+          <p className="text-md text-gray-600">Balance:</p>
+          <p className="text-xl font-bold text-gray-900">{wallet.balance}</p>
+        </div>
+        {/* Include other wallet details here as needed */}
       </div>
-
-      )}
+    )}
+    <LedgerEntries userId={userId} />
       
-      {wallet && (
-        <div className="bg-white shadow rounded-lg p-6">
-          <div className="mb-4">
-            <h3 className="text-lg font-semibold text-gray-800">Wallet</h3>
-          </div>
-          <div>
-            <p className="text-md text-gray-600">Balance:</p>
-            <p className="text-xl font-bold text-gray-900">{wallet.balance}</p>
-          </div>
-          {/* Include other wallet details here as needed */}
-        </div>
-      )}
-      
-      {transactions.length > 0 && (
-        <div className="bg-white shadow rounded-lg p-6">
-          <div className="mb-4">
-            <h3 className="text-lg font-semibold text-gray-800">Transactions</h3>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

@@ -12,6 +12,7 @@ import BraintreeDropin from './components/BraintreeDropin'
 import UserDetails from './components/UserDetail'
 import LedgerEntries from './components/LedgerEntries'
 import Rewards from './components/Rewards'
+import UserSubscription from './components/UserSubscription'
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import appConfig from './config';
@@ -113,6 +114,11 @@ function App() {
            <Route path="/ledger-entries" element={
              <div className="center">
                <LedgerEntries userId={currentUser}/>
+             </div>
+           } />
+           <Route path="/user-subscription" element={
+             <div className="center">
+               <UserSubscription userId={currentUser}/>
              </div>
            } />
           </Routes>
