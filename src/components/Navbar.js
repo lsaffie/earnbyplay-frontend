@@ -4,7 +4,6 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import appConfig from '../config';
 
-import { ReactComponent as MoreIcon} from '../assets/icons/more.svg';
 import { ReactComponent as HomeIcon} from '../assets/icons/home.svg';
 import { ReactComponent as AtmCashout} from '../assets/icons/atm-cashout.svg';
 
@@ -97,8 +96,12 @@ const Navbar = ({ currentUser }) => {
 
           <button onClick={toggleDrawer} className="md:hidden">
             {/* SVG for Menu icon */}
-            <Link to="/" className="flex-1 text-center py-2">
-              <MoreIcon className="w-16 h-6 mx-auto" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" />
+            <Link to="/" className="flex-1 text-center py-4">
+              <svg width="46" height="18" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path class="line-1" d="M0.75 0.75H15.25" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path class="line-2" d="M0.75 13.25H15.25" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path class="line-3" d="M1 7H9" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
               <span className="block text-xs text-gray-300">More</span>
             </Link>
           </button>
@@ -138,31 +141,14 @@ const Navbar = ({ currentUser }) => {
           {/* Backdrop */}
           <Backdrop show={isDrawerOpen} onClick={() => setIsDrawerOpen(false)} />
 
-          <Link to="/" className="flex-1 text-center py-2">
-            <HomeIcon className="w-6 h-6 mx-auto" fill="#FFF" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" />
-            <span className="block text-xs text-gray-300">Home</span>
-          </Link>
-
-          <Link to="/offerwall" className="flex-1 text-center py-2">
+          <Link to="/cashout" className="flex-1 text-center py-2">
             <AtmCashout className="w-6 h-6 mx-auto" fill="#FFF" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" />
+            <span className="block text-xs text-gray-300">Cashout</span>
+          </Link>
+
+          <Link to="/offerwall" className="flex-1 text-center py-2 bg-ebp-cta-green">
+            <AtmCashout className="w-6 h-6 mx-auto" fill="white" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" />
             <span className="block text-xs text-gray-300">Earn</span>
-          </Link>
-
-          <Link to="/offerwall" className="flex-1 text-center py-2 green">
-            <svg className="w-6 h-6 mx-auto" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 1v22"></path>
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 5H9.5a3.5 3.5 0 100 7H17m-5 6H6.5a3.5 3.5 0 110-7H12"></path>
-            </svg>
-            <span className="block text-xs text-gray-300">Offerwall</span>
-          </Link>
-
-          <Link to="/subscribe" className="flex-1 text-center py-2">
-            <svg className="w-6 h-6 mx-auto" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3v18h18"></path></svg>
-            <span className="block text-xs text-gray-300">Subscribe</span>
-          </Link>
-          <Link to="/user" className="flex-1 text-center py-2">
-            <svg className="w-6 h-6 mx-auto" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 12c3.866 0 7-3.582 7-8S15.866 0 12 0 5 3.582 5 8s3.134 8 7 8z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16.5 22c0-3-5.072-5-7.5-5s-7.5 2-7.5 5"></path></svg>
-            <span className="block text-xs text-gray-300">User</span>
           </Link>
         </div>
       </nav>
