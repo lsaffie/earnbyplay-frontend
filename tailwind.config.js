@@ -4,10 +4,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'ebp-header': '#191b19',
+        'ebp-header': '#111111',
         'ebp-cta-green': '#1b991b',
         'ebp-cta-green-earn-font': '#01d676',
-        'ebp-background-dark': '#2b2c2b',
+        'ebp-background-dark': '#1E1E1E',
         'ebp-cta-red': '#F44336',
         'ebp-text-light': '#FFFFFF',
         'ebp-text-secondary': '#787878',
