@@ -68,7 +68,7 @@ function App() {
         <Navbar currentUser={currentUser} />
 
         {/* Content */}
-        <div className="container mx-auto p-4">
+        <div className="container w-full">
           <Routes>
             <Route path="/" element={
               <OfferWallIframe currentUser={currentUser}/>

@@ -3,11 +3,13 @@ import axios from 'axios';
 import appConfig from '../config';
 import UserSubscription from './UserSubscription'
 import LedgerEntries from './LedgerEntries'
+import WalletView from './WalletView'
+import LogoutComponent from './LogoutComponent'
 
 const UserDetails = ({ userId }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(false);
   const [subscriptions, setSubscriptions] = useState([]);
-  const [wallet, setWallet] = useState(null);
+  const [wallet, setWallet] = useState(false);
   const [transactions, setTransactions] = useState([]);
   const [userData, setUserData] = useState({});
   const [isEditing, setIsEditing] = useState(false);
@@ -77,9 +79,29 @@ const UserDetails = ({ userId }) => {
     });
   };
 
+  const handleLogout = async () => {
+    try {
+      await axios.post(`${appConfig.SERVER_URL}/api/logout`, {
+        refresh_token: localStorage.getItem('refresh_token')
+      }, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        }
+      }).then(function(response) {
+        localStorage.removeItem('access_token'); // Remove the token
+        localStorage.removeItem('refresh_token'); // Remove the refresh token
+      });
+      window.location.href = '/login';
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
+  };
+
 
   return (
-    <div>
+    <div className="w-full px-1">
+
+    <LogoutComponent userId={userId} />
 
     {isEditing ? (
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -141,19 +163,10 @@ const UserDetails = ({ userId }) => {
       )
 
     )}
+
+
     <UserSubscription userId={userId}/>
-    {wallet && (
-      <div className="bg-white shadow rounded-lg p-6">
-        <div className="mb-4">
-          <h3 className="text-lg font-semibold text-gray-800">Wallet</h3>
-        </div>
-        <div>
-          <p className="text-md text-gray-600">Balance:</p>
-          <p className="text-xl font-bold text-gray-900">{wallet.balance}</p>
-        </div>
-        {/* Include other wallet details here as needed */}
-      </div>
-    )}
+    <WalletView userId={userId} />
     <LedgerEntries userId={userId} />
       
     </div>

@@ -3,14 +3,19 @@ import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import appConfig from '../config';
+import { useLocation } from 'react-router-dom';
 
 import { ReactComponent as HomeIcon} from '../assets/icons/home.svg';
 import { ReactComponent as AtmCashout} from '../assets/icons/atm-cashout.svg';
+import WalletBalance from './WalletBalance'
 
 const Navbar = ({ currentUser }) => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const location = useLocation();
+  const shouldExcludeAuthButtons = !['/phone-verify', '/subscribe'].includes(location.pathname);
 
   const logo_filename = "logo-dark-bkg.svg";
 
@@ -48,13 +53,13 @@ const Navbar = ({ currentUser }) => {
     <>
       <nav className="bg-ebp-header shadow-lg">
         <div className="max-w-6xl mx-auto px-0">
-          <div className="flex justify-between items-center">
+          <div className="flex justify-start items-center">
               <a href="#" className="flex items-center py-4 px-2">
                 <span className="font-semibold text-slate-50 text-lg"></span>
               </a>
-            <div className="flex space-x-6 justify-center">
+            <div className="flex space-x-6 justify-start">
                 {/* Website Logo */}
-                <a href="/" className="flex items-center py-4 px-2">
+                <a href="/" className="py-4 px-2">
                   <img src={`${process.env.PUBLIC_URL}/${logo_filename}`} alt="Logo" className="h-8 w-auto" />
                 </a>
               {/* Primary Navbar items */}
@@ -68,21 +73,21 @@ const Navbar = ({ currentUser }) => {
                 {/* Signin/signup/logout buttons - Conditional rendering based on currentUser */}
                 {currentUser ? (
                   <div className="py-4 px-2 text-slate-50 font-semibold">
-                    <button onClick={handleLogout} className="py-4 px-2 text-slate-50 font-semibold hover:text-green-500 transition duration-300 md:flex">
-                      Logout {currentUser.email}
-                    </button>
+                    <WalletBalance wallet={currentUser} />
                   </div>
-                ) : (
-                  <div className="flex gap-2 py-4 px-2">
-                    <a href="/login" className="py-2 px-4 bg-ebp-cta-green text-white font-semibold rounded-lg hover:bg-green-600 transition duration-300 whitespace-nowrap">
-                      Sign In
-                    </a>
-                    <a href="/signup" className="py-2 px-4 text-green-700 font-semibold rounded-lg border border-green-700 hover:bg-green-600 hover:text-white transition duration-300 whitespace-nowrap">
-                      Sign Up
-                    </a>
-                  </div>
-                )}
-                {/* End new code */}
+                ) : (shouldExcludeAuthButtons && (
+                    <div className="flex gap-2 py-4 px-2">
+                      <a href="/login" className="py-2 px-4 bg-ebp-cta-green text-white font-semibold rounded-lg hover:bg-green-600 transition duration-300 whitespace-nowrap">
+                        Sign In
+                      </a>
+                      <a href="/signup" className="py-2 px-4 text-green-700 font-semibold rounded-lg border border-green-700 hover:bg-green-600 hover:text-white transition duration-300 whitespace-nowrap">
+                        Sign Up
+                      </a>
+                    </div>
+                  ))
+                }
+
+
 
               </div>
             </div>
@@ -96,14 +101,14 @@ const Navbar = ({ currentUser }) => {
 
           <button onClick={toggleDrawer} className="md:hidden">
             {/* SVG for Menu icon */}
-            <Link to="/" className="flex-1 text-center py-4">
+            <div className="flex-1 text-center py-4">
               <svg width="46" height="18" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path class="line-1" d="M0.75 0.75H15.25" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                 <path class="line-2" d="M0.75 13.25H15.25" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                 <path class="line-3" d="M1 7H9" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
               <span className="block text-xs text-gray-300">More</span>
-            </Link>
+            </div>
           </button>
 
           {/* Sidebar Drawer */}
@@ -118,23 +123,6 @@ const Navbar = ({ currentUser }) => {
                 {/* Add other links */}
               </div>
 
-              {/* Logout link at the bottom */}
-              <div className="pt-4">
-                {currentUser ? (
-                  <button onClick={handleLogout} className="w-full text-left py-2">
-                    Logout
-                  </button>
-                ) : (
-                  <div className="flex gap-2">
-                    <a href="/login" className="py-2 px-4 bg-green-600 text-white font-semibold rounded-lg hover:bg-ebp-cta-green transition duration-300 whitespace-nowrap">
-                      Sign In
-                    </a>
-                    <a href="/signup" className="py-2 px-4 text-green-600 font-semibold rounded-lg border border-green-600 hover:bg-green-600 hover:text-white transition duration-300 whitespace-nowrap">
-                      Sign Up
-                    </a>
-                  </div>
-                )}
-              </div>
             </div>
           </div>
 

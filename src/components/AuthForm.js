@@ -47,7 +47,7 @@ const AuthForm = ({ isRegistering, onUserChange }) => {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="mb-4">
-        <label htmlFor="formBasicEmail" className="block text-sm font-medium text-gray-700">Email address</label>
+        <label htmlFor="formBasicEmail" className="block text-sm font-medium text-gray-400">Email address</label>
         <input 
           type="email" 
           id="formBasicEmail" 
@@ -59,7 +59,7 @@ const AuthForm = ({ isRegistering, onUserChange }) => {
         <p className="mt-2 text-xs text-gray-500">We'll never share your email with anyone else.</p>
       </div>
       <div className="mb-4">
-        <label htmlFor="formBasicUsername" className="block text-sm font-medium text-gray-700">Username</label>
+        <label htmlFor="formBasicUsername" className="block text-sm font-medium text-gray-400">Username</label>
         <input 
           type="text" 
           id="formBasicUsername" 
@@ -70,7 +70,7 @@ const AuthForm = ({ isRegistering, onUserChange }) => {
         />
       </div>
       <div className="mb-4">
-        <label htmlFor="formBasicPassword" className="block text-sm font-medium text-gray-700">Password</label>
+        <label htmlFor="formBasicPassword" className="block text-sm font-medium text-gray-400">Password</label>
         <input 
           type="password" 
           id="formBasicPassword" 
@@ -83,7 +83,7 @@ const AuthForm = ({ isRegistering, onUserChange }) => {
 
       {isRegistering ? (
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">Accept Terms of Service</label>
+          <label className="block text-sm font-medium text-gray-400">Accept Terms of Service</label>
           <input
             type="checkbox"
             checked={acceptTerms}

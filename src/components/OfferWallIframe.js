@@ -15,12 +15,18 @@ const OfferWallIframe = ({ currentUser }) => {
   ).replace(/\s+/g, '');
 
   return(
+    <div className="iframe-container w-full">
       <iframe
         src={bitlabsUrl}
         width="100%"
-        height="1100px"
-      > </iframe>
-    );
+        style={{
+          height: '1000px',
+          overflow: 'hide', // Hide scrollbars
+        }}
+      >
+      </iframe>
+    </div>
+  );
 }
 
 export default OfferWallIframe;

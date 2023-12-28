@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import appConfig from '../config';
+import ProgressBar from './ProgressBar'
 
 const BraintreeDropin = () => {
   const [clientToken, setClientToken] = useState(null);
@@ -91,15 +92,8 @@ const BraintreeDropin = () => {
     <div>
       {clientToken ? (
         <>
-          <div className="flex items-center space-x-2 mb-5">
-            <div className="flex-1 h-1 bg-green-600 rounded text-white text-sm whitespace-nowrap">Get code</div>
-            <div className="text-indigo-600">1</div>
-            <div className="flex-1 h-1 bg-green-600 rounded text-white text-sm whitespace-nowrap">Verify</div>
-            <div className="text-indigo-600">2</div>
-            <div className="flex-1 h-1 bg-green-600 rounded text-white text-sm whitespace-nowrap">Address</div>
-            <div className="text-gray-300">3</div>
-            <div className="flex-1 h-1 bg-gray-300 rounded text-white text-sm whitespace-nowrap">Claim</div>
-          </div>
+
+          <ProgressBar currentStep="3" />
 
           <div id="dropin-container"></div>
           <button className="w-full bg-ebp-cta-green hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={handlePaymentSubmission}>Submit Payment</button>
