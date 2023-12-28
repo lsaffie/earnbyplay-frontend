@@ -112,7 +112,7 @@ const Navbar = ({ currentUser }) => {
           </button>
 
           {/* Sidebar Drawer */}
-          <div className={`fixed inset-y-0 left-0 transform ${isDrawerOpen ? "translate-x-0" : "-translate-x-full"} w-64 bg-ebp-header text-white transition-transform duration-300 ease-in-out z-50`}>
+          <div className={`fixed inset-y-0 left-0 mb-16 transform ${isDrawerOpen ? "translate-x-0" : "-translate-x-full"} w-64 bg-ebp-header text-white transition-transform duration-300 ease-in-out z-50`}>
             {/* Drawer content */}
             <div className="p-4 flex flex-col h-full justify-between">
               {/* Top links */}
