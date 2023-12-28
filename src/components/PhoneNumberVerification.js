@@ -176,7 +176,7 @@ const PhoneNumberVerification = () => {
   };
 
   return (
-    <div>
+    <div className="center px-2 sm:px-4 md:px-6 lg:px-8"> {/* Responsive Padding */}
       {!isVerified && (  // New condition
       !smsSent 
         ? <PhoneNumberForm
