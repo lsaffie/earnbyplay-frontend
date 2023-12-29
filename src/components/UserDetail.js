@@ -97,9 +97,9 @@ const UserDetails = ({ userId }) => {
     }
   };
 
-
   return (
-    <div className="w-full px-1">
+    // <div className="flex flex-col justify-between h-full">
+    <div className="px-2 m-2 sm:px-4 md:px-6 lg:px-8"> {/* Responsive Padding */}
 
     <LogoutComponent userId={userId} />
 

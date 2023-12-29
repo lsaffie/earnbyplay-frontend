@@ -21,7 +21,7 @@ const WalletBalance = ({ userId }) => {
 
   // Render wallet data or an error message
   return (
-    <div className="flex justify-center"> {/* Responsive Padding */}
+    <div className="md:flex"> {/* Responsive Padding */}
         <div className="bg-ebp-cta-green-earn-font shadow rounded-md p-3">
           <p className="text-sm font-bold text-gray-900">${wallet.balance}</p>
         </div>

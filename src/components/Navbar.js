@@ -57,7 +57,7 @@ const Navbar = ({ currentUser }) => {
               <a href="#" className="flex items-center py-4 px-2">
                 <span className="font-semibold text-slate-50 text-lg"></span>
               </a>
-            <div className="flex space-x-6 justify-start">
+            <div className="flex space-x-14 justify-between">
                 {/* Website Logo */}
                 <a href="/" className="py-4 px-2">
                   <img src={`${process.env.PUBLIC_URL}/${logo_filename}`} alt="Logo" className="h-8 w-auto" />
@@ -71,8 +71,9 @@ const Navbar = ({ currentUser }) => {
                 <a href="/offerwall" className="py-4 px-2 text-slate-50 font-semibold hover:text-green-500 transition duration-300 hidden md:flex">Offerwall</a>
                 <a href="/payout" className="py-4 px-2 text-slate-50 font-semibold hover:text-green-500 transition duration-300 hidden md:flex">Payout</a>
                 {/* Signin/signup/logout buttons - Conditional rendering based on currentUser */}
+              </div>
                 {currentUser ? (
-                  <div className="py-4 px-2 text-slate-50 font-semibold">
+                  <div className="md:flex md:justify-end gap-2 py-4 px-2">
                     <WalletBalance wallet={currentUser} />
                   </div>
                 ) : (shouldExcludeAuthButtons && (
@@ -86,10 +87,6 @@ const Navbar = ({ currentUser }) => {
                     </div>
                   ))
                 }
-
-
-
-              </div>
             </div>
           </div>
         </div>

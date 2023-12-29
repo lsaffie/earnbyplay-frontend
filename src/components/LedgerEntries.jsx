@@ -27,11 +27,12 @@ const LedgerEntriesComponent = () => {
     if (error) return <div>Error loading data.</div>;
 
     return (
-      <div className="container mx-auto px-2 sm:px-4">
-        <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-4">Ledger Entries</h2>
+      <div className="mx-auto px-2 sm:px-4">
+        <h3 className="text-lg leading-6 font-medium text-gray-900">Ledger Entries</h3>
         <div className="overflow-x-auto">
           <div className="inline-block min-w-full">
-            <table className="min-w-full bg-white shadow-md rounded-lg">
+            <table className="min-w-full divide-y divide-gray-200 table-fixed">
+            {/* <table className="min-w-full bg-white shadow-md rounded-lg"> */}
               <thead className="bg-gray-100">
                 <tr>
                   <th className="px-2 sm:px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
