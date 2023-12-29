@@ -57,10 +57,10 @@ const Navbar = ({ currentUser }) => {
               <a href="#" className="flex items-center py-4 px-2">
                 <span className="font-semibold text-slate-50 text-lg"></span>
               </a>
-            <div className="flex space-x-14 justify-between">
+            <div className="flex space-x-4 justify-between">
                 {/* Website Logo */}
-                <a href="/" className="py-4 px-2">
-                  <img src={`${process.env.PUBLIC_URL}/${logo_filename}`} alt="Logo" className="h-8 w-auto" />
+                <a href="/" className="flex items-center">
+                  <img src={`${process.env.PUBLIC_URL}/${logo_filename}`} alt="Logo" className="h-12 sm:h-10 md:h-10 w-auto" />
                 </a>
               {/* Primary Navbar items */}
               <div className="md:flex items-center space-x-1">
