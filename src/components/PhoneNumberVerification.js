@@ -105,8 +105,8 @@ const PhoneNumberForm = ({ onSubmit, phoneNumber, setPhoneNumber, fullName, setF
 
 
 const VerificationCodeForm = ({ onSubmit, verificationCode, setVerificationCode, formattedPhoneNumber }) => (
-  <>
 
+  <div>
   <ProgressBar currentStep="2" />
 
   <h2 className="text-2xl font-bold text-white mb-6 text-center">Verify phone number</h2>
@@ -134,7 +134,7 @@ const VerificationCodeForm = ({ onSubmit, verificationCode, setVerificationCode,
       Verify Code
     </button>
   </form>
-  </>
+  </div>
 );
 
 // Main Component
