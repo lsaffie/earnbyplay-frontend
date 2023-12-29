@@ -106,7 +106,7 @@ const PhoneNumberForm = ({ onSubmit, phoneNumber, setPhoneNumber, fullName, setF
 
 const VerificationCodeForm = ({ onSubmit, verificationCode, setVerificationCode, formattedPhoneNumber }) => (
 
-  <div>
+  <div className="w-full">
   <ProgressBar currentStep="2" />
 
   <h2 className="text-2xl font-bold text-white mb-6 text-center">Verify phone number</h2>
@@ -176,7 +176,7 @@ const PhoneNumberVerification = () => {
   };
 
   return (
-    <div className="center px-2 sm:px-4 md:px-6 lg:px-8"> {/* Responsive Padding */}
+    <div className="px-2 sm:px-4 md:px-6 lg:px-8"> {/* Responsive Padding */}
       {!isVerified && (  // New condition
       !smsSent 
         ? <PhoneNumberForm

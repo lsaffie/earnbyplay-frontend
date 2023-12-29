@@ -84,14 +84,10 @@ function App() {
               </div>
             } />
            <Route path="/phone-verify" element={
-               <div className="center">
-                 <PhoneNumberVerification />
-               </div>
+              <PhoneNumberVerification />
            } />
            <Route path="/subscribe" element={
-             <div className="center">
-               <BraintreeDropin />
-             </div>
+              <BraintreeDropin />
            } />
            <Route path="/offerwall" element={
              <OfferWallIframe currentUser={currentUser}/>
@@ -102,9 +98,7 @@ function App() {
              </div>
            } />
            <Route path="/user" element={
-             <div className="center">
-               <UserDetails userId={currentUser}/>
-             </div>
+              <UserDetails userId={currentUser}/>
            } />
            <Route path="/rewards" element={
              <div className="center">

@@ -73,7 +73,7 @@ const Navbar = ({ currentUser }) => {
                 {/* Signin/signup/logout buttons - Conditional rendering based on currentUser */}
               </div>
                 {currentUser ? (
-                  <div className="md:flex md:justify-end gap-2 py-4 px-2">
+                  <div className="md:flex md:justify-start gap-2 py-4 px-2">
                     <WalletBalance wallet={currentUser} />
                   </div>
                 ) : (shouldExcludeAuthButtons && (
@@ -115,8 +115,9 @@ const Navbar = ({ currentUser }) => {
               {/* Top links */}
               <div>
                 <a href="/user" className="block py-2">Profile</a>
-                <a href="/user-subscription" className="block py-2">Manage Membership</a>
-                <a href="/settings" className="block py-2">Settings</a>
+                <a href="/user-subscription" className="block py-2">Manage Subscription</a>
+                <a href="/support" className="block py-2">Support</a>
+                <a href="/tos" className="block py-2">Terms and Conditions</a>
                 {/* Add other links */}
               </div>
 

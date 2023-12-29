@@ -89,18 +89,20 @@ const BraintreeDropin = () => {
   };
 
   return (
-    <div className="flex flex-col items-center m-3">
-      {clientToken ? (
-        <div className="flex flex-col items-center">
-          <ProgressBar currentStep="3" />
-          <div id="dropin-container" className="center justify-start"></div>
-          <button className="w-full bg-ebp-cta-green hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={handlePaymentSubmission}>Submit Payment</button>
-        </div>
-      ) : (
-        <div className="text-center py-2">
-          Loading...
-        </div>
-      )}
+    <div>
+      <ProgressBar currentStep="3" />
+      <div className="flex flex-col items-center m-3">
+        {clientToken ? (
+          <div className="flex flex-col items-center">
+            <div id="dropin-container" className="center justify-start"></div>
+            <button className="w-full bg-ebp-cta-green hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={handlePaymentSubmission}>Submit Payment</button>
+          </div>
+        ) : (
+          <div className="text-center py-2">
+            Loading...
+          </div>
+        )}
+      </div>
     </div>
   );
 };
