@@ -64,10 +64,8 @@ const Navbar = ({ currentUser }) => {
                 </a>
               {/* Primary Navbar items */}
               <div className="md:flex items-center space-x-1">
-                <a href="/phone-verify" className="py-4 px-2 text-slate-50 font-semibold hover:text-green-500 transition duration-300 hidden md:flex">login via phone</a>
                 <a href="/wallet" className="py-4 px-2 text-slate-50 font-semibold hover:text-green-500 transition duration-300 hidden md:flex">Wallet</a>
                 <a href="/subscribe" className="py-4 px-2 text-slate-50 font-semibold hover:text-green-500 transition duration-300 hidden md:flex">Subscribe</a>
-                <a href="/user" className="py-4 px-2 text-slate-50 font-semibold hover:text-green-500 transition duration-300 hidden md:flex">User Details</a>
                 <a href="/offerwall" className="py-4 px-2 text-slate-50 font-semibold hover:text-green-500 transition duration-300 hidden md:flex">Offerwall</a>
                 <a href="/payout" className="py-4 px-2 text-slate-50 font-semibold hover:text-green-500 transition duration-300 hidden md:flex">Payout</a>
                 {/* Signin/signup/logout buttons - Conditional rendering based on currentUser */}

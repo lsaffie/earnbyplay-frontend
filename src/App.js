@@ -4,13 +4,16 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Navbar from './components/Navbar';
-import AuthForm from './components/AuthForm';
 import OfferWallIframe from './components/OfferWallIframe';
 import PhoneNumberVerification from './components/PhoneNumberVerification';
 import WalletView from './components/WalletView'
 import BraintreeDropin from './components/BraintreeDropin'
 import UserDetails from './components/UserDetail'
 import LedgerEntries from './components/LedgerEntries'
+
+import LoginForm from './components/LoginForm'
+import SignupForm from './components/SignupForm'
+
 import Rewards from './components/Rewards'
 import UserSubscription from './components/UserSubscription'
 import { useNavigate } from 'react-router-dom';
@@ -75,12 +78,12 @@ function App() {
             } />
             <Route path="/login" element={
               <div className="center">
-                <AuthForm isRegistering={false} onUserChange={handleUserChange} />
+                <LoginForm onUserChange={handleUserChange} />
               </div>
             } />
             <Route path="/signup" element={
               <div className="center">
-                <AuthForm isRegistering={true} onUserChange={handleUserChange} />
+                <SignupForm onUserChange={handleUserChange} />
               </div>
             } />
            <Route path="/phone-verify" element={
