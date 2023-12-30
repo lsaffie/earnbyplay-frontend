@@ -50,7 +50,7 @@ const PhoneNumberForm = ({ onSubmit, phoneNumber, setPhoneNumber, fullName, setF
         Get Started
       </button>
 
-      <p className="text-gray-100 mb-4 text-base sm:text-sm md:text-sm">
+      <p className="text-gray-100 mb-4 text-base sm:text-xs md:text-sm">
         Earn cash by playing games anywhere, anytime. See<a href="#" className="text-green-600 hover:underline"> Membership details</a>
         <br />
         Get these exclusive member perks with a 7 day trial for only $1.97 and then only $14.99/month.
