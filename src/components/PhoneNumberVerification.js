@@ -50,7 +50,7 @@ const PhoneNumberForm = ({ onSubmit, phoneNumber, setPhoneNumber, fullName, setF
         Get Started
       </button>
 
-      <p className="text-gray-100 mb-4">
+      <p className="text-gray-100 mb-4 text-base sm:text-sm md:text-sm">
         Earn cash by playing games anywhere, anytime. See<a href="#" className="text-green-600 hover:underline"> Membership details</a>
         <br />
         Get these exclusive member perks with a 7 day trial for only $1.97 and then only $14.99/month.
@@ -106,7 +106,7 @@ const PhoneNumberForm = ({ onSubmit, phoneNumber, setPhoneNumber, fullName, setF
 
 const VerificationCodeForm = ({ onSubmit, verificationCode, setVerificationCode, formattedPhoneNumber }) => (
 
-  <div className="w-full">
+  <div className="">
   <ProgressBar currentStep="2" />
 
   <h2 className="text-2xl font-bold text-white mb-6 text-center">Verify phone number</h2>
