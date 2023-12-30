@@ -87,6 +87,10 @@ const LoginForm= ({ onUserChange }) => {
       </button>
 
     </form>
+      <div className="mb-4 text-sm text-white mt-3 text-center">
+        New to Earn by Play?
+        <a href="/signup" className="text-blue-600 hover:underline"> Get started free</a>.
+      </div>
     </div>
 
   );

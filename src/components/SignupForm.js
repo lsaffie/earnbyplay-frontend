@@ -114,6 +114,12 @@ const SignupForm = ({ onUserChange }) => {
       )}
 
     </form>
+
+      <div className="mb-4 text-sm text-white mt-3 text-center">
+        Aready have an account?
+        <a href="/login" className="text-blue-600 hover:underline"> Login</a>.
+      </div>
+
     </div>
 
   );
