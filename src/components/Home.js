@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import appConfig from '../config';
 import SignupForm from './SignupForm'
+import PhoneNumberVerification from './PhoneNumberVerification'
 
 
 const Home= ({ onUserChange }) => {
@@ -47,7 +48,7 @@ const Home= ({ onUserChange }) => {
       </div>
 
       <div className="bg-ebp-header p-5">
-        <SignupForm />
+        <PhoneNumberVerification />
       </div>
 
     </div>
