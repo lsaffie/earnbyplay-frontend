@@ -14,6 +14,8 @@ import LedgerEntries from './components/LedgerEntries'
 import LoginForm from './components/LoginForm'
 import SignupForm from './components/SignupForm'
 
+import Home from './components/Home'
+
 import Rewards from './components/Rewards'
 import UserSubscription from './components/UserSubscription'
 import { useNavigate } from 'react-router-dom';
@@ -74,7 +76,7 @@ function App() {
         <div className="container w-full">
           <Routes>
             <Route path="/" element={
-              <OfferWallIframe currentUser={currentUser}/>
+              <Home currentUser={currentUser}/>
             } />
             <Route path="/login" element={
               <div className="center">
