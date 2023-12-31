@@ -1,6 +1,5 @@
 class Config {
-  SERVER_URL = "https://earn-by-play-api-b53134cb4302.herokuapp.com"
-  // SERVER_URL = "http://127.0.1:8000"
+  SERVER_URL = process.env.API_SERVER_URL;
 }
 
 const appConfig = new Config();
