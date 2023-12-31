@@ -50,14 +50,6 @@ const Home= ({ onUserChange }) => {
         <SignupForm />
       </div>
 
-      <div className="bg-ebp-header p-5">
-        hello sir
-        hello sir
-        hello sir
-        hello sir
-      </div>
-
-
     </div>
     
     );

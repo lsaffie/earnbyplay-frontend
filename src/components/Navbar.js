@@ -112,10 +112,12 @@ const Navbar = ({ currentUser }) => {
             <div className="p-4 flex flex-col h-full justify-between">
               {/* Top links */}
               <div>
+                <a href="/" className="block py-2">Home</a>
                 <a href="/user" className="block py-2">Profile</a>
                 <a href="/user-subscription" className="block py-2">Manage Subscription</a>
                 <a href="/support" className="block py-2">Support</a>
-                <a href="/tos" className="block py-2">Terms and Conditions</a>
+                <a href="/tos" className="block py-2">Terms of Service</a>
+                <a href="/tos" className="block py-2">Privacy Policy</a>
                 {/* Add other links */}
               </div>
 
