@@ -76,7 +76,11 @@ function App() {
         {/* Content */}
         <div className="container w-full">
           <Routes>
-            <Route path="/" element={<Home currentUser={currentUser} />} />
+              <Route path="/" element={
+                <div className="center">
+                  <Home currentUser={currentUser} />
+                <div>
+              } />
             <Route path="/login" element={
               <div className="center">
                 <LoginForm onUserChange={handleUserChange} />
