@@ -1,5 +1,5 @@
 class Config {
-  SERVER_URL = process.env.API_SERVER_URL;
+  SERVER_URL = process.env.REACT_APP_URL;
 }
 
 const appConfig = new Config();
