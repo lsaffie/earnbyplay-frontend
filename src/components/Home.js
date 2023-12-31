@@ -35,14 +35,14 @@ const Home= ({ onUserChange }) => {
           2. Complete the game
         </h2>
         <div className="text-gray-500 mb-5">
-          Most offers are very simple and have already earned money for thousands of people. Most offers take around 5-10 minutes to complete.
+          Finish simple in-game tasks.
         </div>
 
         <h2 className="text-xl font-bold text-center text-white">
-          2. Earn cash
+          3. Earn cash
         </h2>
         <div className="text-gray-500 mb-5">
-          For each game you complete, you'll receive coins which you can then cashout for cash or gift cards
+          Earn coins for tasks, redeem for rewards.
         </div>
       </div>
 
