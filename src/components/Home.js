@@ -13,9 +13,9 @@ const Home= ({ onUserChange }) => {
   return (
     <div className="text-center m-5 min-h-screen h-auto">
 
-      <h2 className="text-2xl font-bold mb-6 text-center">
+      <h2 className="text-3xl font-bold mb-6 text-center">
         <span className="text-ebp-cta-green-earn-font">Earn</span>
-        <span className="text-white"> cash by playing games </span>
+        <span className="text-white"> Cash By Playing Games </span>
       </h2>
 
 
