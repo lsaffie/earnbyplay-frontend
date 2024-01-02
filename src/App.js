@@ -18,6 +18,8 @@ import Home from './components/Home'
 import Footer from './components/Footer'
 
 import Rewards from './components/Rewards'
+import Payout from './components/Payout'
+
 import UserSubscription from './components/UserSubscription'
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
@@ -111,6 +113,11 @@ function App() {
            <Route path="/rewards" element={
              <div className="center">
                <Rewards userId={currentUser}/>
+             </div>
+           } />
+           <Route path="/payout" element={
+             <div className="center">
+               <Payout userId={currentUser}/>
              </div>
            } />
            <Route path="/ledger-entries" element={
