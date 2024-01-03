@@ -127,7 +127,7 @@ const Navbar = ({ currentUser }) => {
           {/* Backdrop */}
           <Backdrop show={isDrawerOpen} onClick={() => setIsDrawerOpen(false)} />
 
-          <Link to="/cashout" className="flex-1 text-center py-2">
+          <Link to="/payout" className="flex-1 text-center py-2">
             <AtmCashout className="w-6 h-6 mx-auto" fill="#FFF" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" />
             <span className="block text-xs text-gray-300">Cashout</span>
           </Link>

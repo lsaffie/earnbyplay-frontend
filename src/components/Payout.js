@@ -6,6 +6,7 @@ import WalletBalance from './WalletBalance.jsx'
 
 const Payout = ({ userId }) => {
   const [user, setUser] = useState(false);
+  const [wallet, setWallet] = useState(false);
   const [rewards, setRewards] = useState([]);
   const [selectedReward, setSelectedReward] = useState('');
   const [amount, setAmount] = useState(''); // do I need this?
@@ -17,22 +18,43 @@ const Payout = ({ userId }) => {
   useEffect(() => {
     // Fetch User Details
     axios.get(`${appConfig.SERVER_URL}/api/user`, {
-        headers: {
-          'Authorization': `Bearer ${getJwtToken()}`
-        }
+      headers: {
+        'Authorization': `Bearer ${getJwtToken()}`
+      }
     })
       .then(response => setUser(response.data.user))
       .catch(error => console.error('Error fetching user data:', error));
+
+    // Fetch Wallet Details
+    axios.get(`${appConfig.SERVER_URL}/api/wallet/`, {
+        headers: {
+          'Authorization': `Bearer ${getJwtToken()}`
+        }
+      })
+      .then(response => setWallet(response.data))
+      .catch(error => console.error('Error fetching wallet data:', error));
   }, [userId]);
 
     const selectReward = (reward) => {
       setSelectedReward(reward);
     };
 
-    const handleCashOut = () => {
-      if (userId) {
+    const handleCashOut = (e) => {
+      e.preventDefault();
+      if (userId && wallet) {
         //TODO: link this to GeneratePayoutLinkView
-        axios.post(`${appConfig.SERVER_URL}/api/generate-payout-link`, { userId, reward_id: selectedReward, amount })
+        const floorBalance = Math.floor(wallet.balance); // Get the floor value of wallet.balance
+
+        axios.post(`${appConfig.SERVER_URL}/api/generate-payout-link/`, 
+          { user_id: userId,
+            wallet_balance: floorBalance
+          }, 
+          { 
+            headers: {
+              'Authorization': `Bearer ${getJwtToken()}`
+            }
+          }
+        )
             .then(response => {
                 alert("Cash out successful");
             })
@@ -44,10 +66,10 @@ const Payout = ({ userId }) => {
     };
 
     return (
-        <div>
+        <div className="m-2">
             <h2 className="flex items-left space-x-1 text-xl font-bold text-white">
               <span> Available balance: </span>
-              <span> <WalletBalance /> </span>
+              <span> ${wallet ? Math.floor(wallet.balance) : 'Loading...'} </span> {/* Display the floor value of wallet.balance */}
               <span>Click to redeem for cash or choose from our vast gift card selection.</span>
             </h2>
 
@@ -60,10 +82,7 @@ const Payout = ({ userId }) => {
             )}
             <form onSubmit={handleCashOut} className="bg-ebp-header p-5 mb-5">
               <div className="mb-4">
-                <label htmlFor="formBasicUsername" className="block text-sm font-medium text-gray-200">Username:</label>
-              </div>
-              <div className="mb-4">
-                <label htmlFor="formBasicUsername" className="block text-sm font-medium text-gray-200">Amount to redeem:</label>
+                <label htmlFor="formBasicUsername" className="block text-md font-medium text-gray-200">Amount to redeem: ${wallet ? Math.floor(wallet.balance) : 'Loading...'}</label>
               </div>
 
               <button 
