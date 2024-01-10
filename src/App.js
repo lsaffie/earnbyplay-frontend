@@ -91,13 +91,14 @@ function App() {
                 <div className="center">
                   <LoginForm onUserChange={handleUserChange} />
                 </div>
-              }
+              } 
             />
             <Route
               path="/signup"
               element={
                 <div className="center">
-                  <SignupForm onUserChange={handleUserChange} />
+                  {/* <SignupForm onUserChange={handleUserChange} /> */}
+                  <PhoneNumberVerification />
                 </div>
               }
             />
