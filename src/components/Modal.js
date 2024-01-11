@@ -22,7 +22,7 @@ const Modal = ({ isOpen, setIsOpen, content }) => {
           <div className="items-center px-4 py-3">
             <button
               id="ok-btn"
-              className="px-4 py-2 bg-green-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-300"
+              className="px-4 py-2 bg-ebp-cta-green text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-300"
               onClick={() => setIsOpen(false)}
             >
               OK

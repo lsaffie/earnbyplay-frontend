@@ -167,7 +167,6 @@ const UserDetails = ({ userId }) => {
 
     <UserSubscription userId={userId}/>
     <WalletView userId={userId} />
-    <LedgerEntries userId={userId} />
       
     </div>
   );
