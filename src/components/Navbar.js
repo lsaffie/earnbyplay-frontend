@@ -191,7 +191,7 @@ const Navbar = ({ currentUser }) => {
                 <a href="/user-subscription" className="block py-2">
                   Manage Subscription
                 </a>
-                <a href="/support" className="block py-2">
+                <a href="https://tawk.to/chat/659853700ff6374032bd0622/1hjdgbsgi" className="block py-2" target="_blank" rel="noopener noreferrer">
                   Support
                 </a>
                 <a href="/tos" className="block py-2">
