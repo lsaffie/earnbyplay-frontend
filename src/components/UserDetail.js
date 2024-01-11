@@ -101,7 +101,6 @@ const UserDetails = ({ userId }) => {
     // <div className="flex flex-col justify-between h-full">
     <div className="px-2 m-0 sm:px-4 md:px-6 lg:px-8"> {/* Responsive Padding */}
 
-    <LogoutComponent userId={userId} />
 
     {isEditing ? (
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -166,6 +165,8 @@ const UserDetails = ({ userId }) => {
 
     <UserSubscription userId={userId}/>
     <WalletView userId={userId} />
+    <LogoutComponent userId={userId} />
+
       
     </div>
   );

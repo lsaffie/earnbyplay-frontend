@@ -45,7 +45,10 @@ const LogoutComponent = ({ userId }) => {
   return (
     <div>
       {userId && (
-        <button onClick={handleLogout} className="w-full text-blue-500 text-center py-2">
+        <button
+          onClick={handleLogout}
+          className="w-full bg-red-500 text-white text-center py-2 px-4 rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-700 transition ease-in duration-200 text-md font-semibold shadow-md focus:ring-opacity-50"
+        >
           Logout
         </button>
       )}
