@@ -2,10 +2,17 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import appConfig from '../config';
 import ProgressBar from './ProgressBar'
+import Modal from './Modal'
+import { useNavigate } from "react-router-dom";
+
+
 
 const BraintreeDropin = () => {
   const [clientToken, setClientToken] = useState(null);
   const [dropinInstance, setDropinInstance] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState("");
+  const navigate = useNavigate();
 
   // Effect to fetch client token
   useEffect(() => {
@@ -53,7 +60,8 @@ const BraintreeDropin = () => {
     if (dropinInstance) {
       dropinInstance.requestPaymentMethod((error, payload) => {
         if (error) {
-          console.error('Error requesting payment method:', error);
+          setModalContent("Error requesting payment method: " + error);
+          setIsModalOpen(true);
           return;
         }
 
@@ -62,7 +70,8 @@ const BraintreeDropin = () => {
         console.log(jwtToken);
 
         if (!jwtToken) {
-          alert('You are not logged in. Please log in and try again.');
+          setModalContent("You are not logged in. Please log in and try again");
+          setIsModalOpen(true);
           return;
         }
 
@@ -75,14 +84,19 @@ const BraintreeDropin = () => {
          })
           .then(response => {
             if (response.data.success) {
-              alert('Payment successful!');
+              setModalContent("Payment successful!");
+              setIsModalOpen(true);
+              // Redirect after a short delay to allow the user to read the message
+              setTimeout(() => navigate('/offerwall'), 3000); // 2000 ms = 2 seconds
             } else {
-              alert('Payment failed: ' + response.data.error);
+              setModalContent("Payment failed: " + response.data.error);
+              setIsModalOpen(true);
             }
           })
           .catch(error => {
             console.error('Error processing payment:', error);
-            alert('Error processing payment.');
+            setModalContent("Payment failed: " + error.message);
+            setIsModalOpen(true);
           });
       });
     }
@@ -95,14 +109,19 @@ const BraintreeDropin = () => {
         {clientToken ? (
           <div className="flex flex-col items-center">
             <div id="dropin-container" className="center justify-start"></div>
-            <button className="w-full bg-ebp-cta-green hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={handlePaymentSubmission}>Submit Payment</button>
+            <button
+              className="w-full bg-ebp-cta-green hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              onClick={handlePaymentSubmission}
+            >
+              Submit Payment
+            </button>
           </div>
         ) : (
-          <div className="text-center py-2">
-            Loading...
-          </div>
+          <div className="text-center py-2">Loading...</div>
         )}
       </div>
+      <Modal isOpen={isModalOpen} setIsOpen={setIsModalOpen} content={modalContent}
+      />
     </div>
   );
 };

@@ -1,88 +1,37 @@
 import React, { Component } from "react";
-import {
-  Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Form,
-  FormGroup,
-  Input,
-  Label,
-} from "reactstrap";
 
-export default class CustomModal extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeItem: this.props.activeItem,
-    };
-  }
+const Modal = ({ isOpen, setIsOpen, content }) => {
+  if (!isOpen) return null;
 
-  handleChange = (e) => {
-    let { name, value } = e.target;
+  return (
+    <div
+      className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full"
+      id="my-modal"
+    >
+      <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+        <div className="mt-3 text-center">
+          <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
+            {/* Adjust this part with an appropriate icon */}
+          </div>
+          <h3 className="text-lg leading-6 font-medium text-gray-900">
+            {content}
+          </h3>
+          <div className="mt-2 px-7 py-3">
+            <p className="text-sm text-gray-500">{content}</p>
+          </div>
+          <div className="items-center px-4 py-3">
+            <button
+              id="ok-btn"
+              className="px-4 py-2 bg-green-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-300"
+              onClick={() => setIsOpen(false)}
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-    if (e.target.type === "checkbox") {
-      value = e.target.checked;
-    }
-
-    const activeItem = { ...this.state.activeItem, [name]: value };
-
-    this.setState({ activeItem });
-  };
-
-  render() {
-    const { toggle, onSave } = this.props;
-
-    return (
-      <Modal isOpen={true} toggle={toggle}>
-        <ModalHeader toggle={toggle}>Todo Item</ModalHeader>
-        <ModalBody>
-          <Form>
-            <FormGroup>
-              <Label for="todo-title">Title</Label>
-              <Input
-                type="text"
-                id="todo-title"
-                name="title"
-                value={this.state.activeItem.title}
-                onChange={this.handleChange}
-                placeholder="Enter Todo Title"
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label for="todo-description">Description</Label>
-              <Input
-                type="text"
-                id="todo-description"
-                name="description"
-                value={this.state.activeItem.description}
-                onChange={this.handleChange}
-                placeholder="Enter Todo description"
-              />
-            </FormGroup>
-            <FormGroup check>
-              <Label check>
-                <Input
-                  type="checkbox"
-                  name="completed"
-                  checked={this.state.activeItem.completed}
-                  onChange={this.handleChange}
-                />
-                Completed
-              </Label>
-            </FormGroup>
-          </Form>
-        </ModalBody>
-        <ModalFooter>
-          <Button
-            color="success"
-            onClick={() => onSave(this.state.activeItem)}
-          >
-            Save
-          </Button>
-        </ModalFooter>
-      </Modal>
-    );
-  }
-}
+export default Modal;
