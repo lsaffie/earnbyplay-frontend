@@ -5,6 +5,7 @@ import UserSubscription from './UserSubscription'
 import LedgerEntries from './LedgerEntries'
 import WalletView from './WalletView'
 import LogoutComponent from './LogoutComponent'
+import Modal from './Modal'
 
 const UserDetails = ({ userId }) => {
   const [user, setUser] = useState(false);
@@ -13,6 +14,8 @@ const UserDetails = ({ userId }) => {
   const [transactions, setTransactions] = useState([]);
   const [userData, setUserData] = useState({});
   const [isEditing, setIsEditing] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState("");
 
   const getJwtToken = () => {
     return localStorage.getItem('access_token'); // Or however you've named the token in storage
@@ -71,10 +74,14 @@ const UserDetails = ({ userId }) => {
       }
     })
     .then(response => {
-      setUser(response.data.user);
+      // setUser(response.data.user);
+      setModalContent("Changes Saved");
+      setIsModalOpen(true);
       setIsEditing(false); // Exit edit mode
     })
     .catch(error => {
+      setModalContent("error updating user: " + error);
+      setIsModalOpen(true);
       console.error('Error updating user:', error);
     });
   };
@@ -102,7 +109,7 @@ const UserDetails = ({ userId }) => {
     <div className="px-2 m-0 sm:px-4 md:px-6 lg:px-8"> {/* Responsive Padding */}
 
 
-    {isEditing ? (
+    user && (
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="flex flex-col">
           <label className="text-sm font-medium text-slate-50">First name:</label>
@@ -130,44 +137,13 @@ const UserDetails = ({ userId }) => {
           <button onClick={() => setIsEditing(false)} type="button" className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300">Cancel</button>
         </div>
       </form>
-    ) : (
-      user && (
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="flex flex-col">
-            <label className="text-sm font-medium text-slate-50">First name:</label>
-            <input type="text" name="first_name" value={user.first_name} onChange={handleInputChange} className="mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
-          </div>
-          <div className="flex flex-col">
-            <label className="text-sm font-medium text-slate-50">Last name:</label>
-            <input type="text" name="last_name" value={user.last_name} onChange={handleInputChange} className="mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
-          </div>
-          <div className="flex flex-col">
-            <label className="text-sm font-medium text-slate-50">Username:</label>
-            <input type="text" name="username" value={user.username} onChange={handleInputChange} className="mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
-          </div>
-          <div className="flex flex-col">
-            <label className="text-sm font-medium text-slate-50">Email:</label>
-            <input type="email" name="email" value={user.email} onChange={handleInputChange} className="mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
-          </div>
-          <div className="flex flex-col">
-            <label className="text-sm font-medium text-slate-50">Phone Number:</label>
-            <input type="text" name="phone_number" value={user.phone_number} onChange={handleInputChange} className="mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
-          </div>
-          {/* Include other fields as necessary */}
-          <div className="flex justify-end space-x-2">
-            <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">Save Changes</button>
-            <button onClick={() => setIsEditing(false)} type="button" className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300">Cancel</button>
-          </div>
-        </form>
-      )
-
-    )}
 
     <UserSubscription userId={userId}/>
     <WalletView userId={userId} />
     <LogoutComponent userId={userId} />
-
+    ) 
       
+    <Modal isOpen={isModalOpen} setIsOpen={setIsModalOpen} content={modalContent} />
     </div>
   );
 };
