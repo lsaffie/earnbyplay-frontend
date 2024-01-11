@@ -46,7 +46,7 @@ const WalletView = () => {
             <p className="text-md text-gray-600">Balance:</p>
             <p className="text-xl font-bold text-gray-900">{wallet.balance}</p>
             {/* Render additional wallet details here */}
-            <a href="/cashout" className="inline-block text-center bg-green-500 text-white py-2 px-4 mt-4 rounded hover:bg-green-600 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-300 shadow-lg text-sm font-medium">
+            <a href="/payout" className="inline-block text-center bg-green-500 text-white py-2 px-4 mt-4 rounded hover:bg-green-600 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-300 shadow-lg text-sm font-medium">
               Cash Out
             </a>
           </div>

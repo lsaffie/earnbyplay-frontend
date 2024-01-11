@@ -72,18 +72,17 @@ const Payout = ({ userId }) => {
 
     return (
       <div className="m-2">
-        <h2 className="flex items-left space-x-1 text-xl font-bold text-white">
-          <span> Available balance: </span>
+        <h3 className="items-start text-left space-x-1 text-xl font-bold text-white mb-5">
           <span>
             {" "}
             ${wallet ? Math.floor(wallet.balance) : "Loading..."}{" "}
           </span>{" "}
           {/* Display the floor value of wallet.balance */}
           <span>
-            Click to redeem for cash or choose from our vast gift card
+            Availble to redeem for cash or choose from our vast gift card
             selection.
           </span>
-        </h2>
+        </h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
         {selectedReward && (
@@ -100,7 +99,7 @@ const Payout = ({ userId }) => {
               htmlFor="formBasicUsername"
               className="block text-md font-medium text-gray-200"
             >
-              Amount to redeem: $
+              Amount availble to redeem: $
               {wallet ? Math.floor(wallet.balance) : "Loading..."}
             </label>
           </div>
@@ -118,6 +117,13 @@ const Payout = ({ userId }) => {
             amount.
           </h2>
         </form>
+
+        <h2 className="text-sm text-left text-gray-400 mt-5">
+          <div>
+            * Please note that redemptions from your wallet can only be made in whole dollar amounts. Any remaining cents will stay in your wallet for future use.
+          </div>
+        </h2>
+
         <Modal
           isOpen={isModalOpen}
           setIsOpen={setIsModalOpen}

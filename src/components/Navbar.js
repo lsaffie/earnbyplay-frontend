@@ -105,7 +105,9 @@ const Navbar = ({ currentUser }) => {
               </div>
               {currentUser ? (
                 <div className="md:flex md:justify-start gap-2 py-4 px-2">
-                  <WalletBalance wallet={currentUser} />
+                  <a href="/wallet" className="">
+                    <WalletBalance wallet={currentUser} />
+                  </a>
                 </div>
               ) : (
                 shouldExcludeAuthButtons && (
