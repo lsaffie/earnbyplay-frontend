@@ -37,7 +37,7 @@ const WalletView = () => {
   // Render wallet data or an error message
   return (
     <>
-    <div className="px-4 sm:px-6 lg:px-8 my-5 mx-3 sm:mx-5">
+    <div className="px-0 sm:px-6 lg:px-8 my-5 mx-1 sm:mx-5">
       {error && <p className="text-red-500">{error}</p>}
       {wallet ? (
         <div>
