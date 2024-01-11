@@ -133,8 +133,8 @@ const Navbar = ({ currentUser }) => {
       </nav>
 
       {/* Bottom Navbar for mobile screens */}
-      <nav className="fixed inset-x-0 bottom-0 bg-ebp-header shadow-lg md:hidden">
-        <div className="flex justify-between">
+      <nav className="fixed inset-x-0 bottom-0 bg-ebp-header shadow-lg md:hidden pr-16">
+        <div className="flex justify-start space-x-1">
           <button onClick={toggleDrawer} className="md:hidden">
             {/* SVG for Menu icon */}
             <div className="flex-1 text-center py-4">
@@ -226,13 +226,13 @@ const Navbar = ({ currentUser }) => {
 
           <Link
             to="/offerwall"
-            className="flex-1 text-center py-2 "
+            className="flex-1 text-center py-2"
           >
             <Earn
               className="w-6 h-6 mx-auto"
-              fill="#FFF"
+              fill="#48BB78"
               stroke="white"
-              viewBox="0 0 24 24"
+              // viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             />
             <span className="block text-xs text-gray-300">Earn</span>
