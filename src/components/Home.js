@@ -15,7 +15,7 @@ const Home= ({ onUserChange }) => {
 
       <h2 className="text-3xl font-bold mb-6 text-center">
         <span className="text-ebp-cta-green-earn-font">Earn</span>
-        <span className="text-white"> Cash By Playing Games </span>
+        <span className="text-white"> Cash by Playing Games </span>
       </h2>
 
 

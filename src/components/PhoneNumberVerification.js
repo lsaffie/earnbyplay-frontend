@@ -74,7 +74,7 @@ const PhoneNumberForm = ({
           Earn cash by playing games anywhere, anytime. See
           <a
             href="#"
-            className="text-green-600 hover:underline"
+            className="text-ebp-cta-green hover:underline"
             onClick={handleMembershipDetailsClick}
           >
             {" "}
