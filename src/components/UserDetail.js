@@ -109,7 +109,7 @@ const UserDetails = ({ userId }) => {
     <div className="px-2 m-0 sm:px-4 md:px-6 lg:px-8"> {/* Responsive Padding */}
 
 
-    user && (
+    {user.valid && (
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="flex flex-col">
           <label className="text-sm font-medium text-slate-50">First name:</label>
@@ -137,11 +137,11 @@ const UserDetails = ({ userId }) => {
           <button onClick={() => setIsEditing(false)} type="button" className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300">Cancel</button>
         </div>
       </form>
+    )}
 
     <UserSubscription userId={userId}/>
     <WalletView userId={userId} />
     <LogoutComponent userId={userId} />
-    ) 
       
     <Modal isOpen={isModalOpen} setIsOpen={setIsModalOpen} content={modalContent} />
     </div>
