@@ -63,7 +63,12 @@ const Payout = ({ userId }) => {
                 setIsModalOpen(true);
             })
             .catch(error => {
-                setModalContent("Cashout failed: " + error);
+                // Check if error response exists and has a data object
+                if (error.response && error.response.data && error.response.data.error) {
+                    setModalContent("Cashout failed: " + error.response.data.error);
+                } else {
+                    setModalContent("Cashout failed: An unexpected error occurred");
+                }
                 setIsModalOpen(true);
                 console.error(error);
             });
