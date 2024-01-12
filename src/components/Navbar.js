@@ -13,6 +13,11 @@ import WalletBalance from "./WalletBalance";
 const Navbar = ({ currentUser }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [activeComponent, setActiveComponent] = useState('');
+
+  const handleComponentClick = (componentName) => {
+    setActiveComponent(componentName);
+  };
 
   const location = useLocation();
   const shouldExcludeAuthButtons = !["/phone-verify", "/subscribe"].includes(
@@ -213,10 +218,11 @@ const Navbar = ({ currentUser }) => {
             onClick={() => setIsDrawerOpen(false)}
           />
 
-          <Link to="/payout" className="flex-1 text-center py-2">
+          <Link to="/payout" className="flex-1 text-center py-2"
+                onClick={() => handleComponentClick('AtmCashout')}>
             <AtmCashout
               className="w-6 h-6 mx-auto"
-              fill="#FFF"
+              fill={activeComponent === 'AtmCashout' ? "#48BB78" : "#FFF"}
               stroke="white"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
@@ -227,10 +233,10 @@ const Navbar = ({ currentUser }) => {
           <Link
             to="/offerwall"
             className="flex-1 text-center py-2"
-          >
+            onClick={() => handleComponentClick('Earn')} >
             <Earn
               className="w-6 h-6 mx-auto"
-              fill="#48BB78"
+              fill={activeComponent === 'Earn' ? "#48BB78" : "#FFF"}
               stroke="white"
               // viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
