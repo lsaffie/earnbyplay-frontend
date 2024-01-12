@@ -1,5 +1,6 @@
 // React Rewards.jsx
 import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import axios from 'axios';
 import appConfig from '../config';
 import WalletBalance from './WalletBalance.jsx'
@@ -75,20 +76,31 @@ const Payout = ({ userId }) => {
       }
     };
 
-    return (
-      <div className="m-2">
+  return (
+  <div className="m-2">
+    {wallet && wallet.balance < 1 ? (
+      <div>
+        <p className="text-white text-lg mt-10">
+          You don't have enough funds to redeem. 
+        </p>
+        <p className="text-white text-lg mb-10 mt-1">
+          Click the link below to earn cash!
+        </p>
+        <Link
+          to="/offerwall"
+          className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-ebp-cta-green hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        >
+          Earn
+        </Link>
+      </div>
+    ) : (
+      <>
         <h3 className="items-start text-left space-x-1 text-xl font-bold text-white mb-5">
+          <span>${wallet ? Math.floor(wallet.balance) : "Loading..."}</span>
           <span>
-            {" "}
-            ${wallet ? Math.floor(wallet.balance) : "Loading..."}{" "}
-          </span>{" "}
-          {/* Display the floor value of wallet.balance */}
-          <span>
-            Availble to redeem for cash or choose from our vast gift card
-            selection.
+            Available to redeem for cash or choose from our vast gift card selection.
           </span>
         </h3>
-
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
         {selectedReward && (
           <button
@@ -104,38 +116,30 @@ const Payout = ({ userId }) => {
               htmlFor="formBasicUsername"
               className="block text-md font-medium text-gray-200"
             >
-              Amount availble to redeem: $
+              Amount available to redeem: $
               {wallet ? Math.floor(wallet.balance) : "Loading..."}
             </label>
           </div>
-
           <button
             type="submit"
             className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-ebp-cta-green hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             Redeem
           </button>
-
-          <h2 className="text-sm text-left text-gray-400 mt-5">
-            Click "Submit" to get a link for cashing out from our partner
-            selection. Your wallet will be automatically debited for the chosen
-            amount.
-          </h2>
         </form>
-
         <h2 className="text-sm text-left text-gray-400 mt-5">
-          <div>
-            * Please note that redemptions from your wallet can only be made in whole dollar amounts. Any remaining cents will stay in your wallet for future use.
-          </div>
+          * Please note that redemptions from your wallet can only be made in whole dollar amounts. Any remaining cents will stay in your wallet for future use.
         </h2>
+      </>
+    )}
+    <Modal
+      isOpen={isModalOpen}
+      setIsOpen={setIsModalOpen}
+      content={modalContent}
+    />
+  </div>
+);
 
-        <Modal
-          isOpen={isModalOpen}
-          setIsOpen={setIsModalOpen}
-          content={modalContent}
-        />
-      </div>
-    );
 };
 
 export default Payout;
