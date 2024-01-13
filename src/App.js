@@ -1,6 +1,6 @@
 import "./App.css";
 import React from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "./components/Navbar";
@@ -21,9 +21,11 @@ import Rewards from "./components/Rewards";
 import Payout from "./components/Payout";
 
 import UserSubscription from "./components/UserSubscription";
-import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
+
+import * as amplitude from '@amplitude/analytics-browser';
+
 import appConfig from "./config";
+
 
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
@@ -42,6 +44,9 @@ function App() {
   };
 
   useEffect(() => {
+    // Initialize Amplitude instance
+    amplitude.init(process.env.REACT_APP_AMPLITUDE_API_KEY)
+
     client
       .get("/api/user", {
         headers: {
