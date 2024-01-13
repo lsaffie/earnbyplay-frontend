@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import appConfig from "../config";
 import ProgressBar from "./ProgressBar";
+import { trackEventWithUrlParams } from '../utils/amplitudeUtils';
 
 // Helper Functions
 const formatToE164 = (phone) => {
@@ -11,6 +12,8 @@ const formatToE164 = (phone) => {
 };
 
 const sendSMS = async (formattedPhoneNumber, first_name) => {
+  trackEventWithUrlParams("Click on sendSMS")
+
   return axios.post(`${appConfig.SERVER_URL}/api/send_sms/`, {
     phone_number: formattedPhoneNumber,
     first_name: first_name,
@@ -245,6 +248,11 @@ const PhoneNumberVerification = () => {
   const [smsSent, setSmsSent] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
   const navigate = useNavigate();
+
+
+  useEffect(() => {
+    trackEventWithUrlParams("View Landing page")
+  })
 
   const handleSubmit = async (e) => {
     e.preventDefault();

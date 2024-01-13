@@ -4,6 +4,7 @@ import appConfig from '../config';
 import ProgressBar from './ProgressBar'
 import Modal from './Modal'
 import { useNavigate } from "react-router-dom";
+import { trackEventWithUrlParams } from '../utils/amplitudeUtils';
 
 
 
@@ -16,12 +17,13 @@ const BraintreeDropin = () => {
 
   // Effect to fetch client token
   useEffect(() => {
-    axios.get(`${appConfig.SERVER_URL}/api/generate_client_token/`) // Adjust this path to match your Django URL
-      .then(response => {
+    axios
+      .get(`${appConfig.SERVER_URL}/api/generate_client_token/`) // Adjust this path to match your Django URL
+      .then((response) => {
         setClientToken(response.data.client_token);
       })
-      .catch(error => {
-        console.error('Error fetching client token:', error);
+      .catch((error) => {
+        console.error("Error fetching client token:", error);
       });
   }, []);
 
@@ -86,9 +88,16 @@ const BraintreeDropin = () => {
             if (response.data.success) {
               setModalContent("Payment successful!");
               setIsModalOpen(true);
+
+              // Track success payment event
+              trackEventWithUrlParams("payment successful")
+
               // Redirect after a short delay to allow the user to read the message
               setTimeout(() => navigate('/offerwall'), 3000); // 2000 ms = 2 seconds
             } else {
+              // Track fail payment event
+              trackEventWithUrlParams("payment failed")
+
               setModalContent("Payment failed: " + response.data.error);
               setIsModalOpen(true);
             }
