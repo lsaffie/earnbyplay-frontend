@@ -192,13 +192,22 @@ const Navbar = ({ currentUser }) => {
                 <a href="/" className="block py-2">
                   Home
                 </a>
-                <a href="/user" className="block py-2">
-                  Profile
-                </a>
-                <a href="/user-subscription" className="block py-2">
-                  Manage Subscription
-                </a>
-                <a href="https://tawk.to/chat/659853700ff6374032bd0622/1hjdgbsgi" className="block py-2" target="_blank" rel="noopener noreferrer">
+                {currentUser && (
+                  <>
+                    <a href="/user" className="block py-2">
+                      Profile
+                    </a>
+                    <a href="/user-subscription" className="block py-2">
+                      Manage Subscription
+                    </a>
+                  </>
+                )}
+                <a
+                  href="https://tawk.to/chat/659853700ff6374032bd0622/1hjdgbsgi"
+                  className="block py-2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Support
                 </a>
                 <a href="/tos" className="block py-2">
@@ -218,11 +227,14 @@ const Navbar = ({ currentUser }) => {
             onClick={() => setIsDrawerOpen(false)}
           />
 
-          <Link to="/payout" className="flex-1 text-center py-2"
-                onClick={() => handleComponentClick('AtmCashout')}>
+          <Link
+            to="/payout"
+            className="flex-1 text-center py-2"
+            onClick={() => handleComponentClick("AtmCashout")}
+          >
             <AtmCashout
               className="w-6 h-6 mx-auto"
-              fill={activeComponent === 'AtmCashout' ? "#48BB78" : "#FFF"}
+              fill={activeComponent === "AtmCashout" ? "#48BB78" : "#FFF"}
               stroke="white"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
@@ -233,10 +245,11 @@ const Navbar = ({ currentUser }) => {
           <Link
             to="/offerwall"
             className="flex-1 text-center py-2"
-            onClick={() => handleComponentClick('Earn')} >
+            onClick={() => handleComponentClick("Earn")}
+          >
             <Earn
               className="w-6 h-6 mx-auto"
-              fill={activeComponent === 'Earn' ? "#48BB78" : "#FFF"}
+              fill={activeComponent === "Earn" ? "#48BB78" : "#FFF"}
               stroke="white"
               // viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
