@@ -11,24 +11,26 @@ const OfferWallIframe = ({ currentUser }) => {
     'https://web.bitlabs.ai/?uid=' + uid +
     '&token=' + secretToken +
     '&width=full_width' +
-    '&os=desktop' +
     '&display_mode=offers'
   ).replace(/\s+/g, '');
 
   trackEventWithUrlParams("Offerwall Opened")
 
   return(
-    <div className="iframe-container w-full">
+    <div className="iframe-container relative w-full" style={{ height: '1000px' }}>
       <iframe
         title="Offerwall"
         src={bitlabsUrl}
         width="100%"
-        style={{
-          height: '1000px',
-          overflow: 'hide', // Hide scrollbars
-        }}
-      >
-      </iframe>
+        style={{ height: '100%', overflow: 'hidden' }} // Hide scrollbars
+      />
+      {!currentUser && (
+        <div className="absolute top-0 left-0 w-full h-full" 
+             style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
+          {/* Display a message or a login prompt here */}
+          <p className="text-white text-center mt-20">Please log in to interact.</p>
+        </div>
+      )}
     </div>
   );
 }
