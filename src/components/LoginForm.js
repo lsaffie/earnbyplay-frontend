@@ -9,6 +9,7 @@ const LoginForm= ({ onUserChange }) => {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -27,8 +28,9 @@ const LoginForm= ({ onUserChange }) => {
 
       onUserChange(response.data);
       navigate('/offerwall');
-    } catch (error) {
-      console.error('Authentication failed:', error);
+    } catch (err) {
+      setError('Authentication failed. Please check your credentials.');
+      console.error('Authentication failed:', err);
     }
   };
 
@@ -87,6 +89,7 @@ const LoginForm= ({ onUserChange }) => {
       </button>
 
     </form>
+    {error && <div className="text-red-500 text-sm my-2">{error}</div>}
       <div className="mb-4 text-sm text-white mt-3 text-center">
         New to Earn by Play?
         <a href="/signup" className="text-blue-600 hover:underline"> Get started free</a>.
