@@ -17,7 +17,7 @@ const OfferWallIframe = ({ currentUser }) => {
   trackEventWithUrlParams("Offerwall Opened")
 
   return(
-    <div className="iframe-container relative w-full" style={{ height: '1000px' }}>
+    <div className="iframe-container relative w-full" style={{ height: '100vh' }}>
       <iframe
         title="Offerwall"
         src={bitlabsUrl}

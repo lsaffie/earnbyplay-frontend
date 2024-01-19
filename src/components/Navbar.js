@@ -138,7 +138,7 @@ const Navbar = ({ currentUser }) => {
       </nav>
 
       {/* Bottom Navbar for mobile screens */}
-      <nav className="fixed inset-x-0 bottom-0 bg-ebp-header shadow-lg md:hidden">
+      <nav className="fixed inset-x-0 bottom-0 bg-ebp-header shadow-lg md:hidden z-50">
         <div className="flex justify-start space-x-1">
           <button onClick={toggleDrawer} className="md:hidden">
             {/* SVG for Menu icon */}
