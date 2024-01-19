@@ -13,12 +13,13 @@ const BraintreeDropin = () => {
   const [dropinInstance, setDropinInstance] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   // Effect to fetch client token
   useEffect(() => {
     axios
-      .get(`${appConfig.SERVER_URL}/api/generate_client_token/`) // Adjust this path to match your Django URL
+      .get(`${appConfig.SERVER_URL}/api/generate_client_token/`)
       .then((response) => {
         setClientToken(response.data.client_token);
       })
@@ -60,8 +61,10 @@ const BraintreeDropin = () => {
 
   const handlePaymentSubmission = () => {
     if (dropinInstance) {
+      setIsLoading(true); // Start loading indicator
       dropinInstance.requestPaymentMethod((error, payload) => {
         if (error) {
+          setIsLoading(false); // Stop loading 
           setModalContent("Error requesting payment method: " + error);
           setIsModalOpen(true);
           return;
@@ -85,6 +88,7 @@ const BraintreeDropin = () => {
           }
          })
           .then(response => {
+            setIsLoading(false); // Stop loading 
             if (response.data.success) {
               setModalContent("Payment successful!");
               setIsModalOpen(true);
@@ -103,6 +107,7 @@ const BraintreeDropin = () => {
             }
           })
           .catch(error => {
+            setIsLoading(false); // Stop loading 
             console.error('Error processing payment:', error);
             setModalContent("Payment failed: " + error.message);
             setIsModalOpen(true);
@@ -113,6 +118,11 @@ const BraintreeDropin = () => {
 
   return (
     <div>
+      {isLoading && (
+      <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
+        <div>Loading...</div>
+      </div>
+      )}
       <ProgressBar currentStep="3" />
       <div className="flex flex-col items-center m-3">
         {clientToken ? (
