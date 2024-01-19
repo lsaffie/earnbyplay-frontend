@@ -20,7 +20,7 @@ const Navbar = ({ currentUser }) => {
   };
 
   const location = useLocation();
-  const shouldExcludeAuthButtons = !["/phone-verify", "/subscribe"].includes(
+  const shouldExcludeAuthButtons = ["/phone-verify", "/subscribe"].includes(
     location.pathname
   );
 
@@ -115,7 +115,7 @@ const Navbar = ({ currentUser }) => {
                   </a>
                 </div>
               ) : (
-                shouldExcludeAuthButtons && (
+                !shouldExcludeAuthButtons && (
                   <div className="flex gap-2 py-4 px-2">
                     <a
                       href="/login"
@@ -137,7 +137,9 @@ const Navbar = ({ currentUser }) => {
         </div>
       </nav>
 
-      {/* Bottom Navbar for mobile screens */}
+      
+      {!shouldExcludeAuthButtons && (
+
       <nav className="fixed inset-x-0 bottom-0 bg-ebp-header shadow-lg md:hidden z-50">
         <div className="flex justify-start space-x-1">
           <button onClick={toggleDrawer} className="md:hidden">
@@ -258,6 +260,7 @@ const Navbar = ({ currentUser }) => {
 
         </div>
       </nav>
+      )}
     </>
   );
 };
