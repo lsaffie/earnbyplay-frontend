@@ -75,12 +75,12 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-ebp-background-dark pb-16 md:pb-16">
+      <div className="flex flex-col min-h-screen bg-ebp-background-dark pb-16 md:pb-16">
         {/* Responsive Navbar */}
         <Navbar currentUser={currentUser} />
 
         {/* Content */}
-        <div className="container w-full">
+        <div className="flex-grow container w-full pb-16 md:pb-16">
           <Routes>
             <Route
               path="/"
