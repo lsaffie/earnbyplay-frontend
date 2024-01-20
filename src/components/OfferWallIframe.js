@@ -28,7 +28,16 @@ const OfferWallIframe = ({ currentUser }) => {
         <div className="absolute top-0 left-0 w-full h-full" 
              style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
           {/* Display a message or a login prompt here */}
-          <p className="text-white text-center mt-20">Sign up or login to interact.</p>
+          <p className="text-white text-center mt-40 text-lg bg-ebp-bg-dark p-9 rounded-lg">
+            <a href="/signup" className="underline text-green-500 hover:text-green-600 hover:bg-white transition duration-300">
+              Sign up
+            </a>{" "}
+            or{" "}
+            <a href="/login" className="underline text-green-500 hover:text-green-600 hover:bg-white transition duration-300">
+              login
+            </a>{" "}
+            to play
+          </p>
         </div>
       )}
     </div>

@@ -75,7 +75,7 @@ function App() {
 
   return (
     <Router>
-      <div className="flex flex-col min-h-screen bg-ebp-background-dark pb-16 md:pb-16">
+      <div className="flex flex-col min-h-screen bg-ebp-bg-dark pb-16 md:pb-16">
         {/* Responsive Navbar */}
         <Navbar currentUser={currentUser} />
 
