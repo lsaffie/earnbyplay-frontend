@@ -119,13 +119,13 @@ const Navbar = ({ currentUser }) => {
                   <div className="flex gap-2 py-4 px-2">
                     <a
                       href="/login"
-                      className="py-2 px-4 bg-ebp-cta-green text-white font-semibold rounded-lg hover:bg-green-600 transition duration-300 whitespace-nowrap"
+                      className="py-2 px-4 text-green-700 font-semibold rounded-lg border border-green-700 hover:bg-green-600 hover:text-white transition duration-300 whitespace-nowrap"
                     >
                       Sign In
                     </a>
                     <a
                       href="/signup"
-                      className="py-2 px-4 text-green-700 font-semibold rounded-lg border border-green-700 hover:bg-green-600 hover:text-white transition duration-300 whitespace-nowrap"
+                      className="py-2 px-4 bg-ebp-cta-green text-white font-semibold rounded-lg hover:bg-green-600 transition duration-300 whitespace-nowrap"
                     >
                       Sign Up
                     </a>

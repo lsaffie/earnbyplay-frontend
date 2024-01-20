@@ -28,7 +28,7 @@ const OfferWallIframe = ({ currentUser }) => {
         <div className="absolute top-0 left-0 w-full h-full" 
              style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
           {/* Display a message or a login prompt here */}
-          <p className="text-white text-center mt-20">Please log in to interact.</p>
+          <p className="text-white text-center mt-20">Sign up or login to interact.</p>
         </div>
       )}
     </div>

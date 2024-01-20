@@ -78,7 +78,7 @@ const Payout = ({ userId }) => {
 
   return (
   <div className="m-2">
-    {wallet && wallet.balance < 1 ? (
+    {!wallet || (wallet && wallet.balance) < 1 ? (
       <div>
         <p className="text-white text-lg mt-10">
           You don't have enough funds to redeem. 
