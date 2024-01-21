@@ -238,7 +238,6 @@ const Navbar = ({ currentUser }) => {
               className="w-8 h-8 mx-auto"
               fill={activeComponent === "Earn" ? "#48BB78" : "#FFF"}
               stroke="white"
-              // viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             />
             <span className="block text-xs text-gray-300">Earn</span>

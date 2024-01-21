@@ -21,6 +21,7 @@ import Rewards from "./components/Rewards";
 import Payout from "./components/Payout";
 
 import UserSubscription from "./components/UserSubscription";
+import PhoneLogin from "./components/PhoneLogin";
 
 import * as amplitude from '@amplitude/analytics-browser';
 
@@ -82,81 +83,53 @@ function App() {
         {/* Content */}
         <div className="flex-grow container w-full pb-16 md:pb-16">
           <Routes>
-            <Route
-              path="/"
-              element={
+            <Route path="/" element={
                 <div className="center">
                   <Home currentUser={currentUser} />
                 </div>
-              }
-            />
-            <Route
-              path="/login"
-              element={
+            } />
+            <Route path="/login" element={
                 <div className="center">
-                  <LoginForm onUserChange={handleUserChange} />
+                  {/* <LoginForm onUserChange={handleUserChange} /> */}
+                  <PhoneLogin />
                 </div>
-              } 
-            />
-            <Route
-              path="/signup"
-              element={
+            } />
+            <Route path="/signup" element={
                 <div className="center">
-                  {/* <SignupForm onUserChange={handleUserChange} /> */}
                   <PhoneNumberVerification />
                 </div>
-              }
-            />
-            <Route path="/phone-verify" element={<PhoneNumberVerification />} />
+            } />
+            <Route path="/phone-login" element={<div className="center"> <PhoneLogin /> </div> } />
+            <Route path="/phone-verify" element={<div className="center"><PhoneNumberVerification /> </div>} />
             <Route path="/subscribe" element={<BraintreeDropin />} />
-            <Route
-              path="/offerwall"
-              element={<OfferWallIframe currentUser={currentUser} />}
-            />
-            <Route
-              path="/wallet"
-              element={
+            <Route path="/offerwall" element={<OfferWallIframe currentUser={currentUser} />} />
+            <Route path="/earn" element={<OfferWallIframe currentUser={currentUser} />} />
+            <Route path="/wallet" element={
                 <div className="center">
                   <WalletView />
                 </div>
-              }
-            />
-            <Route
-              path="/user"
-              element={<UserDetails userId={currentUser} />}
-            />
-            <Route
-              path="/rewards"
-              element={
+            } />
+            <Route path="/user" element={<UserDetails userId={currentUser} />} />
+            <Route path="/rewards" element={
                 <div className="center">
                   <Rewards userId={currentUser} />
                 </div>
-              }
-            />
-            <Route
-              path="/payout"
-              element={
+            } />
+            <Route path="/payout" element={
                 <div className="center">
                   <Payout userId={currentUser} />
                 </div>
-              }
-            />
-            <Route
-              path="/ledger-entries"
-              element={
+            } />
+            <Route path="/ledger-entries" element={
                 <div className="center">
                   <LedgerEntries userId={currentUser} />
                 </div>
-              }
-            />
-            <Route
-              path="/user-subscription"
-              element={
+            } />
+            <Route path="/user-subscription" element={
                 <div className="center">
                   <UserSubscription userId={currentUser} />
                 </div>
-              }
-            />
+            } />
           </Routes>
         </div>
         <Footer />
