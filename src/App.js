@@ -81,59 +81,27 @@ function App() {
         <Navbar currentUser={currentUser} />
 
         {/* Content */}
-        <div className="flex-grow container w-full pb-16 md:pb-16">
+        <div className="flex-grow justify-center container w-full pb-16 md:pb-16 mt-8 px-4 sm:px-6 lg:px-8">
           <Routes>
-            <Route path="/" element={
-                <div className="center">
-                  <Home currentUser={currentUser} />
-                </div>
-            } />
+            <Route path="/" element={ <Home currentUser={currentUser} /> } />
             <Route path="/login" element={
-                <div className="flex justify-center mt-8 px-4 sm:px-6 lg:px-8">
+                <div className="center">
                   {/* <LoginForm onUserChange={handleUserChange} /> */}
                   <PhoneLogin />
                 </div>
             } />
-            <Route path="/signup" element={
-                <div className="center">
-                  <PhoneNumberVerification />
-                </div>
-            } />
-            <Route path="/phone-login" element={<div className="center"> <PhoneLogin /> </div> } />
-            <Route path="/phone-verify" element={<div className="center"><PhoneNumberVerification /> </div>} />
-            <Route path="/subscribe" element={<BraintreeDropin />} />
-            <Route path="/offerwall" element={<OfferWallIframe currentUser={currentUser} />} />
-            <Route path="/earn" element={<OfferWallIframe currentUser={currentUser} />} />
-            <Route path="/wallet" element={
-                <div className="center">
-                  <WalletView />
-                </div>
-            } />
-            <Route path="/user" element={
-              <div className="center ml-2 mr-5">
-                <UserDetails userId={currentUser} />
-              </div>
-            } />
-            <Route path="/rewards" element={
-                <div className="center">
-                  <Rewards userId={currentUser} />
-                </div>
-            } />
-            <Route path="/payout" element={
-                <div className="center">
-                  <Payout userId={currentUser} />
-                </div>
-            } />
-            <Route path="/ledger-entries" element={
-                <div className="center">
-                  <LedgerEntries userId={currentUser} />
-                </div>
-            } />
-            <Route path="/user-subscription" element={
-                <div className="center">
-                  <UserSubscription userId={currentUser} />
-                </div>
-            } />
+            <Route path="/signup"            element={ <PhoneNumberVerification /> } />
+            <Route path="/phone-login"       element={<PhoneLogin /> } />
+            <Route path="/phone-verify"      element={<PhoneNumberVerification />} />
+            <Route path="/subscribe"         element={<BraintreeDropin />} />
+            <Route path="/offerwall"         element={<OfferWallIframe currentUser={currentUser} />} />
+            <Route path="/earn"              element={<OfferWallIframe currentUser={currentUser} />} />
+            <Route path="/wallet"            element={ <WalletView /> } />
+            <Route path="/user"              element={ <UserDetails userId={currentUser} /> } />
+            <Route path="/rewards"           element={ <Rewards userId={currentUser} /> } />
+            <Route path="/payout"            element={ <Payout userId={currentUser} /> } />
+            <Route path="/ledger-entries"    element={ <LedgerEntries userId={currentUser} /> } />
+            <Route path="/user-subscription" element={ <UserSubscription userId={currentUser} /> } />
           </Routes>
         </div>
         <Footer />
