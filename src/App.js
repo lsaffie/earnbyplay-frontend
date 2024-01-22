@@ -81,7 +81,7 @@ function App() {
         <Navbar currentUser={currentUser} />
 
         {/* Content */}
-        <div className="flex-grow justify-center container w-full pb-16 md:pb-16 mt-8 px-4 sm:px-6 lg:px-8">
+        <div className="flex-grow justify-center container w-full pb-16 md:pb-16 mt-8 px-2 sm:px-6 lg:px-8">
           <Routes>
             <Route path="/" element={ <Home currentUser={currentUser} /> } />
             <Route path="/login" element={
