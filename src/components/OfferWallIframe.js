@@ -1,15 +1,12 @@
 import React from 'react';
 import { trackEventWithUrlParams } from '../utils/amplitudeUtils';
 
-//TODO: move this to react secrets?
-const secretToken = "46782b4a-6921-45bc-a9bd-0e8ee7da1814"
-
 const OfferWallIframe = ({ currentUser }) => {
   console.log(currentUser)
   const uid = currentUser ? currentUser.id : ''; 
   const bitlabsUrl = (
     'https://web.bitlabs.ai/?uid=' + uid +
-    '&token=' + secretToken +
+    '&token=' + process.env.REACT_APP_BITLABS_TOKEN+
     '&width=full_width' +
     '&display_mode=offers'
   ).replace(/\s+/g, '');
