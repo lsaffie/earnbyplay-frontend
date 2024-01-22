@@ -7,7 +7,7 @@ import { trackEventWithUrlParams } from '../utils/amplitudeUtils';
 import PhoneNumberForm from './PhoneNumberForm'
 import VerificationCodeForm from './VerificationCodeForm'
 
-// Helper Functions
+// // Helper Functions
 const formatToE164 = (phone) => {
   let digits = phone.replace(/\D/g, "");
   return `+1${digits}`;
@@ -22,32 +22,7 @@ const login = async (formattedPhoneNumber, first_name) => {
   });
 };
 
-const verifyCode = async (verificationCode, formattedPhoneNumber) => {
-  try {
-    const response = await axios.post(
-      `${appConfig.SERVER_URL}/api/verify_sms_code/`,
-      {
-        verification_code: verificationCode,
-        phone_number: formattedPhoneNumber,
-      }
-    );
-
-    // Assuming the token is in the 'token' property of the response data
-    const accessToken = response.data.access;
-    const refreshToken = response.data.refresh;
-    localStorage.setItem("access_token", accessToken); // Store the token in localStorage
-    localStorage.setItem("refresh_token", refreshToken); // Store the token in localStorage
-
-    return response; // You may want to return the entire response or just the data you need
-  } catch (error) {
-    console.error("Error verifying code:", error);
-    // Handle any errors, such as by displaying a message to the user
-    throw error;
-  }
-};
-
 // Main Component
-// In use
 const PhoneLogin = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [fullName, setFullName] = useState("");
@@ -83,24 +58,6 @@ const PhoneLogin = () => {
     }
   };
 
-  const handleCodeSubmit = async (e) => {
-    e.preventDefault();
-    setError('') // Clear errors
-
-    try {
-      const response = await verifyCode(verificationCode, formatToE164(phoneNumber));
-      if (response.status === 200) {
-        setIsVerified(true);
-        navigate("/earn");
-      } else {
-        // Handle non 200 errors
-        setError('Incorrect code. Please try again.');
-      }
-    } catch (error) {
-      setError(error.response.data.error || 'An error occurred')
-    }
-  };
-
   return (
     <div className="px-2 sm:px-4 md:px-6 lg:px-8">
       <h2 className="text-2xl font-bold text-white mb-6 text-left">
@@ -122,7 +79,7 @@ const PhoneLogin = () => {
           />
         ) : (
           <VerificationCodeForm
-            onSubmit={handleCodeSubmit}
+            // onSubmit={handleCodeSubmit}
             verificationCode={verificationCode}
             setVerificationCode={setVerificationCode}
             formattedPhoneNumber={formattedPhoneNumber}

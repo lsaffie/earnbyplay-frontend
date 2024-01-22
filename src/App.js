@@ -40,6 +40,10 @@ function App() {
   const [currentUser, setCurrentUser] = useState();
   const [registrationToggle, setRegistrationToggle] = useState(false);
 
+  const handleUserChange = (userData) => {
+    setCurrentUser(userData);
+  };
+
   const getJwtToken = () => {
     return localStorage.getItem("access_token"); // Or however you've named the token in storage
   };
@@ -70,10 +74,6 @@ function App() {
     }
   }
 
-  function handleUserChange(user) {
-    setCurrentUser(user);
-  }
-
   return (
     <Router>
       <div className="flex flex-col min-h-screen bg-ebp-bg-dark pb-16 md:pb-16">
@@ -87,21 +87,21 @@ function App() {
             <Route path="/login" element={
                 <div className="center">
                   {/* <LoginForm onUserChange={handleUserChange} /> */}
-                  <PhoneLogin />
+                  <PhoneLogin onUserChange={handleUserChange} />
                 </div>
             } />
-            <Route path="/signup"            element={ <PhoneNumberVerification /> } />
-            <Route path="/phone-login"       element={<PhoneLogin /> } />
+            <Route path="/signup"            element={<PhoneNumberVerification /> } />
+            <Route path="/phone-login"       element={<PhoneLogin onUserChange={handleUserChange}/> } />
             <Route path="/phone-verify"      element={<PhoneNumberVerification />} />
             <Route path="/subscribe"         element={<BraintreeDropin />} />
             <Route path="/offerwall"         element={<OfferWallIframe currentUser={currentUser} />} />
             <Route path="/earn"              element={<OfferWallIframe currentUser={currentUser} />} />
-            <Route path="/wallet"            element={ <WalletView /> } />
-            <Route path="/user"              element={ <UserDetails userId={currentUser} /> } />
-            <Route path="/rewards"           element={ <Rewards userId={currentUser} /> } />
-            <Route path="/payout"            element={ <Payout userId={currentUser} /> } />
-            <Route path="/ledger-entries"    element={ <LedgerEntries userId={currentUser} /> } />
-            <Route path="/user-subscription" element={ <UserSubscription userId={currentUser} /> } />
+            <Route path="/wallet"            element={<WalletView /> } />
+            <Route path="/user"              element={<UserDetails userId={currentUser} /> } />
+            <Route path="/rewards"           element={<Rewards userId={currentUser} /> } />
+            <Route path="/payout"            element={<Payout userId={currentUser} /> } />
+            <Route path="/ledger-entries"    element={<LedgerEntries userId={currentUser} /> } />
+            <Route path="/user-subscription" element={<UserSubscription userId={currentUser} /> } />
           </Routes>
         </div>
         <Footer />
