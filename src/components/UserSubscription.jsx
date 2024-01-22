@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import appConfig from '../config';
+import ModalConfirm from './ModalConfirm'
 
 const UserSubscription= ({ userId }) => {
   const [user, setUser] = useState(null);
   const [subscriptions, setSubscriptions] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [modalContent, setModalContent] = useState('');
+  const [selectedSubscriptionId, setSelectedSubscriptionId] = useState(null);
+
 
   const getJwtToken = () => {
     return localStorage.getItem('access_token'); // Or however you've named the token in storage
@@ -22,10 +27,16 @@ const UserSubscription= ({ userId }) => {
 
   }, [userId]); // End useEffect
 
-  const cancelSubscription = (subscriptionId) => {
+  const handleCancelSubscription = (subscriptionId) => {
+    setShowModal(true);
+    setSelectedSubscriptionId(subscriptionId);
+    setModalContent(`Cancel subscription #${subscriptionId}?`);
+  };
+
+  const cancelSubscription = () => {
     axios.delete(`${appConfig.SERVER_URL}/api/subscription/`, {
       data: {
-        subscription_id: subscriptionId
+        subscription_id: selectedSubscriptionId 
       },
       headers: {
         'Authorization': `Bearer ${getJwtToken()}`
@@ -33,7 +44,7 @@ const UserSubscription= ({ userId }) => {
     })
     .then(() => {
       // Filter out the cancelled subscription or refresh the list
-      setSubscriptions(subscriptions.filter(sub => sub.id !== subscriptionId));
+      setSubscriptions(subscriptions.filter(sub => sub.id !== selectedSubscriptionId));
     })
     .catch(error => {
       console.error('Error canceling subscription:', error);
@@ -82,7 +93,7 @@ const UserSubscription= ({ userId }) => {
               {subscription.status === 'Active' && (
                 <div className="px-4 py-4 sm:px-6 text-right">
                   <button
-                    onClick={() => cancelSubscription(subscription.id)}
+                    onClick={() => handleCancelSubscription(subscription.id)}
                     className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">
                     Cancel Subscription
                   </button>
@@ -94,6 +105,14 @@ const UserSubscription= ({ userId }) => {
       ) : (
         <p className="text-gray-600">No subscription data available.</p>
       )}
+      <ModalConfirm
+      isOpen={showModal}
+      setIsOpen={setShowModal}
+      content={modalContent}
+      onConfirm={() => cancelSubscription()}
+      confirmText="Yes, Cancel"
+      cancelText="No, Go Back"
+    />
     </div>
   );
 

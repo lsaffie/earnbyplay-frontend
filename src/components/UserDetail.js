@@ -109,7 +109,7 @@ const UserDetails = ({ userId }) => {
     <div className="px-2 m-0 sm:px-4 md:px-6 lg:px-8"> {/* Responsive Padding */}
 
 
-    {user.valid && (
+    {user && (
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="flex flex-col">
           <label className="text-sm font-medium text-slate-50">First name:</label>
