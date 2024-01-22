@@ -133,10 +133,11 @@ const Navbar = ({ currentUser }) => {
       {!shouldExcludeAuthButtons && (
 
       <nav className="fixed inset-x-0 bottom-0 bg-ebp-header shadow-lg md:hidden z-50">
-        <div className="flex justify-start space-x-1">
-          <button onClick={toggleDrawer} className="md:hidden">
+        <div className="flex justify-between">
+          <button onClick={toggleDrawer} className="flex-1 text-center md:hidden">
             {/* SVG for Menu icon */}
-            <div className="flex-1 text-center py-4">
+            <div className="flex flex-col items-center justify-center md:hidden">
+            {/* flex flex-col items-center justify-center */}
               <svg
                 width="46"
                 height="18"
