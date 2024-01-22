@@ -89,7 +89,7 @@ function App() {
                 </div>
             } />
             <Route path="/login" element={
-                <div className="center">
+                <div className="flex justify-center mt-8 px-4 sm:px-6 lg:px-8">
                   {/* <LoginForm onUserChange={handleUserChange} /> */}
                   <PhoneLogin />
                 </div>
@@ -109,7 +109,11 @@ function App() {
                   <WalletView />
                 </div>
             } />
-            <Route path="/user" element={<UserDetails userId={currentUser} />} />
+            <Route path="/user" element={
+              <div className="center ml-2 mr-5">
+                <UserDetails userId={currentUser} />
+              </div>
+            } />
             <Route path="/rewards" element={
                 <div className="center">
                   <Rewards userId={currentUser} />
