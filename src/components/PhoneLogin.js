@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import appConfig from "../config";
 import ProgressBar from "./ProgressBar";
 import { trackEventWithUrlParams } from '../utils/amplitudeUtils';
+import PhoneNumberForm from './PhoneNumberForm'
+import VerificationCodeForm from './VerificationCodeForm'
 
 // Helper Functions
 const formatToE164 = (phone) => {
@@ -44,101 +46,6 @@ const verifyCode = async (verificationCode, formattedPhoneNumber) => {
   }
 };
 
-// Functional Components
-const PhoneNumberForm = ({
-  onSubmit,
-  phoneNumber,
-  setPhoneNumber,
-  fullName,
-  setFullName,
-}) => {
-
-  return (
-    <>
-      <form onSubmit={onSubmit} className="space-y-4">
-
-        <div className="mb-4">
-          <label
-            htmlFor="verifyPhoneNumber"
-            className="block text-sm font-medium text-slate-50"
-          >
-            Phone Number
-          </label>
-          <input
-            type="tel"
-            required
-            placeholder="Enter a valid US phone number"
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            id="verifyPhoneNumber"
-            name="tel"
-            autoComplete="tel"
-          />
-        </div>
-        <button
-          type="submit"
-          className="w-full justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-ebp-cta-green hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-        >
-          Send Code
-        </button>
-        <p className="text-xs text-gray-500 mt-3 text-center">
-          Click "Send code" to agree to our
-          <a href="#" className="text-green-600 hover:underline">
-            {" "}
-            Terms
-          </a>{" "}
-          and receive marketing messages. Rates may apply to messages, which may
-          be sent by automated system.
-        </p>
-      </form>
-    </>
-  );
-};
-
-const VerificationCodeForm = ({
-  onSubmit,
-  verificationCode,
-  setVerificationCode,
-  formattedPhoneNumber,
-}) => (
-  <div className="">
-
-    <h2 className="text-2xl font-bold text-white mb-6 text-center">
-      Verify phone number
-    </h2>
-    <p className="text-center text-gray-300 mb-6">
-      Enter the 6-digit code we texted you to <br /> {formattedPhoneNumber}{" "}
-    </p>
-
-    <form onSubmit={onSubmit} className="space-y-4">
-      <div>
-        <label
-          htmlFor="verifyCode"
-          className="block text-sm font-medium text-slate-50"
-        >
-          Enter Code
-        </label>
-        <input
-          type="text"
-          required
-          placeholder="Verification Code"
-          value={verificationCode}
-          onChange={(e) => setVerificationCode(e.target.value)}
-          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-          id="verifyCode"
-        />
-      </div>
-      <button
-        type="submit"
-        className="w-full justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-ebp-cta-green hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-      >
-        Verify Code
-      </button>
-    </form>
-  </div>
-);
-
 // Main Component
 // In use
 const PhoneLogin = () => {
@@ -157,14 +64,12 @@ const PhoneLogin = () => {
   const handlePhoneSubmit = async (e) => {
     e.preventDefault();
     trackEventWithUrlParams("Login with phone initiatied")
-
     setError(''); // Clear any existing errors
-    const formattedPhoneNumber = formatToE164(phoneNumber);
-    setFormattedPhoneNumber(formattedPhoneNumber);
+    const formattedPhone = formatToE164(phoneNumber);
 
     try {
       const response = await axios.post(`${appConfig.SERVER_URL}/api/login`, {
-        phone_number: formattedPhoneNumber
+        phone_number: formattedPhone
       });
 
       if (response.status === 200) {
@@ -183,14 +88,13 @@ const PhoneLogin = () => {
     setError('') // Clear errors
 
     try {
-      const response = await verifyCode(verificationCode, formattedPhoneNumber);
+      const response = await verifyCode(verificationCode, formatToE164(phoneNumber));
       if (response.status === 200) {
-        console.log("Code verified successfully");
         setIsVerified(true);
         navigate("/earn");
       } else {
         // Handle non 200 errors
-        setError('Wrong code');
+        setError('Incorrect code. Please try again.');
       }
     } catch (error) {
       setError(error.response.data.error || 'An error occurred')
@@ -200,8 +104,11 @@ const PhoneLogin = () => {
   return (
     <div className="px-2 sm:px-4 md:px-6 lg:px-8">
       <h2 className="text-2xl font-bold text-white mb-6 text-left">
-        Welcome Back
+        Enter your phone number
       </h2>
+      <div className="text-ebp-text-secondary mb-4">
+        Skip the memory game! Use our one-time password for a hassle-free sign-in.
+      </div>
 
 
       {!isVerified && // New condition
