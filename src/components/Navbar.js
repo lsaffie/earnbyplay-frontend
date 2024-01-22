@@ -66,18 +66,12 @@ const Navbar = ({ currentUser }) => {
   return (
     <>
       <nav className="bg-ebp-header shadow-lg">
-        <div className="max-w-6xl mx-auto px-0">
-          <div className="flex justify-start items-center">
-            <a href="#" className="flex items-center py-4 px-2">
-              <span className="font-semibold text-slate-50 text-lg"></span>
-            </a>
-            <div className="flex space-x-4 justify-between">
-              {/* Website Logo */}
-              <a href="/" className="flex items-center">
+        <div className="max-w-6xl mx-auto px-0 flex justify-between items-center">
+              <a href="/" className="flex items-center py-4 px-2">
                 <img
                   src={`${process.env.PUBLIC_URL}/${logo_filename}`}
                   alt="Logo"
-                  className="h-12 sm:h-10 md:h-10 w-auto"
+                  className="h-16 w-48"
                 />
               </a>
               {/* Primary Navbar items */}
@@ -132,8 +126,6 @@ const Navbar = ({ currentUser }) => {
                   </div>
                 )
               )}
-            </div>
-          </div>
         </div>
       </nav>
 
