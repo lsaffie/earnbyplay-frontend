@@ -5,12 +5,6 @@ import appConfig from "../config";
 import ProgressBar from "./ProgressBar";
 import { trackEventWithUrlParams } from '../utils/amplitudeUtils';
 
-// Helper Functions
-const formatToE164 = (phone) => {
-  let digits = phone.replace(/\D/g, "");
-  return `+1${digits}`;
-};
-
 const verifyCode = async (verificationCode, formattedPhoneNumber) => {
   try {
     const response = await axios.post(
@@ -37,7 +31,6 @@ const verifyCode = async (verificationCode, formattedPhoneNumber) => {
 
 
 const VerificationCodeForm = ({
-  onSubmit,
   verificationCode,
   setVerificationCode,
   formattedPhoneNumber,
@@ -45,14 +38,13 @@ const VerificationCodeForm = ({
   const [error, setError] = useState(''); // Declare error state inside the component
   const navigate = useNavigate(); // Make sure navigate is defined inside the component
   const [isVerified, setIsVerified] = useState(false);
-  const [phoneNumber, setPhoneNumber] = useState("");
 
   const handleCodeSubmit = async (e) => {
     e.preventDefault();
     setError('') // Clear errors
 
     try {
-      const response = await verifyCode(verificationCode, formatToE164(phoneNumber));
+      const response = await verifyCode(verificationCode, formattedPhoneNumber);
       if (response.status === 200) {
         setIsVerified(true);
         navigate("/earn");

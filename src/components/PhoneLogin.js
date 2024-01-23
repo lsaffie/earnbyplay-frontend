@@ -7,11 +7,19 @@ import { trackEventWithUrlParams } from '../utils/amplitudeUtils';
 import PhoneNumberForm from './PhoneNumberForm'
 import VerificationCodeForm from './VerificationCodeForm'
 
-// // Helper Functions
-const formatToE164 = (phone) => {
-  let digits = phone.replace(/\D/g, "");
-  return `+1${digits}`;
-};
+  const formatToE164 = (phone) => {
+    let digits = phone.replace(/\D/g, "");
+
+    if (digits.startsWith('1') && digits.length === 11) {
+      return { formatted: `+${digits}`, error: null };
+    }
+
+    if (digits.length !== 10) {
+      return { formatted: '', error: "Invalid US phone number format." };
+    }
+
+    return { formatted: `+1${digits}`, error: null };
+  };
 
 const login = async (formattedPhoneNumber, first_name) => {
   trackEventWithUrlParams("Click on sendSMS")
@@ -40,15 +48,16 @@ const PhoneLogin = () => {
     e.preventDefault();
     trackEventWithUrlParams("Login with phone initiatied")
     setError(''); // Clear any existing errors
-    const formattedPhone = formatToE164(phoneNumber);
+    const { formatted, error } = formatToE164(phoneNumber);
 
     try {
       const response = await axios.post(`${appConfig.SERVER_URL}/api/login`, {
-        phone_number: formattedPhone
+        phone_number: formatted 
       });
 
       if (response.status === 200) {
         setSmsSent(true);
+        setFormattedPhoneNumber(formatted); // Update this state
       } else {
         // Handle non 200 errors
         setError('Authentication failed. Please check your credentials.');
@@ -79,7 +88,6 @@ const PhoneLogin = () => {
           />
         ) : (
           <VerificationCodeForm
-            // onSubmit={handleCodeSubmit}
             verificationCode={verificationCode}
             setVerificationCode={setVerificationCode}
             formattedPhoneNumber={formattedPhoneNumber}
