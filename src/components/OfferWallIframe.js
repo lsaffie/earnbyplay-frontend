@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
+import appConfig from '../config';
 import { trackEventWithUrlParams } from '../utils/amplitudeUtils';
 
-const OfferWallIframe = ({ currentUser }) => {
-  console.log(currentUser)
-  const uid = currentUser ? currentUser.id : ''; 
+const OfferWallIframe = ({ currentUser: propCurrentUser }) => {
+  const location = useLocation();
+  const [localCurrentUser, setLocalCurrentUser] = useState(propCurrentUser);
+  
+  const uid = localCurrentUser ? localCurrentUser.id : '';
+
   const bitlabsUrl = (
     'https://web.bitlabs.ai/?uid=' + uid +
     '&token=' + process.env.REACT_APP_BITLABS_TOKEN+
@@ -11,7 +17,28 @@ const OfferWallIframe = ({ currentUser }) => {
     '&display_mode=offers'
   ).replace(/\s+/g, '');
 
-  trackEventWithUrlParams("Offerwall Opened")
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get(`${appConfig.SERVER_URL}/api/user`, {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+          }
+        });
+        setLocalCurrentUser(response.data.user);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
+    if (!localCurrentUser) {
+      fetchUserData();
+    }
+
+    trackEventWithUrlParams("Offerwall Opened");
+  }, [localCurrentUser]);
+
 
   return(
     <div className="iframe-container relative w-full" style={{ height: '100vh' }}>
@@ -21,7 +48,7 @@ const OfferWallIframe = ({ currentUser }) => {
         width="100%"
         style={{ height: '100%', overflow: 'hidden' }} // Hide scrollbars
       />
-      {!currentUser && (
+      {!localCurrentUser && (
         <div className="absolute top-0 left-0 w-full h-full" 
              style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
           {/* Display a message or a login prompt here */}

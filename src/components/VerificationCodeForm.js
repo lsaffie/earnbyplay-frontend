@@ -36,9 +36,21 @@ const VerificationCodeForm = ({
   formattedPhoneNumber,
   setError,
 }) => {
-  // const [error, setError] = useState(''); // Declare error state inside the component
   const navigate = useNavigate(); // Make sure navigate is defined inside the component
-  const [isVerified, setIsVerified] = useState(false);
+
+  const fetchUserData = async () => {
+    try {
+      const response = await axios.get(`${appConfig.SERVER_URL}/api/user`, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        }
+      });
+      return response.data.user;
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+      return null;
+    }
+  };
 
   const handleCodeSubmit = async (e) => {
     e.preventDefault();
@@ -47,8 +59,13 @@ const VerificationCodeForm = ({
     try {
       const response = await verifyCode(verificationCode, formattedPhoneNumber);
       if (response.status === 200) {
-        setIsVerified(true);
-        navigate("/earn");
+        const user = await fetchUserData();
+        if (user) {
+          // Pass the user data to the /earn route through state or another method
+          navigate('/earn', { state: { currentUser: user } });
+        } else {
+          setError('Unable to fetch user data.');
+        }
       } else {
         // Handle non 200 errors
         setError('Incorrect code. Please try again.');

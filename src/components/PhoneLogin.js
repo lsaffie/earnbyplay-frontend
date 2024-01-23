@@ -21,15 +21,6 @@ import VerificationCodeForm from './VerificationCodeForm'
     return { formatted: `+1${digits}`, error: null };
   };
 
-const login = async (formattedPhoneNumber, first_name) => {
-  trackEventWithUrlParams("Click on sendSMS")
-
-  return axios.post(`${appConfig.SERVER_URL}/api/send_sms/`, {
-    phone_number: formattedPhoneNumber,
-    first_name: first_name,
-  });
-};
-
 // Main Component
 const PhoneLogin = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -41,14 +32,17 @@ const PhoneLogin = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  useEffect(() => {
-  })
-
   const handlePhoneSubmit = async (e) => {
     e.preventDefault();
     trackEventWithUrlParams("Login with phone initiatied")
+
     setError(''); // Clear any existing errors
-    const { formatted, error } = formatToE164(phoneNumber);
+    const { formatted, error: formatError } = formatToE164(phoneNumber);
+    if (formatError) {
+      setError(formatError);
+      return;
+    }
+
 
     try {
       const response = await axios.post(`${appConfig.SERVER_URL}/api/login`, {
