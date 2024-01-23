@@ -27,6 +27,8 @@ import * as amplitude from '@amplitude/analytics-browser';
 
 import appConfig from "./config";
 
+import { UserProvider } from './UserContext';
+
 
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
@@ -75,38 +77,40 @@ function App() {
   }
 
   return (
-    <Router>
-      <div className="flex flex-col min-h-screen bg-ebp-bg-dark pb-16 md:pb-16">
-        {/* Responsive Navbar */}
-        <Navbar currentUser={currentUser} />
+    <UserProvider>
+      <Router>
+        <div className="flex flex-col min-h-screen bg-ebp-bg-dark pb-16 md:pb-16">
+          {/* Responsive Navbar */}
+          <Navbar currentUser={currentUser} />
 
-        {/* Content */}
-        <div className="flex-grow justify-center container w-full pb-16 md:pb-16 mt-8 px-2 sm:px-6 lg:px-8">
-          <Routes>
-            <Route path="/" element={ <Home currentUser={currentUser} /> } />
-            <Route path="/login" element={
-                <div className="center">
-                  {/* <LoginForm onUserChange={handleUserChange} /> */}
-                  <PhoneLogin onUserChange={handleUserChange} />
-                </div>
-            } />
-            <Route path="/signup"            element={<PhoneNumberVerification /> } />
-            <Route path="/phone-login"       element={<PhoneLogin onUserChange={handleUserChange}/> } />
-            <Route path="/phone-verify"      element={<PhoneNumberVerification />} />
-            <Route path="/subscribe"         element={<BraintreeDropin />} />
-            <Route path="/offerwall"         element={<OfferWallIframe currentUser={currentUser} />} />
-            <Route path="/earn"              element={<OfferWallIframe currentUser={currentUser} />} />
-            <Route path="/wallet"            element={<WalletView /> } />
-            <Route path="/user"              element={<UserDetails userId={currentUser} /> } />
-            <Route path="/rewards"           element={<Rewards userId={currentUser} /> } />
-            <Route path="/payout"            element={<Payout userId={currentUser} /> } />
-            <Route path="/ledger-entries"    element={<LedgerEntries userId={currentUser} /> } />
-            <Route path="/user-subscription" element={<UserSubscription userId={currentUser} /> } />
-          </Routes>
+          {/* Content */}
+          <div className="flex-grow justify-center container w-full pb-16 md:pb-16 mt-8 px-2 sm:px-6 lg:px-8">
+            <Routes>
+              <Route path="/" element={ <Home currentUser={currentUser} /> } />
+              <Route path="/login" element={
+                  <div className="center">
+                    {/* <LoginForm onUserChange={handleUserChange} /> */}
+                    <PhoneLogin onUserChange={handleUserChange} />
+                  </div>
+              } />
+              <Route path="/signup"            element={<PhoneNumberVerification /> } />
+              <Route path="/phone-login"       element={<PhoneLogin onUserChange={handleUserChange}/> } />
+              <Route path="/phone-verify"      element={<PhoneNumberVerification />} />
+              <Route path="/subscribe"         element={<BraintreeDropin />} />
+              <Route path="/offerwall"         element={<OfferWallIframe currentUser={currentUser} />} />
+              <Route path="/earn"              element={<OfferWallIframe currentUser={currentUser} />} />
+              <Route path="/wallet"            element={<WalletView /> } />
+              <Route path="/user"              element={<UserDetails userId={currentUser} /> } />
+              <Route path="/rewards"           element={<Rewards userId={currentUser} /> } />
+              <Route path="/payout"            element={<Payout userId={currentUser} /> } />
+              <Route path="/ledger-entries"    element={<LedgerEntries userId={currentUser} /> } />
+              <Route path="/user-subscription" element={<UserSubscription userId={currentUser} /> } />
+            </Routes>
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-    </Router>
+      </Router>
+    </UserProvider>
   );
 }
 

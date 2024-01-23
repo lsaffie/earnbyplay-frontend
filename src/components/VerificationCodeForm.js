@@ -5,6 +5,8 @@ import appConfig from "../config";
 import ProgressBar from "./ProgressBar";
 import { trackEventWithUrlParams } from '../utils/amplitudeUtils';
 
+import { useUser } from '../UserContext';
+
 const verifyCode = async (verificationCode, formattedPhoneNumber) => {
   try {
     const response = await axios.post(
@@ -36,6 +38,7 @@ const VerificationCodeForm = ({
   formattedPhoneNumber,
   setError,
 }) => {
+  const { handleUserChange } = useUser();
   const navigate = useNavigate(); // Make sure navigate is defined inside the component
 
   const fetchUserData = async () => {
@@ -62,7 +65,8 @@ const VerificationCodeForm = ({
         const user = await fetchUserData();
         if (user) {
           // Pass the user data to the /earn route through state or another method
-          navigate('/earn', { state: { currentUser: user } });
+          handleUserChange(user)
+          navigate('/earn');
         } else {
           setError('Unable to fetch user data.');
         }

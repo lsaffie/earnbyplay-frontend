@@ -10,10 +10,13 @@ import { ReactComponent as AtmCashout } from "../assets/icons/atm-cashout.svg";
 import { ReactComponent as Earn } from "../assets/icons/earn.svg";
 import WalletBalance from "./WalletBalance";
 
-const Navbar = ({ currentUser }) => {
+import { useUser } from '../UserContext';
+
+const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [activeComponent, setActiveComponent] = useState('');
+  const { currentUser } = useUser();
 
   const handleComponentClick = (componentName) => {
     setActiveComponent(componentName);
