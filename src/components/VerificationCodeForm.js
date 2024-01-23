@@ -34,8 +34,9 @@ const VerificationCodeForm = ({
   verificationCode,
   setVerificationCode,
   formattedPhoneNumber,
+  setError,
 }) => {
-  const [error, setError] = useState(''); // Declare error state inside the component
+  // const [error, setError] = useState(''); // Declare error state inside the component
   const navigate = useNavigate(); // Make sure navigate is defined inside the component
   const [isVerified, setIsVerified] = useState(false);
 

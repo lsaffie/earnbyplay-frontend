@@ -65,6 +65,13 @@ const PhoneNumberForm = ({
 
   return (
     <>
+      <h2 className="text-2xl font-bold text-white mb-6 text-left">
+        Enter your phone number
+      </h2>
+      <div className="text-ebp-text-secondary mb-4">
+        Skip the memory game! Use our one-time password for a hassle-free sign-in.
+      </div>
+
       <form onSubmit={onSubmit} className="space-y-4">
         <h2 className="text-2xl font-bold text-white mt-6 mb-6 text-center">
           Earn up to $300/week & get a $20 welcome offer

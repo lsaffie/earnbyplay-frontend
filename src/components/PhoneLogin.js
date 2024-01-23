@@ -69,13 +69,6 @@ const PhoneLogin = () => {
 
   return (
     <div className="px-2 sm:px-4 md:px-6 lg:px-8">
-      <h2 className="text-2xl font-bold text-white mb-6 text-left">
-        Enter your phone number
-      </h2>
-      <div className="text-ebp-text-secondary mb-4">
-        Skip the memory game! Use our one-time password for a hassle-free sign-in.
-      </div>
-
 
       {!isVerified && // New condition
         (!smsSent ? (
@@ -91,6 +84,7 @@ const PhoneLogin = () => {
             verificationCode={verificationCode}
             setVerificationCode={setVerificationCode}
             formattedPhoneNumber={formattedPhoneNumber}
+            setError={setError}
           />
         ))}
       {isVerified && <div>Successfully Verified</div>}
