@@ -35,7 +35,7 @@ const Payout = ({ userId }) => {
           'Authorization': `Bearer ${getJwtToken()}`
         }
       })
-      .then(response => setWallet(response.data))
+      .then(response => setWallet(response.data.error))
       .catch(error => console.error('Error fetching wallet data:', error));
   }, [userId]);
 
