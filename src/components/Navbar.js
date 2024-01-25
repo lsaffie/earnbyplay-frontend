@@ -195,6 +195,9 @@ const Navbar = () => {
                     <a href="/user" className="block py-2">
                       Profile
                     </a>
+                    <a href="/user-subscription" className="block py-2">
+                      Manage Subscription
+                    </a>
                   </>
                 )}
                 {!currentUser?.active_subscription && (
