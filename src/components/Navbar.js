@@ -16,7 +16,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [activeComponent, setActiveComponent] = useState('');
-  const { currentUser } = useUser();
+  const { currentUser, isLoading } = useUser();
 
   const handleComponentClick = (componentName) => {
     setActiveComponent(componentName);
@@ -177,7 +177,7 @@ const Navbar = () => {
             </div>
           </button>
 
-          {/* Sidebar Drawer */}
+          {/* Mobile Menu: Sidebar Drawer */}
           <div
             className={`fixed inset-y-0 left-0 mb-16 transform ${
               isDrawerOpen ? "translate-x-0" : "-translate-x-full"
@@ -194,6 +194,13 @@ const Navbar = () => {
                   <>
                     <a href="/user" className="block py-2">
                       Profile
+                    </a>
+                  </>
+                )}
+                {!currentUser?.active_subscription && (
+                  <>
+                    <a href="/subscribe" className="block py-2">
+                      Subscribe
                     </a>
                   </>
                 )}

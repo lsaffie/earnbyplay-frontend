@@ -5,6 +5,7 @@ import axios from 'axios';
 import appConfig from '../config';
 import WalletBalance from './WalletBalance.jsx'
 import Modal from './Modal'
+import { useUser } from '../UserContext'; // Import useUser hook
 
 const Payout = ({ userId }) => {
   const [user, setUser] = useState(false);
@@ -14,6 +15,7 @@ const Payout = ({ userId }) => {
   const [amount, setAmount] = useState(''); // do I need this?
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState("");
+  const { currentUser } = useUser(); // Use useUser hook to get currentUser
   
   const getJwtToken = () => {
     return localStorage.getItem('access_token'); // Or however you've named the token in storage
@@ -75,6 +77,19 @@ const Payout = ({ userId }) => {
             });
       }
     };
+
+  if (!currentUser?.active_subscription) {
+    return (
+      <>
+        <p className="text-md mt-3 text-red-500">
+          Only subscribed users can cashout. Please subscribe or contact us.
+        </p>
+        <a href="/subscribe" className="inline-block text-center bg-green-500 text-white py-2 px-4 mt-4 rounded hover:bg-green-600 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-300 shadow-lg text-sm font-medium">
+          Subscribe
+        </a>
+      </>
+    );
+  }
 
   return (
   <div className="m-2">

@@ -9,6 +9,7 @@ export const useUser = () => useContext(UserContext);
 
 export const UserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getJwtToken = () => {
     return localStorage.getItem('access_token');
@@ -23,6 +24,9 @@ export const UserProvider = ({ children }) => {
       .then(response => setCurrentUser(response.data.user))
       .catch(error => console.error('Error fetching user data:', error));
     }
+
+    // unset user loading flag
+    setIsLoading(false)
   }, []);
 
   const handleUserChange = (userData) => {
