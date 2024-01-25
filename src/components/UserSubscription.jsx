@@ -86,7 +86,7 @@ const UserSubscription= ({ userId }) => {
           <div className="px-4 py-5 sm:px-6">
             <h3 className="text-lg leading-6 font-medium text-gray-900">Subscription Details</h3>
           </div>
-          {subscriptions.map((subscription, index) => (
+          {subscriptions.filter(subscription => subscription.status === 'Active').map((subscription, index) => (
             <div key={index}>
               <table className="min-w-full divide-y divide-gray-200 table-fixed">
                 <tbody className="bg-white">
