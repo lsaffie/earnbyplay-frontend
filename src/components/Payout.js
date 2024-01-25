@@ -37,7 +37,7 @@ const Payout = ({ userId }) => {
           'Authorization': `Bearer ${getJwtToken()}`
         }
       })
-      .then(response => setWallet(response.data.error))
+      .then(response => setWallet(response.data))
       .catch(error => console.error('Error fetching wallet data:', error));
   }, [userId]);
 
@@ -96,7 +96,7 @@ const Payout = ({ userId }) => {
     {!wallet || (wallet && wallet.balance) < 1 ? (
       <div>
         <p className="text-white text-lg mt-10">
-          You can only cash out when you have earned at least 1 reward.
+          SIR You can only cash out when you have earned at least 1 reward.
         </p>
         <p className="text-white text-lg mb-10 mt-1">
           Click the link below to earn cash!
