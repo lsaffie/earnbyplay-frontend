@@ -9,7 +9,7 @@ const ModalConfirm = ({ isOpen, setIsOpen, content, onConfirm, confirmText = 'Co
         <div className="mt-3 text-center">
           <h3 className="text-lg leading-6 font-medium text-gray-900">{content}</h3>
           <div className="mt-2 px-7 py-3">
-            <p className="text-sm text-gray-500">Are you sure you want to proceed?</p>
+            <p className="text-sm text-gray-500">Are you sure you want to cancel your subscription? Please note that upon cancellation, you will no longer be able to cash out any money earned in your account</p>
           </div>
           <div className="flex justify-center gap-4 pt-3">
             <button

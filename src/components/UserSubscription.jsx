@@ -32,7 +32,7 @@ const UserSubscription= () => {
   const handleCancelSubscription = (subscriptionId) => {
     setShowModal(true);
     setSelectedSubscriptionId(subscriptionId);
-    setModalContent(`Cancel subscription #${subscriptionId}?`);
+    setModalContent(`Cancel Subscription Confirmation`);
   };
 
   const cancelSubscription = () => {
