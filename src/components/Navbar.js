@@ -200,13 +200,6 @@ const Navbar = () => {
                     </a>
                   </>
                 )}
-                {!currentUser?.active_subscription && (
-                  <>
-                    <a href="/subscribe" className="block py-2">
-                      Subscribe
-                    </a>
-                  </>
-                )}
                 <a
                   href="https://tawk.to/chat/659853700ff6374032bd0622/1hjdgbsgi"
                   className="block py-2"
