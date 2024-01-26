@@ -129,7 +129,7 @@ const BraintreeDropin = () => {
           <div className="flex flex-col items-center">
             <div id="dropin-container" className="center justify-start"></div>
             <button
-              className="w-full bg-ebp-cta-green hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="w-full bg-ebp-cta-green hover:bg-ebp-cta-green text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               onClick={handlePaymentSubmission}
             >
               Submit Payment

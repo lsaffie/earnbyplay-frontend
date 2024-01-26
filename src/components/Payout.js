@@ -84,7 +84,7 @@ const Payout = ({ userId }) => {
         <p className="text-md mt-3 text-red-500">
           Only subscribed users can cashout. Please subscribe or contact us.
         </p>
-        <a href="/subscribe" className="inline-block text-center bg-green-500 text-white py-2 px-4 mt-4 rounded hover:bg-green-600 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-300 shadow-lg text-sm font-medium">
+        <a href="/subscribe" className="inline-block text-center bg-ebp-cta-green text-white py-2 px-4 mt-4 rounded hover:bg-ebp-cta-green transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-300 shadow-lg text-sm font-medium">
           Subscribe
         </a>
       </>
@@ -103,7 +103,7 @@ const Payout = ({ userId }) => {
         </p>
         <Link
           to="/offerwall"
-          className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-ebp-cta-green hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-ebp-cta-green hover:bg-ebp-cta-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
           Earn
         </Link>
@@ -119,7 +119,7 @@ const Payout = ({ userId }) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
         {selectedReward && (
           <button
-            className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+            className="mt-4 px-4 py-2 bg-ebp-cta-green text-white rounded hover:bg-ebp-cta-green"
             onClick={handleCashOut}
           >
             Cash Out Selected Reward
@@ -137,7 +137,7 @@ const Payout = ({ userId }) => {
           </div>
           <button
             type="submit"
-            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-ebp-cta-green hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-ebp-cta-green hover:bg-ebp-cta-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             Redeem
           </button>

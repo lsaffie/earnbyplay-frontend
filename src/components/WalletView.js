@@ -65,7 +65,7 @@ const WalletView = () => {
               <p className="text-xl font-bold text-gray-900">{wallet.balance}</p>
               {/* Render additional wallet details here */}
               {currentUser?.active_subscription ? (
-                <a href="/payout" className="inline-block text-center bg-green-500 text-white py-2 px-4 mt-4 rounded hover:bg-green-600 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-300 shadow-lg text-sm font-medium">
+                <a href="/payout" className="inline-block text-center bg-ebp-cta-green text-white py-2 px-4 mt-4 rounded hover:bg-ebp-cta-green transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-300 shadow-lg text-sm font-medium">
                   Cash Out
                 </a>
               ) : (
@@ -73,7 +73,7 @@ const WalletView = () => {
                   <p className="text-md mt-3 text-red-500">
                     Only subscribed users can cashout. Please subscribe or contact us.
                   </p>
-                  <a href="/subscribe" className="inline-block text-center bg-green-500 text-white py-2 px-4 mt-4 rounded hover:bg-green-600 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-300 shadow-lg text-sm font-medium">
+                  <a href="/subscribe" className="inline-block text-center bg-ebp-cta-green text-white py-2 px-4 mt-4 rounded hover:bg-ebp-cta-green transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-300 shadow-lg text-sm font-medium">
                     Subscribe
                   </a>
                 </>

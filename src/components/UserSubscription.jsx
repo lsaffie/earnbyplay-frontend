@@ -70,7 +70,7 @@ const UserSubscription= ({ userId }) => {
               You're currently unsubscribed.
             </p>
             <a href="/subscribe"
-              className="inline-block text-center bg-green-500 text-white py-2 px-4 mt-4 rounded hover:bg-green-600 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-300 shadow-lg text-sm font-medium" >
+              className="inline-block text-center bg-ebp-cta-green text-white py-2 px-4 mt-4 rounded hover:bg-ebp-cta-green transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-300 shadow-lg text-sm font-medium" >
               Subscribe
             </a>
           </div>
@@ -122,7 +122,7 @@ const UserSubscription= ({ userId }) => {
                 <div className="px-4 py-4 sm:px-6 text-right">
                   <button
                     onClick={() => handleCancelSubscription(subscription.id)}
-                    className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                    className="px-4 py-2 bg-ebp-cta-green text-white rounded-md hover:bg-ebp-cta-green focus:outline-none focus:ring-2 focus:ring-blue-300">
                     Cancel Subscription
                   </button>
                 </div>

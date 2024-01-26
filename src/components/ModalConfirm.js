@@ -13,7 +13,7 @@ const ModalConfirm = ({ isOpen, setIsOpen, content, onConfirm, confirmText = 'Co
           </div>
           <div className="flex justify-center gap-4 pt-3">
             <button
-              className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300"
+              className="px-4 py-2 bg-ebp-cta-green text-white rounded-md hover:bg-ebp-cta-green focus:outline-none focus:ring-2 focus:ring-blue-300"
               onClick={() => setIsOpen(false)}
             >
               {cancelText}

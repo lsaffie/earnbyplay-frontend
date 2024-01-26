@@ -133,7 +133,7 @@ const UserDetails = ({ userId }) => {
         </div>
         {/* Include other fields as necessary */}
         <div className="flex justify-end space-x-2">
-          <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">Save Changes</button>
+          <button type="submit" className="px-4 py-2 bg-ebp-cta-green text-white rounded-md hover:bg-ebp-cta-green focus:outline-none focus:ring-2 focus:ring-blue-300">Save Changes</button>
           <button onClick={() => setIsEditing(false)} type="button" className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300">Cancel</button>
         </div>
       </form>

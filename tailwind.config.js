@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       colors: {
         'ebp-header': '#171717',
-        'ebp-cta-green': '#059f5a',
+        'ebp-cta-green': '#06a75e',
         'ebp-cta-green-earn-font': '#01d676',
         'ebp-bg-dark': '#1E1E1E',
         'ebp-cta-red': '#F44336',

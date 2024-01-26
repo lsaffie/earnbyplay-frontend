@@ -76,7 +76,7 @@ const PhoneNumberForm = ({
         <h2 className="text-2xl font-bold text-white mt-6 mb-6 text-center">
           Earn up to $300/week & get a $20 welcome offer
         </h2>
-        <button className="w-full bg-ebp-cta-green text-ebp-text-light p-3 rounded-md font-semibold mb-4 hover:bg-green-600">
+        <button className="w-full bg-ebp-cta-green text-ebp-text-light p-3 rounded-md font-semibold mb-4 hover:bg-ebp-cta-green">
           Get Started
         </button>
 
@@ -137,13 +137,13 @@ const PhoneNumberForm = ({
         </div>
         <button
           type="submit"
-          className="w-full justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-ebp-cta-green hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          className="w-full justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-ebp-cta-green hover:bg-ebp-cta-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
           Send Code
         </button>
         <p className="text-xs text-gray-500 mt-3 text-center">
           Click "Send code" to agree to our
-          <a href="#" className="text-green-600 hover:underline">
+          <a href="#" className="text-ebp-cta-green hover:underline">
             {" "}
             Terms
           </a>{" "}
@@ -180,7 +180,7 @@ const PhoneNumberForm = ({
                 different tasks like playing games, downloading apps, etc...
               </p>
               <button
-                className="bg-ebp-cta-green text-white py-2 px-4 rounded-2xl hover:bg-blue-700 focus:outline-none w-full"
+                className="bg-ebp-cta-green text-white py-2 px-4 rounded-2xl hover:bg-ebp-cta-green focus:outline-none w-full"
                 onClick={handleCloseModal}
               >
                 Join Now
@@ -238,7 +238,7 @@ const VerificationCodeForm = ({
       </div>
       <button
         type="submit"
-        className="w-full justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-ebp-cta-green hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        className="w-full justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-ebp-cta-green hover:bg-ebp-cta-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
       >
         Verify Code
       </button>
