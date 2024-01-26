@@ -190,16 +190,20 @@ const Navbar = () => {
                 <a href="/" className="block py-2">
                   Home
                 </a>
-                {currentUser && (
+                {currentUser ? (
                   <>
                     <a href="/user" className="block py-2">
                       Profile
                     </a>
+                    <a href="/user-subscription" className="block py-2">
+                      Manage Subscription
+                    </a>
                   </>
+                ) : (
+                  <a href="/subscribe" className="block py-2">
+                    Subscribe
+                  </a>
                 )}
-                <a href="/user-subscription" className="block py-2">
-                  Manage Subscription
-                </a>
                 <a
                   href="https://tawk.to/chat/659853700ff6374032bd0622/1hjdgbsgi"
                   className="block py-2"
