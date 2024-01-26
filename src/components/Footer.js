@@ -40,7 +40,13 @@ const Footer = () => {
             </button>
             <div className="flex flex-col mt-2">
               <a href="/faq" className="hover:text-gray-300">FAQ</a>
-              <a href="/support" className="hover:text-gray-300">Support Link</a>
+              <a href="https://tawk.to/chat/659853700ff6374032bd0622/1hjdgbsgi"
+                className="hover:text-gray-300"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Support
+              </a>
             </div>
           </div>
 

@@ -195,11 +195,11 @@ const Navbar = () => {
                     <a href="/user" className="block py-2">
                       Profile
                     </a>
-                    <a href="/user-subscription" className="block py-2">
-                      Manage Subscription
-                    </a>
                   </>
                 )}
+                <a href="/user-subscription" className="block py-2">
+                  Manage Subscription
+                </a>
                 <a
                   href="https://tawk.to/chat/659853700ff6374032bd0622/1hjdgbsgi"
                   className="block py-2"
@@ -207,12 +207,6 @@ const Navbar = () => {
                   rel="noopener noreferrer"
                 >
                   Support
-                </a>
-                <a href="/tos" className="block py-2">
-                  Terms of Service
-                </a>
-                <a href="/tos" className="block py-2">
-                  Privacy Policy
                 </a>
                 {/* Add other links */}
               </div>
