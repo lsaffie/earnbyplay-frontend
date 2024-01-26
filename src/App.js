@@ -39,12 +39,12 @@ const client = axios.create({
 });
 
 function App() {
-  const [currentUser, setCurrentUser] = useState();
+  // const [currentUser, setCurrentUser] = useState();
   const [registrationToggle, setRegistrationToggle] = useState(false);
 
-  const handleUserChange = (userData) => {
-    setCurrentUser(userData);
-  };
+  // const handleUserChange = (userData) => {
+  //   setCurrentUser(userData);
+  // };
 
   const getJwtToken = () => {
     return localStorage.getItem("access_token"); // Or however you've named the token in storage
@@ -52,18 +52,19 @@ function App() {
 
   useEffect(() => {
     // Initialize Amplitude instance
-    amplitude.init(process.env.REACT_APP_AMPLITUDE_API_KEY)
+    amplitude.init(process.env.REACT_APP_AMPLITUDE_API_KEY);
 
-    client
-      .get("/api/user", {
-        headers: {
-          Authorization: `Bearer ${getJwtToken()}`,
-        },
-      })
-      .then((res) => {
-        setCurrentUser(res.data.user);
-      })
-      .catch((error) => setCurrentUser(null));
+    // client
+    //   .get("/api/user", {
+    //     headers: {
+    //       Authorization: `Bearer ${getJwtToken()}`,
+    //     },
+    //   })
+    //   .then((res) => {
+    //     setCurrentUser(res.data.user);
+    //   })
+    //   .catch((error) => setCurrentUser(null));
+
   }, []);
 
   function update_form_btn() {
@@ -81,30 +82,33 @@ function App() {
       <Router>
         <div className="flex flex-col min-h-screen bg-ebp-bg-dark pb-16 md:pb-16">
           {/* Responsive Navbar */}
-          <Navbar currentUser={currentUser} />
+          {/* <Navbar currentUser={currentUser} /> */}
+          <Navbar />
 
           {/* Content */}
           <div className="flex-grow justify-center container w-full pb-16 md:pb-16 mt-8 px-2 sm:px-6 lg:px-8">
             <Routes>
-              <Route path="/" element={ <Home currentUser={currentUser} /> } />
+              <Route path="/" element={ <Home /> } />
               <Route path="/login" element={
                   <div className="center">
-                    {/* <LoginForm onUserChange={handleUserChange} /> */}
-                    <PhoneLogin onUserChange={handleUserChange} />
+                    <PhoneLogin />
                   </div>
               } />
               <Route path="/signup"            element={<PhoneNumberVerification /> } />
-              <Route path="/phone-login"       element={<PhoneLogin onUserChange={handleUserChange}/> } />
               <Route path="/phone-verify"      element={<PhoneNumberVerification />} />
+
+              <Route path="/phone-login"       element={<PhoneLogin /> } />
               <Route path="/subscribe"         element={<BraintreeDropin />} />
-              <Route path="/offerwall"         element={<OfferWallIframe currentUser={currentUser} />} />
-              <Route path="/earn"              element={<OfferWallIframe currentUser={currentUser} />} />
+
+              <Route path="/offerwall"         element={<OfferWallIframe />} />
+              <Route path="/earn"              element={<OfferWallIframe />} />
+
               <Route path="/wallet"            element={<WalletView /> } />
-              <Route path="/user"              element={<UserDetails userId={currentUser} /> } />
-              <Route path="/rewards"           element={<Rewards userId={currentUser} /> } />
-              <Route path="/payout"            element={<Payout userId={currentUser} /> } />
-              <Route path="/ledger-entries"    element={<LedgerEntries userId={currentUser} /> } />
-              <Route path="/user-subscription" element={<UserSubscription userId={currentUser} /> } />
+              <Route path="/user"              element={<UserDetails /> } />
+              <Route path="/rewards"           element={<Rewards /> } />
+              <Route path="/payout"            element={<Payout /> } />
+              <Route path="/ledger-entries"    element={<LedgerEntries /> } />
+              <Route path="/user-subscription" element={<UserSubscription /> } />
             </Routes>
           </div>
           <Footer />

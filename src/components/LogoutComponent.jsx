@@ -4,24 +4,26 @@ import appConfig from '../config';
 import UserSubscription from './UserSubscription'
 import LedgerEntries from './LedgerEntries'
 import WalletView from './WalletView'
+import { useUser } from '../UserContext';
 
-const LogoutComponent = ({ userId }) => {
-  const [user, setUser] = useState(false);
+const LogoutComponent = () => {
+  // const [user, setUser] = useState(false);
+  const { currentUser, isLoading } = useUser();
 
   const getJwtToken = () => {
     return localStorage.getItem('access_token'); // Or however you've named the token in storage
   };
 
-  useEffect(() => {
+  // useEffect(() => {
     // Fetch User Details
-    axios.get(`${appConfig.SERVER_URL}/api/user`, {
-        headers: {
-          'Authorization': `Bearer ${getJwtToken()}`
-        }
-    })
-      .then(response => setUser(response.data.user))
-      .catch(error => console.error('Error fetching user data:', error));
-  }, [userId]); // End useEffect
+    // axios.get(`${appConfig.SERVER_URL}/api/user`, {
+    //     headers: {
+    //       'Authorization': `Bearer ${getJwtToken()}`
+    //     }
+    // })
+    //   .then(response => setUser(response.data.user))
+    //   .catch(error => console.error('Error fetching user data:', error));
+  // }, [currentUser]); // End useEffect
 
   const handleLogout = async () => {
     try {
@@ -44,7 +46,7 @@ const LogoutComponent = ({ userId }) => {
 
   return (
     <div>
-      {userId && (
+      {currentUser && (
         <button
           onClick={handleLogout}
           className="w-full bg-red-500 text-white text-center py-2 px-4 rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-700 transition ease-in duration-200 text-md font-semibold shadow-md focus:ring-opacity-50"

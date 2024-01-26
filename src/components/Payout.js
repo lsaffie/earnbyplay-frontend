@@ -7,7 +7,7 @@ import WalletBalance from './WalletBalance.jsx'
 import Modal from './Modal'
 import { useUser } from '../UserContext'; // Import useUser hook
 
-const Payout = ({ userId }) => {
+const Payout = () => {
   const [user, setUser] = useState(false);
   const [wallet, setWallet] = useState(false);
   const [rewards, setRewards] = useState([]);
@@ -23,13 +23,13 @@ const Payout = ({ userId }) => {
 
   useEffect(() => {
     // Fetch User Details
-    axios.get(`${appConfig.SERVER_URL}/api/user`, {
-      headers: {
-        'Authorization': `Bearer ${getJwtToken()}`
-      }
-    })
-      .then(response => setUser(response.data.user))
-      .catch(error => console.error('Error fetching user data:', error));
+    // axios.get(`${appConfig.SERVER_URL}/api/user`, {
+    //   headers: {
+    //     'Authorization': `Bearer ${getJwtToken()}`
+    //   }
+    // })
+    //   .then(response => setUser(response.data.user))
+    //   .catch(error => console.error('Error fetching user data:', error));
 
     // Fetch Wallet Details
     axios.get(`${appConfig.SERVER_URL}/api/wallet/`, {
@@ -39,7 +39,7 @@ const Payout = ({ userId }) => {
       })
       .then(response => setWallet(response.data))
       .catch(error => console.error('Error fetching wallet data:', error));
-  }, [userId]);
+  }, [currentUser]);
 
     const selectReward = (reward) => {
       setSelectedReward(reward);
@@ -47,12 +47,12 @@ const Payout = ({ userId }) => {
 
     const handleCashOut = (e) => {
       e.preventDefault();
-      if (userId && wallet) {
+      if (currentUser && wallet) {
         //TODO: link this to GeneratePayoutLinkView
         const floorBalance = Math.floor(wallet.balance); // Get the floor value of wallet.balance
 
         axios.post(`${appConfig.SERVER_URL}/api/generate-payout-link/`, 
-          { user_id: userId,
+          { user_id: currentUser.id,
             wallet_balance: floorBalance
           }, 
           { 

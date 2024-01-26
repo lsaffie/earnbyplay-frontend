@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import appConfig from '../config';
 import axios from 'axios';
+import { useUser } from '../UserContext';
 
 const LedgerEntriesComponent = () => {
     const [ledgerEntries, setLedgerEntries] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
+    const { currentUser } = useUser();
+
+    //TODO: I believe this is pulling all ledger entries, not just the user?
 
     useEffect(() => {
         const token = localStorage.getItem('access_token');

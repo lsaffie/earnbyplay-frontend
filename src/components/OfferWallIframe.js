@@ -3,12 +3,14 @@ import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import appConfig from '../config';
 import { trackEventWithUrlParams } from '../utils/amplitudeUtils';
+import { useUser } from '../UserContext';
 
-const OfferWallIframe = ({ currentUser: propCurrentUser }) => {
+const OfferWallIframe = () => {
   const location = useLocation();
-  const [localCurrentUser, setLocalCurrentUser] = useState(propCurrentUser);
+  // const [localCurrentUser, setLocalCurrentUser] = useState(propCurrentUser);
+  const { currentUser } = useUser();
   
-  const uid = localCurrentUser ? localCurrentUser.id : '';
+  const uid = currentUser ? currentUser.id : '';
 
   const bitlabsUrl = (
     'https://web.bitlabs.ai/?uid=' + uid +
@@ -19,25 +21,25 @@ const OfferWallIframe = ({ currentUser: propCurrentUser }) => {
 
 
   useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await axios.get(`${appConfig.SERVER_URL}/api/user`, {
-          headers: {
-            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
-          }
-        });
-        setLocalCurrentUser(response.data.user);
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-      }
-    };
+    // const fetchUserData = async () => {
+    //   try {
+    //     const response = await axios.get(`${appConfig.SERVER_URL}/api/user`, {
+    //       headers: {
+    //         'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+    //       }
+    //     });
+    //     setLocalCurrentUser(response.data.user);
+    //   } catch (error) {
+    //     console.error('Error fetching user data:', error);
+    //   }
+    // };
 
-    if (!localCurrentUser) {
-      fetchUserData();
-    }
+    // if (!localCurrentUser) {
+    //   fetchUserData();
+    // }
 
     trackEventWithUrlParams("Offerwall Opened");
-  }, [localCurrentUser]);
+  }, []);
 
 
   return(
@@ -48,7 +50,7 @@ const OfferWallIframe = ({ currentUser: propCurrentUser }) => {
         width="100%"
         style={{ height: '100%', overflow: 'hidden' }} // Hide scrollbars
       />
-      {!localCurrentUser && (
+      {!currentUser && (
         <div className="absolute top-0 left-0 w-full h-full" 
              style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
           {/* Display a message or a login prompt here */}

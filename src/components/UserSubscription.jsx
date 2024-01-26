@@ -4,8 +4,8 @@ import appConfig from '../config';
 import ModalConfirm from './ModalConfirm'
 import { useUser } from '../UserContext'; // Import useUser hook
 
-const UserSubscription= ({ userId }) => {
-  const [user, setUser] = useState(null);
+const UserSubscription= () => {
+  // const [user, setUser] = useState(null);
   const [subscriptions, setSubscriptions] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [modalContent, setModalContent] = useState('');
@@ -27,7 +27,7 @@ const UserSubscription= ({ userId }) => {
       .then(response => setSubscriptions(response.data.subscriptions))
       .catch(error => console.error('Error fetching subscriptions:', error));
 
-  }, [userId]); // End useEffect
+  }, [currentUser]); // End useEffect
 
   const handleCancelSubscription = (subscriptionId) => {
     setShowModal(true);

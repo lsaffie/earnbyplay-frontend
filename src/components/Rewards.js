@@ -2,15 +2,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import appConfig from '../config';
+import { useUser } from '../UserContext';
 
-const Rewards = ({ userId }) => {
+const Rewards = () => {
     const [rewards, setRewards] = useState([]);
     const [selectedReward, setSelectedReward] = useState('');
     const [amount, setAmount] = useState(''); // do I need this?
+    const { currentUser, isLoading } = useUser();
 
     useEffect(() => {
-        if (userId) {
-            axios.get(`${appConfig.SERVER_URL}/api/list-rewards?userId=${userId}`,{
+        if (currentUser) {
+            axios.get(`${appConfig.SERVER_URL}/api/list-rewards?userId=${currentUser.id}`,{
               headers: {
                 'Authorization': `Bearer ${localStorage.getItem('access_token')}`
               }
@@ -22,15 +24,15 @@ const Rewards = ({ userId }) => {
                   console.error("Error fetching rewards", error);
               });
         }
-    }, [userId]);
+    }, [currentUser]);
 
     const selectReward = (reward) => {
       setSelectedReward(reward);
     };
 
     const handleCashOut = () => {
-        if (userId) {
-            axios.post(`${appConfig.SERVER_URL}/api/reward-cashout`, { userId, reward_id: selectedReward, amount })
+        if (currentUser) {
+            axios.post(`${appConfig.SERVER_URL}/api/reward-cashout`, { currentUser, reward_id: selectedReward, amount })
                 .then(response => {
                     alert("Cash out successful");
                 })

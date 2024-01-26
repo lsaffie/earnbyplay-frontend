@@ -49,7 +49,7 @@ const WalletView = () => {
       })
       .then((response) => setTransactions(response.data))
       .catch((error) => console.error("Error fetching transactions:", error));
-  }, []); // End useEffect
+  }, [currentUser]); // End useEffect
 
   // Render wallet data, error message, or loading message
   return (

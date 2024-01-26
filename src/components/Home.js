@@ -7,7 +7,7 @@ import SignupForm from './SignupForm'
 import PhoneNumberVerification from './PhoneNumberVerification'
 
 
-const Home= ({ onUserChange }) => {
+const Home= () => {
   const navigate = useNavigate();
   
   return (

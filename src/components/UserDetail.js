@@ -6,8 +6,9 @@ import LedgerEntries from './LedgerEntries'
 import WalletView from './WalletView'
 import LogoutComponent from './LogoutComponent'
 import Modal from './Modal'
+import { useUser } from '../UserContext';
 
-const UserDetails = ({ userId }) => {
+const UserDetails = () => {
   const [user, setUser] = useState(false);
   const [subscriptions, setSubscriptions] = useState([]);
   const [wallet, setWallet] = useState(false);
@@ -16,6 +17,7 @@ const UserDetails = ({ userId }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState("");
+  const { currentUser, isLoading } = useUser();
 
   const getJwtToken = () => {
     return localStorage.getItem('access_token'); // Or however you've named the token in storage
@@ -23,13 +25,13 @@ const UserDetails = ({ userId }) => {
 
   useEffect(() => {
     // Fetch User Details
-    axios.get(`${appConfig.SERVER_URL}/api/user`, {
-        headers: {
-          'Authorization': `Bearer ${getJwtToken()}`
-        }
-    })
-      .then(response => setUser(response.data.user))
-      .catch(error => console.error('Error fetching user data:', error));
+    // axios.get(`${appConfig.SERVER_URL}/api/user`, {
+    //     headers: {
+    //       'Authorization': `Bearer ${getJwtToken()}`
+    //     }
+    // })
+    //   .then(response => setUser(response.data.user))
+    //   .catch(error => console.error('Error fetching user data:', error));
 
     // Fetch Subscriptions
     axios.get(`${appConfig.SERVER_URL}/api/subscription/`, {
@@ -57,7 +59,7 @@ const UserDetails = ({ userId }) => {
       })
       .then(response => setTransactions(response.data))
       .catch(error => console.error('Error fetching transactions:', error));
-  }, [userId]); // End useEffect
+  }, [currentUser]); // End useEffect
 
     // Function to handle input change
   const handleInputChange = (e) => {
@@ -109,27 +111,27 @@ const UserDetails = ({ userId }) => {
     <div className="px-2 m-0 sm:px-4 md:px-6 lg:px-8"> {/* Responsive Padding */}
 
 
-    {user && (
+    {currentUser && (
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="flex flex-col">
           <label className="text-sm font-medium text-slate-50">First name:</label>
-          <input type="text" name="first_name" value={user.first_name} onChange={handleInputChange} className="mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
+          <input type="text" name="first_name" value={currentUser.first_name} onChange={handleInputChange} className="mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
         </div>
         <div className="flex flex-col">
           <label className="text-sm font-medium text-slate-50">Last name:</label>
-          <input type="text" name="last_name" value={user.last_name} onChange={handleInputChange} className="mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
+          <input type="text" name="last_name" value={currentUser.last_name} onChange={handleInputChange} className="mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
         </div>
         <div className="flex flex-col">
           <label className="text-sm font-medium text-slate-50">Username:</label>
-          <input type="text" name="username" value={user.username} onChange={handleInputChange} className="mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
+          <input type="text" name="username" value={currentUser.username} onChange={handleInputChange} className="mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
         </div>
         <div className="flex flex-col">
           <label className="text-sm font-medium text-slate-50">Email:</label>
-          <input type="email" name="email" value={user.email} onChange={handleInputChange} className="mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
+          <input type="email" name="email" value={currentUser.email} onChange={handleInputChange} className="mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
         </div>
         <div className="flex flex-col">
           <label className="text-sm font-medium text-slate-50">Phone Number:</label>
-          <input type="text" name="phone_number" value={user.phone_number} onChange={handleInputChange} className="mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
+          <input type="text" name="phone_number" value={currentUser.phone_number} onChange={handleInputChange} className="mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
         </div>
         {/* Include other fields as necessary */}
         <div className="flex justify-end space-x-2">
@@ -139,9 +141,9 @@ const UserDetails = ({ userId }) => {
       </form>
     )}
 
-    <UserSubscription userId={userId}/>
-    <WalletView userId={userId} />
-    <LogoutComponent userId={userId} />
+    <UserSubscription />
+    <WalletView />
+    <LogoutComponent />
       
     <Modal isOpen={isModalOpen} setIsOpen={setIsModalOpen} content={modalContent} />
     </div>
