@@ -9,7 +9,7 @@ import Modal from './Modal'
 import { useUser } from '../UserContext';
 
 const UserDetails = () => {
-  const [user, setUser] = useState(false);
+  // const [user, setUser] = useState(false);
   const [subscriptions, setSubscriptions] = useState([]);
   const [wallet, setWallet] = useState(false);
   const [transactions, setTransactions] = useState([]);
@@ -17,11 +17,9 @@ const UserDetails = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState("");
-  const { currentUser, isLoading } = useUser();
+  const { currentUser, isLoading, handleUserChange } = useUser();
 
-  const getJwtToken = () => {
-    return localStorage.getItem('access_token'); // Or however you've named the token in storage
-  };
+  const getJwtToken = () => localStorage.getItem('access_token');
 
   useEffect(() => {
     // Fetch User Details
@@ -63,29 +61,23 @@ const UserDetails = () => {
 
     // Function to handle input change
   const handleInputChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+    handleUserChange({ ...currentUser, [e.target.name]: e.target.value });
   };
 
-  // Function to handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // API call to update user
-    axios.patch(`${appConfig.SERVER_URL}/api/user`, user, {
-      headers: {
-        'Authorization': `Bearer ${getJwtToken()}`
-      }
-    })
-    .then(response => {
-      // setUser(response.data.user);
+    try {
+      const response = await axios.patch(`${appConfig.SERVER_URL}/api/user`, currentUser, {
+        headers: { 'Authorization': `Bearer ${getJwtToken()}` }
+      });
       setModalContent("Changes Saved");
       setIsModalOpen(true);
       setIsEditing(false); // Exit edit mode
-    })
-    .catch(error => {
-      setModalContent("error updating user: " + error);
+    } catch (error) {
+      setModalContent("Error updating user: " + error.message);
       setIsModalOpen(true);
       console.error('Error updating user:', error);
-    });
+    }
   };
 
   const handleLogout = async () => {

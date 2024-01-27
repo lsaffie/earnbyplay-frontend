@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import appConfig from '../config';
 
-const WalletBalance = ({ userId }) => {
+const WalletBalance = () => {
   const [wallet, setWallet] = useState(false);
   const [error, setError] = useState('');
 
@@ -17,7 +17,7 @@ const WalletBalance = ({ userId }) => {
       .catch(error => {
         setError('Error fetching wallet data');
       });
-  }, [userId]);
+  }, []);
 
   // Render wallet data or an error message
   return (

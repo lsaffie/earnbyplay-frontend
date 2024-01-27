@@ -11,8 +11,8 @@ import BraintreeDropin from "./components/BraintreeDropin";
 import UserDetails from "./components/UserDetail";
 import LedgerEntries from "./components/LedgerEntries";
 
-import LoginForm from "./components/LoginForm";
-import SignupForm from "./components/SignupForm";
+// import LoginForm from "./components/LoginForm";
+// import SignupForm from "./components/SignupForm";
 
 import Home from "./components/Home";
 import Footer from "./components/Footer";
@@ -34,9 +34,9 @@ axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
 axios.defaults.withCredentials = true;
 
-const client = axios.create({
-  baseURL: `${appConfig.SERVER_URL}`,
-});
+// const client = axios.create({
+//   baseURL: `${appConfig.SERVER_URL}`,
+// });
 
 function App() {
   // const [currentUser, setCurrentUser] = useState();
@@ -46,9 +46,9 @@ function App() {
   //   setCurrentUser(userData);
   // };
 
-  const getJwtToken = () => {
-    return localStorage.getItem("access_token"); // Or however you've named the token in storage
-  };
+  // const getJwtToken = () => {
+  //   return localStorage.getItem("access_token"); // Or however you've named the token in storage
+  // };
 
   useEffect(() => {
     // Initialize Amplitude instance

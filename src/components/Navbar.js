@@ -66,6 +66,10 @@ const Navbar = () => {
     }
   };
 
+  if (isLoading) {
+    return <div>Loading...</div>; // Or any loading indicator
+  }
+
   return (
     <>
       <nav className="bg-ebp-header shadow-lg">
