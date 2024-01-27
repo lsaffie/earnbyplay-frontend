@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const Footer = () => {
   const [isMobileView, setIsMobileView] = useState(window.innerWidth < 768);
+  const location = useLocation();
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -16,8 +19,14 @@ const Footer = () => {
     };
   }, []);
 
+  // Don't render the footer for the /offerwall route
+  const excludedPaths = ['/offerwall', '/earn', '/phone-verify'];
+  if (excludedPaths.includes(location.pathname)) {
+    return null;
+  }
+
   return (
-    <footer className="w-full bg-ebp-header shadow-lg mb-10">
+    <footer className="w-full bg-ebp-header shadow-lg mb-5">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex md:flex-row justify-between text-gray-500 pt-1 mx-5">
 
