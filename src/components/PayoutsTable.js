@@ -31,20 +31,20 @@ const PayoutsTable = () => {
   }, []);
 
   return (
-    <table className="w-full text-sm text-left text-white">
-      <thead className="text-xs text-gray-800 uppercase bg-gray-100">
+    <table className="min-w-full divide-y divide-gray-200 table-fixed">
+      <thead className="bg-gray-100">
         <tr>
-          <th className="px-6 py-3">Award Date</th>
-          <th className="px-6 py-3">Payout URL</th>
+          <th className="px-1 sm:px-3 py-2 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">Award Date</th>
+          <th className="px-1 sm:px-3 py-2 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">Payout url</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody className="bg-white divide-y divide-gray-200">
         {payouts.map((payout) => (
           <tr key={payout.id} className="bg-gray-100 border-b border-gray-700">
-            <td className="px-6 py-4">
+            <td className="px-1 sm:px-3 py-2 text-xs sm:text-sm">
               <div className="text-gray-800">{formatDate(payout.created_at)}</div>
             </td>
-            <td className="px-6 py-4">
+            <td className="px-1 sm:px-3 py-2 text-xs sm:text-sm">
               <a
                 href={payout.payout_url}
                 target="_blank"
