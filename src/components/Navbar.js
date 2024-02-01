@@ -202,6 +202,9 @@ const Navbar = () => {
                     <a href="/user-subscription" className="block py-2">
                       Manage Subscription
                     </a>
+                    <a href="/user-payouts" className="block py-2">
+                      Payouts
+                    </a>
                   </>
                 ) : (
                   <a href="/subscribe" className="block py-2">

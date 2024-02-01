@@ -19,6 +19,7 @@ import Footer from "./components/Footer";
 
 import Rewards from "./components/Rewards";
 import Payout from "./components/Payout";
+import PayoutsTable from "./components/PayoutsTable";
 
 import UserSubscription from "./components/UserSubscription";
 import PhoneLogin from "./components/PhoneLogin";
@@ -107,6 +108,7 @@ function App() {
               <Route path="/user"              element={<UserDetails /> } />
               <Route path="/rewards"           element={<Rewards /> } />
               <Route path="/payout"            element={<Payout /> } />
+              <Route path="/user-payouts"      element={<PayoutsTable/> } />
               <Route path="/ledger-entries"    element={<LedgerEntries /> } />
               <Route path="/user-subscription" element={<UserSubscription /> } />
             </Routes>

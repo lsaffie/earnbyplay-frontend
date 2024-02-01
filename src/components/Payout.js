@@ -51,30 +51,47 @@ const Payout = () => {
         //TODO: link this to GeneratePayoutLinkView
         const floorBalance = Math.floor(wallet.balance); // Get the floor value of wallet.balance
 
-        axios.post(`${appConfig.SERVER_URL}/api/generate-payout-link/`, 
-          { user_id: currentUser.id,
-            wallet_balance: floorBalance
-          }, 
-          { 
-            headers: {
-              'Authorization': `Bearer ${getJwtToken()}`
+        axios
+          .post(
+            `${appConfig.SERVER_URL}/api/generate-payout-link/`,
+            { user_id: currentUser.id, wallet_balance: floorBalance },
+            {
+              headers: {
+                Authorization: `Bearer ${getJwtToken()}`,
+              },
             }
-          }
-        )
-            .then(response => {
-                setModalContent("Cashout Successful");
-                setIsModalOpen(true);
-            })
-            .catch(error => {
-                // Check if error response exists and has a data object
-                if (error.response && error.response.data && error.response.data.error) {
-                    setModalContent("Cashout failed: " + error.response.data.error);
-                } else {
-                    setModalContent("Cashout failed: An unexpected error occurred");
-                }
-                setIsModalOpen(true);
-                console.error(error);
-            });
+          )
+          .then((response) => {
+            if (response.data && response.data.success) {
+              const payoutUrl = response.data.payout_url;
+              setModalContent(
+                <div>
+                  Cashout Successful.
+                  <a href={payoutUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 underline"> 
+                      Click here to view your payout
+                  </a>
+                </div>
+              );
+            } else {
+              setModalContent("Cashout failed: " + (response.data.message || "An unexpected error occurred. Please contact us."));
+            }
+            setIsModalOpen(true);
+          })
+          .catch((error) => {
+            // Check if error response exists and has a data object
+            if (
+              error.response && error.response.data && error.response.data.error
+            ) {
+              setModalContent("Cashout failed: " + error.response.data.error);
+            } else {
+              setModalContent("Cashout failed: An unexpected error occurred");
+            }
+            setIsModalOpen(true);
+            console.error(error);
+          });
       }
     };
 
