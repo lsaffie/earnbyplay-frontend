@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import appConfig from "../config";
 import LedgerEntries from "./LedgerEntries";
+import PayoutsTable from "./PayoutsTable";
 import { useUser } from '../UserContext';
 
 const WalletView = () => {
@@ -81,6 +82,9 @@ const WalletView = () => {
             </div>
             <div className="overflow-x-auto">
               <LedgerEntries />
+            </div>
+            <div className="overflow-x-auto">
+              <PayoutsTable />
             </div>
           </div>
         )}

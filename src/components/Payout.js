@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 import appConfig from '../config';
 import WalletBalance from './WalletBalance.jsx'
+import PayoutsTable from './PayoutsTable.js'
 import Modal from './Modal'
 import { useUser } from '../UserContext'; // Import useUser hook
 
@@ -162,6 +163,8 @@ const Payout = () => {
         <h2 className="text-sm text-left text-gray-400 mt-5">
           * Please note that redemptions from your wallet can only be made in whole dollar amounts. Any remaining cents will stay in your wallet for future use.
         </h2>
+
+        <PayoutsTable />
       </>
     )}
     <Modal

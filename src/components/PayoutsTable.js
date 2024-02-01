@@ -31,34 +31,49 @@ const PayoutsTable = () => {
   }, []);
 
   return (
-    <table className="min-w-full divide-y divide-gray-200 table-fixed">
-      <thead className="bg-gray-100">
-        <tr>
-          <th className="px-1 sm:px-3 py-2 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">Award Date</th>
-          <th className="px-1 sm:px-3 py-2 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">Payout url</th>
-        </tr>
-      </thead>
-      <tbody className="bg-white divide-y divide-gray-200">
-        {payouts.map((payout) => (
-          <tr key={payout.id}>
-            <td className="px-1 sm:px-3 py-2 text-xs sm:text-sm">
-              <div className="text-gray-800">{formatDate(payout.created_at)}</div>
-            </td>
-            <td className="px-1 sm:px-3 py-2 text-xs sm:text-sm">
-              <a
-                href={payout.payout_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-800 hover:text-blue-800"
-              >
-                {payout.payout_url}
-              </a>
-            </td>
-            {/* Add other data cells as needed */}
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <div className="shadow rounded-sm p-2 sm:p-4 lg:p-6 mt-3">
+      <h3 className="text-md sm:text-lg leading-6 font-medium text-gray-200">
+        Payouts
+      </h3>
+      <div className="overflow-x-auto mt-4">
+        <div className="inline-block min-w-full">
+          <table className="min-w-full divide-y divide-gray-400 table-fixed">
+            <thead className="bg-ebp-header">
+              <tr>
+                <th className="px-1 sm:px-3 py-2 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
+                  Award Date
+                </th>
+                <th className="px-1 sm:px-3 py-2 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
+                  Payout url
+                </th>
+              </tr>
+            </thead>
+            <tbody className="bg-ebp-header divide-y divide-gray-800">
+              {payouts.map((payout) => (
+                <tr key={payout.id}>
+                  <td className="px-1 sm:px-3 py-2 text-xs sm:text-sm">
+                    <div className="text-gray-200">
+                      {formatDate(payout.created_at)}
+                    </div>
+                  </td>
+                  <td className="px-1 sm:px-3 py-2 text-xs sm:text-sm">
+                    <a
+                      href={payout.payout_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-200 hover:text-white"
+                    >
+                      {payout.payout_url}
+                    </a>
+                  </td>
+                  {/* Add other data cells as needed */}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   );
 };
 
