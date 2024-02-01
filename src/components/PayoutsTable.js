@@ -40,7 +40,7 @@ const PayoutsTable = () => {
       </thead>
       <tbody className="bg-white divide-y divide-gray-200">
         {payouts.map((payout) => (
-          <tr key={payout.id} className="bg-gray-100 border-b border-gray-700">
+          <tr key={payout.id}>
             <td className="px-1 sm:px-3 py-2 text-xs sm:text-sm">
               <div className="text-gray-800">{formatDate(payout.created_at)}</div>
             </td>
