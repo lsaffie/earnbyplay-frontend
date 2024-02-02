@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import Modal from './Modal';
+import axios from 'axios';
+import appConfig from "./../config";
 
 const PayPalWithdrawalForm = ({ submitWithdrawal }) => {
   const [email, setEmail] = useState("");
