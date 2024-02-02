@@ -74,7 +74,11 @@ const PhoneNumberForm = ({
 
       <form onSubmit={onSubmit} className="space-y-4">
         <h2 className="text-2xl font-bold text-white mt-6 mb-6 text-center">
-          Earn up to $300/week & get a $20 welcome offer
+          Earn up to 
+          <span className="text-ebp-cta-green"> $300/week </span>
+          & get a 
+          <span className="text-ebp-cta-green"> $20 </span>
+          welcome offer
         </h2>
         <button className="w-full bg-ebp-cta-green text-ebp-text-light p-3 rounded-md font-semibold mb-4 hover:bg-ebp-cta-green">
           Get Started
