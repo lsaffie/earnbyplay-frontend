@@ -188,32 +188,37 @@ const Navbar = () => {
             } w-60 bg-ebp-header text-white transition-transform duration-300 ease-in-out z-50`}
           >
             {/* Drawer content */}
-            <div className="p-4 flex flex-col h-full justify-between">
+            <div className="p-4 flex flex-col v-full justify-between">
               {/* Top links */}
+              <img
+                src={`${process.env.PUBLIC_URL}/${logo_filename}`}
+                alt="Logo"
+                className="h-16 w-48"
+              />
               <div>
-                <a href="/" className="block py-2">
+                <a href="/" className="block py-2 text-ebp-cta-green">
                   Home
                 </a>
                 {currentUser ? (
                   <>
-                    <a href="/user" className="block py-2">
+                    <a href="/user" className="block py-2 text-ebp-cta-green">
                       Profile
                     </a>
-                    <a href="/user-subscription" className="block py-2">
+                    <a href="/user-subscription" className="block py-2 text-ebp-cta-green">
                       Manage Subscription
                     </a>
-                    <a href="/user-payouts" className="block py-2">
+                    <a href="/user-payouts" className="block py-2 text-ebp-cta-green">
                       Payouts
                     </a>
                   </>
                 ) : (
-                  <a href="/subscribe" className="block py-2">
+                  <a href="/subscribe" className="block py-2 text-ebp-cta-green">
                     Subscribe
                   </a>
                 )}
                 <a
                   href="https://tawk.to/chat/659853700ff6374032bd0622/1hjdgbsgi"
-                  className="block py-2"
+                  className="block py-2 text-ebp-cta-green"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
