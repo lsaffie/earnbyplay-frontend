@@ -16,8 +16,10 @@ const PayPalWithdrawalForm = ({ submitWithdrawal }) => {
     e.preventDefault();
     if (validateEmail(email)) {
       try {
-        const response = await submitWithdrawal(email); // Your internal API method
-        if (response.ok) {
+        const response = await axios.post(`${appConfig.SERVER_URL}/api/paypal-cashout`, {
+            email: email,
+        });
+        if (response.status === 200) {
           setModalContent("Withdrawal request submitted successfully!");
         } else {
           setModalContent(
@@ -25,7 +27,7 @@ const PayPalWithdrawalForm = ({ submitWithdrawal }) => {
           );
         }
       } catch (error) {
-        setModalContent("An error occurred. Please try again.");
+        setModalContent(error.response?.data?.message || 'An error occurred. Please try again.');
       }
     } else {
       setModalContent("Please enter a valid PayPal email address.");
