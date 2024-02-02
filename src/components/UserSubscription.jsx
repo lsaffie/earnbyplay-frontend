@@ -60,9 +60,9 @@ const UserSubscription= () => {
         <div className="px-0 my-5 sm:px-4 md:px-6 lg:px-8">
           {" "}
           {/* Responsive Padding */}
-          <div className="bg-white shadow overflow-hidden sm:rounded-sm p-3">
+          <div className="bg-ebp-header shadow overflow-hidden sm:rounded-sm p-3">
             <div className="px-4 py-5 sm:px-6">
-              <h3 className="text-lg leading-6 font-medium text-gray-900">
+              <h3 className="text-lg leading-6 font-medium text-gray-200">
                 Subscription Details
               </h3>
             </div>
@@ -82,38 +82,38 @@ const UserSubscription= () => {
   return (
     <div className="px-0 my-5 sm:px-4 md:px-6 lg:px-8"> {/* Responsive Padding */}
       {subscriptions.length > 0 ? (
-        <div className="bg-white shadow overflow-hidden sm:rounded-sm">
+        <div className="bg-ebp-header shadow overflow-hidden sm:rounded-sm">
           <div className="px-4 py-5 sm:px-6">
-            <h3 className="text-lg leading-6 font-medium text-gray-900">Subscription Details</h3>
+            <h3 className="text-lg leading-6 font-medium text-gray-200">Subscription Details</h3>
           </div>
           {subscriptions.filter(subscription => subscription.status === 'Active').map((subscription, index) => (
             <div key={index}>
               <table className="min-w-full divide-y divide-gray-200 table-fixed">
-                <tbody className="bg-white">
+                <tbody className="bg-ebp-header">
                   {/* Table rows */}
                   <tr>
-                    <td className="px-4 py-2 text-sm font-medium text-gray-600">Id</td>
-                    <td className="px-4 py-2 text-sm text-gray-900">{subscription.id}</td>
+                    <td className="px-4 py-2 text-sm font-medium text-gray-200">Id</td>
+                    <td className="px-4 py-2 text-sm text-gray-200">{subscription.id}</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-2 text-sm font-medium text-gray-600">Plan Name</td>
-                    <td className="px-4 py-2 text-sm text-gray-900">{subscription.plan_name}</td>
+                    <td className="px-4 py-2 text-sm font-medium text-gray-200">Plan Name</td>
+                    <td className="px-4 py-2 text-sm text-gray-200">{subscription.plan_name}</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-2 text-sm font-medium text-gray-600">Start Date</td>
-                    <td className="px-4 py-2 text-sm text-gray-900">{subscription.start_date}</td>
+                    <td className="px-4 py-2 text-sm font-medium text-gray-200">Start Date</td>
+                    <td className="px-4 py-2 text-sm text-gray-200">{subscription.start_date}</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-2 text-sm font-medium text-gray-600">End Date</td>
-                    <td className="px-4 py-2 text-sm text-gray-900">{subscription.end_date}</td>
+                    <td className="px-4 py-2 text-sm font-medium text-gray-200">End Date</td>
+                    <td className="px-4 py-2 text-sm text-gray-200">{subscription.end_date}</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-2 text-sm font-medium text-gray-600">Braintree Subscription ID</td>
-                    <td className="px-4 py-2 text-sm text-gray-900">{subscription.braintree_subscription_id}</td>
+                    <td className="px-4 py-2 text-sm font-medium text-gray-200">Braintree Subscription ID</td>
+                    <td className="px-4 py-2 text-sm text-gray-200">{subscription.braintree_subscription_id}</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-2 text-sm font-medium text-gray-600">Status</td>
-                    <td className="px-4 py-2 text-sm text-gray-900">{subscription.status}</td>
+                    <td className="px-4 py-2 text-sm font-medium text-gray-200">Status</td>
+                    <td className="px-4 py-2 text-sm text-gray-200">{subscription.status}</td>
                   </tr>
                 </tbody>
               </table>

@@ -135,7 +135,9 @@ const UserDetails = () => {
 
     <UserSubscription />
     <WalletView />
-    <LogoutComponent />
+    <div className="mb-8">
+      <LogoutComponent />
+    </div>
       
     <Modal isOpen={isModalOpen} setIsOpen={setIsModalOpen} content={modalContent} />
     </div>

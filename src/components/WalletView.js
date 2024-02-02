@@ -60,10 +60,10 @@ const WalletView = () => {
         {!error && isLoading && <p className="text-gray-600">Loading wallet data...</p>}
         {wallet && (
           <div>
-            <div className="bg-white shadow rounded-sm p-4 sm:p-6">
-              <h2 className="text-lg font-semibold text-gray-800 mb-4">Wallet Details</h2>
-              <p className="text-md text-gray-600">Balance:</p>
-              <p className="text-xl font-bold text-gray-900">{wallet.balance}</p>
+            <div className="bg-ebp-header shadow rounded-sm p-4 sm:p-6">
+              <h2 className="text-lg font-semibold text-gray-200 mb-4">Wallet Details</h2>
+              <p className="text-md text-gray-200">Balance:</p>
+              <p className="text-xl font-bold text-gray-200">{wallet.balance}</p>
               {/* Render additional wallet details here */}
               {currentUser?.active_subscription ? (
                 <a href="/payout" className="inline-block text-center bg-ebp-cta-green text-white py-2 px-4 mt-4 rounded hover:bg-ebp-cta-green transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-300 shadow-lg text-sm font-medium">
