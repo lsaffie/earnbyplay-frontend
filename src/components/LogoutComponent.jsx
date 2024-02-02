@@ -49,7 +49,7 @@ const LogoutComponent = () => {
       {currentUser && (
         <button
           onClick={handleLogout}
-          className="w-full bg-ebp-header text-ebp-cta-green text-center py-2 px-4 rounded hover:bg-black bg-focus:outline-none focus:ring-2 focus:ring-red-700 transition ease-in duration-200 text-md font-semibold shadow-md focus:ring-opacity-50"
+          className="w-full bg-ebp-header text-ebp-cta-green text-center py-2 px-4 rounded hover:bg-black focus:outline-none focus:ring-2 focus:ring-red-700 transition ease-in duration-200 text-md font-semibold shadow-md focus:ring-opacity-50 border border-ebp-green-border"
         >
           Logout
         </button>

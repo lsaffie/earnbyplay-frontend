@@ -11,17 +11,17 @@ const Home= () => {
   const navigate = useNavigate();
   
   return (
-    <div className="text-center m-5 min-h-screen h-auto">
+    <div className="text-center m-3 min-h-screen h-auto">
 
-      <h2 className="text-3xl font-bold mb-6 text-center">
-        <span className="text-ebp-cta-green-earn-font">Earn</span>
-        <span className="text-white"> Cash by Playing Games </span>
+      <h2 className="text-2.5xl font-bold mb-6 text-center">
+        <span className="text-ebp-cta-green-earn-font">Earn by Play </span> 
+        <div className="text-white">Turn Gameplay into Paydays!</div>
       </h2>
 
 
       <div className="bg-ebp-header p-5 mb-5">
         <h2 className="text-2xl font-bold mb-6 text-center">
-          <span className="text-white">How it works?</span>
+          <span className="text-white">Start the Adventure</span>
         </h2>
 
         <h2 className="text-xl font-bold text-center text-white">

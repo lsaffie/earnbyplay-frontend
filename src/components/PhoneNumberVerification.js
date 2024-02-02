@@ -65,12 +65,6 @@ const PhoneNumberForm = ({
 
   return (
     <>
-      <h2 className="text-2xl font-bold text-white mb-6 text-left">
-        Enter your phone number
-      </h2>
-      <div className="text-ebp-text-secondary mb-4">
-        Skip the memory game! Use our one-time password for a hassle-free sign-in.
-      </div>
 
       <form onSubmit={onSubmit} className="space-y-4">
         <h2 className="text-2xl font-bold text-white mt-6 mb-6 text-center">
@@ -96,30 +90,11 @@ const PhoneNumberForm = ({
           </a>
           <br />
           Get these exclusive member perks with a 7 day trial for only $1.97 and
-          then only $14.99/month.
+          then only $14.99/month†.
         </p>
 
         <ProgressBar currentStep="1" />
 
-        <div>
-          <label
-            htmlFor="fullName"
-            className="block text-sm font-medium text-slate-50"
-          >
-            Full Name
-          </label>
-          <input
-            type="text"
-            required
-            placeholder="Full Name"
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            name="name"
-            autoComplete="name"
-            id="fullName"
-          />
-        </div>
         <div className="mb-4">
           <label
             htmlFor="verifyPhoneNumber"
@@ -153,6 +128,8 @@ const PhoneNumberForm = ({
           </a>{" "}
           and receive marketing messages. Rates may apply to messages, which may
           be sent by automated system.
+
+          <p className="mt-3"> †All amounts are in US Dollars (USD) </p>
         </p>
       </form>
       {showModal && (

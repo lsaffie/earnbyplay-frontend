@@ -11,6 +11,10 @@ module.exports = {
         'ebp-cta-red': '#F44336',
         'ebp-text-light': '#FFFFFF',
         'ebp-text-secondary': '#787878',
+        'ebp-green-border': '#61b272',
+      },
+      fontSize: {
+        '2.5xl': '1.70rem', // for example, 20px
       }
     },
   },
