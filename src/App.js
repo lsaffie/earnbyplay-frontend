@@ -20,6 +20,7 @@ import Footer from "./components/Footer";
 import Rewards from "./components/Rewards";
 import Payout from "./components/Payout";
 import PayoutsTable from "./components/PayoutsTable";
+import PayPalWithdrawalForm from "./components/PayPalWithdrawalForm";
 
 import UserSubscription from "./components/UserSubscription";
 import PhoneLogin from "./components/PhoneLogin";
@@ -111,6 +112,7 @@ function App() {
               <Route path="/user-payouts"      element={<PayoutsTable/> } />
               <Route path="/ledger-entries"    element={<LedgerEntries /> } />
               <Route path="/user-subscription" element={<UserSubscription /> } />
+              <Route path="/paypal-withdrawal" element={<PayPalWithdrawalForm/> } />
             </Routes>
           </div>
           <Footer />
