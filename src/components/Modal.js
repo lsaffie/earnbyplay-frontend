@@ -8,17 +8,20 @@ const Modal = ({ isOpen, setIsOpen, content }) => {
       className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50"
       id="my-modal"
     >
-      <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+      <div className="relative border-ebp-cta-green top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-ebp-header">
         <div className="mt-3 text-center">
-          <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
-            {/* Adjust this part with an appropriate icon */}
-          </div>
-          <h3 className="text-lg leading-6 font-medium text-gray-900">
+          <h3 className="text-lg leading-6 font-medium text-ebp-cta-green">
             {content}
           </h3>
-          <div className="mt-2 px-7 py-3">
-            <p className="text-sm text-gray-500">{content}</p>
+
+          {/* <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100"> */}
+          <div className="mx-auto flex items-center justify-center h-12 w-12">
           </div>
+
+
+          {/* <div className="mt-2 px-7 py-3">
+            <p className="text-sm text-gray-500">{content}</p>
+          </div> */}
           <div className="items-center px-4 py-3">
             <button
               id="ok-btn"
