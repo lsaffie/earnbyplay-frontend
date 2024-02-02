@@ -196,29 +196,29 @@ const Navbar = () => {
                 className="h-16 w-48"
               />
               <div>
-                <a href="/" className="block py-2 text-ebp-cta-green">
+                <a href="/" className="block py-2 text-ebp-cta-green hover:text-ebp-cta-green-earn-font">
                   Home
                 </a>
                 {currentUser ? (
                   <>
-                    <a href="/user" className="block py-2 text-ebp-cta-green">
+                    <a href="/user" className="block py-2 text-ebp-cta-green hover:text-ebp-cta-green-earn-font">
                       Profile
                     </a>
-                    <a href="/user-subscription" className="block py-2 text-ebp-cta-green">
+                    <a href="/user-subscription" className="block py-2 text-ebp-cta-green hover:text-ebp-cta-green-earn-font">
                       Manage Subscription
                     </a>
-                    <a href="/user-payouts" className="block py-2 text-ebp-cta-green">
+                    <a href="/user-payouts" className="block py-2 text-ebp-cta-green hover:text-ebp-cta-green-earn-font">
                       Payouts
                     </a>
                   </>
                 ) : (
-                  <a href="/subscribe" className="block py-2 text-ebp-cta-green">
+                  <a href="/subscribe" className="block py-2 text-ebp-cta-green hover:text-ebp-cta-green-earn-font">
                     Subscribe
                   </a>
                 )}
                 <a
                   href="https://tawk.to/chat/659853700ff6374032bd0622/1hjdgbsgi"
-                  className="block py-2 text-ebp-cta-green"
+                  className="block py-2 text-ebp-cta-green hover:text-ebp-cta-green-earn-font"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
