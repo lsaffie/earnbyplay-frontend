@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from './Modal';
 import axios from 'axios';
 import appConfig from "./../config";
+import { useUser } from '../UserContext'; // Import useUser hook
 
 const PayPalWithdrawalForm = ({ submitWithdrawal }) => {
+  const [user, setUser] = useState(false);
   const [email, setEmail] = useState("");
+  const [withdrawalAmount, setWithdrawalAmount] = useState('');
+  const [wallet, setWallet] = useState(false);
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState("");
+  const { currentUser } = useUser(); // Use useUser hook to get currentUser
 
   const validateEmail = (email) => {
     const re =
@@ -14,13 +19,47 @@ const PayPalWithdrawalForm = ({ submitWithdrawal }) => {
     return re.test(String(email).toLowerCase());
   };
 
+  // const floorBalance = Math.floor(wallet.balance); // Get the floor value of wallet.balance
+  const floorBalance = wallet.balance; // Get the floor value of wallet.balance
+  // const floorBalance = 16.3
+
+  const getJwtToken = () => {
+    return localStorage.getItem('access_token');
+  };
+
+  useEffect(() => {
+    axios.get(`${appConfig.SERVER_URL}/api/wallet/`, {
+        headers: {
+          'Authorization': `Bearer ${getJwtToken()}`
+        }
+      })
+      .then(response => setWallet(response.data))
+      .catch(error => console.error('Error fetching wallet data:', error));
+  }, [currentUser]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateEmail(email)) {
       try {
-        const response = await axios.post(`${appConfig.SERVER_URL}/api/paypal-cashout`, {
-            email: email,
-        });
+        const response = await axios.post(
+          `${appConfig.SERVER_URL}/api/paypal-cashout/`, 
+          { email: email,
+            withdrawal_requested_amount: floorBalance,
+            method: 'paypal' 
+          }, // This is the data payload
+          {
+            headers: {
+              'Authorization': `Bearer ${getJwtToken()}` // This is part of the config object
+            }
+          }
+        );
+
+        // const response = await axios.post(`${appConfig.SERVER_URL}/api/paypal-cashout/`, {
+        //     headers: {
+        //       'Authorization': `Bearer ${getJwtToken()}`
+        //     },
+        //     email: email,
+        // });
         if (response.status === 200) {
           setModalContent("Withdrawal request submitted successfully!");
         } else {
@@ -44,12 +83,15 @@ const PayPalWithdrawalForm = ({ submitWithdrawal }) => {
         <p className="text-m text-gray-200">
           Use this form to transfer your earned funds to your PayPal account.
         </p>
+        <p className="text-m text-gray-200 mt-3">
+          Be sure to use your paypal email to widthdraw the funds
+        </p>
       </div>
       <div className="bg-ebp-header text-white p-4 rounded-lg shadow-lg max-w-md mx-auto my-8">
 
         <div className="bg-ebp-green p-2 rounded text-center mb-6">
           <h3 className="text-xl font-medium">Transfer Amount</h3>
-          <p className="text-3xl font-bold">$28.67</p>
+          <p className="text-3xl font-bold">${floorBalance}</p>
         </div>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -70,7 +112,7 @@ const PayPalWithdrawalForm = ({ submitWithdrawal }) => {
           />
           <button
             type="submit"
-            className="p-2 bg-ebp-cta-green rounded-md hover:bg-ebp-cta-hover focus:outline-none focus:ring focus:ring-ebp-focus transition ease-in duration-200 text-md font-semibold shadow-md"
+            className="p-2 w-full bg-ebp-cta-green rounded-md hover:bg-ebp-cta-hover focus:outline-none focus:ring focus:ring-ebp-focus transition ease-in duration-200 text-md font-semibold shadow-md"
           >
             Submit Withdrawal
           </button>

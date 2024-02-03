@@ -44,6 +44,9 @@ const PayoutsTable = () => {
                   Award Date
                 </th>
                 <th className="px-1 sm:px-3 py-2 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
+                  Amount
+                </th>
+                <th className="px-1 sm:px-3 py-2 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
                   Payout url
                 </th>
               </tr>
@@ -54,6 +57,11 @@ const PayoutsTable = () => {
                   <td className="px-1 sm:px-3 py-2 text-xs sm:text-sm">
                     <div className="text-gray-200">
                       {formatDate(payout.created_at)}
+                    </div>
+                  </td>
+                  <td className="px-1 sm:px-3 py-2 text-xs sm:text-sm">
+                    <div className="text-gray-200">
+                      {payout.ledger_entry.amount}
                     </div>
                   </td>
                   <td className="px-1 sm:px-3 py-2 text-xs sm:text-sm">
