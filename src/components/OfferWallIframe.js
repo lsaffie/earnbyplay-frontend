@@ -7,7 +7,6 @@ import { useUser } from '../UserContext';
 
 const OfferWallIframe = () => {
   const location = useLocation();
-  // const [localCurrentUser, setLocalCurrentUser] = useState(propCurrentUser);
   const { currentUser } = useUser();
   
   const uid = currentUser ? currentUser.id : '';
@@ -21,23 +20,6 @@ const OfferWallIframe = () => {
 
 
   useEffect(() => {
-    // const fetchUserData = async () => {
-    //   try {
-    //     const response = await axios.get(`${appConfig.SERVER_URL}/api/user`, {
-    //       headers: {
-    //         'Authorization': `Bearer ${localStorage.getItem('access_token')}`
-    //       }
-    //     });
-    //     setLocalCurrentUser(response.data.user);
-    //   } catch (error) {
-    //     console.error('Error fetching user data:', error);
-    //   }
-    // };
-
-    // if (!localCurrentUser) {
-    //   fetchUserData();
-    // }
-
     trackEventWithUrlParams("Offerwall Opened");
   }, []);
 

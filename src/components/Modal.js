@@ -14,14 +14,10 @@ const Modal = ({ isOpen, setIsOpen, content }) => {
             {content}
           </h3>
 
-          {/* <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100"> */}
           <div className="mx-auto flex items-center justify-center h-12 w-12">
           </div>
 
 
-          {/* <div className="mt-2 px-7 py-3">
-            <p className="text-sm text-gray-500">{content}</p>
-          </div> */}
           <div className="items-center px-4 py-3">
             <button
               id="ok-btn"

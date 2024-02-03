@@ -5,7 +5,6 @@ import ModalConfirm from './ModalConfirm'
 import { useUser } from '../UserContext'; // Import useUser hook
 
 const UserSubscription= () => {
-  // const [user, setUser] = useState(null);
   const [subscriptions, setSubscriptions] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [modalContent, setModalContent] = useState('');

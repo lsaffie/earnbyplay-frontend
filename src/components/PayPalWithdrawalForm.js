@@ -22,7 +22,6 @@ const PayPalWithdrawalForm = ({ submitWithdrawal }) => {
 
   // const floorBalance = Math.floor(wallet.balance); // Get the floor value of wallet.balance
   const floorBalance = wallet.balance; // Get the floor value of wallet.balance
-  // const floorBalance = 16.3
 
   const getJwtToken = () => {
     return localStorage.getItem("access_token");
@@ -57,12 +56,6 @@ const PayPalWithdrawalForm = ({ submitWithdrawal }) => {
           }
         );
 
-        // const response = await axios.post(`${appConfig.SERVER_URL}/api/paypal-cashout/`, {
-        //     headers: {
-        //       'Authorization': `Bearer ${getJwtToken()}`
-        //     },
-        //     email: email,
-        // });
         if (response.status === 200) {
           setModalContent("Withdrawal request submitted successfully!");
         } else {

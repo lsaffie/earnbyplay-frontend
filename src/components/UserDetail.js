@@ -22,15 +22,6 @@ const UserDetails = () => {
   const getJwtToken = () => localStorage.getItem('access_token');
 
   useEffect(() => {
-    // Fetch User Details
-    // axios.get(`${appConfig.SERVER_URL}/api/user`, {
-    //     headers: {
-    //       'Authorization': `Bearer ${getJwtToken()}`
-    //     }
-    // })
-    //   .then(response => setUser(response.data.user))
-    //   .catch(error => console.error('Error fetching user data:', error));
-
     // Fetch Subscriptions
     axios.get(`${appConfig.SERVER_URL}/api/subscription/`, {
         headers: {
@@ -99,7 +90,6 @@ const UserDetails = () => {
   };
 
   return (
-    // <div className="flex flex-col justify-between h-full">
     <div className="px-2 m-0 sm:px-4 md:px-6 lg:px-8"> {/* Responsive Padding */}
 
 
