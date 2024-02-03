@@ -110,70 +110,88 @@ const Payout = () => {
   }
 
   return (
-  <div className="m-2">
-    {!wallet || (wallet && wallet.balance) < 1 ? (
-      <div>
-        <p className="text-white text-lg mt-10">
-          You can only cash out when you have earned at least 1 reward.
-        </p>
-        <p className="text-white text-lg mb-10 mt-1">
-          Click the link below to earn cash!
-        </p>
-        <Link
-          to="/offerwall"
-          className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-ebp-cta-green hover:bg-ebp-cta-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-        >
-          Earn
-        </Link>
-      </div>
-    ) : (
-      <>
-        <h3 className="items-start text-left space-x-1 text-xl font-bold text-white mb-5">
-          <span>${wallet ? Math.floor(wallet.balance) : "Loading..."}</span>
-          <span>
-            Available to redeem for cash or choose from our vast gift card selection.
-          </span>
-        </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
-        {selectedReward && (
-          <button
-            className="mt-4 px-4 py-2 bg-ebp-cta-green text-white rounded hover:bg-ebp-cta-green"
-            onClick={handleCashOut}
-          >
-            Cash Out Selected Reward
-          </button>
-        )}
-        <form onSubmit={handleCashOut} className="bg-ebp-header p-5 mb-5">
-          <div className="mb-4">
-            <label
-              htmlFor="formBasicUsername"
-              className="block text-md font-medium text-gray-200"
-            >
-              Amount available to redeem: $
-              {wallet ? Math.floor(wallet.balance) : "Loading..."}
-            </label>
-          </div>
-          <button
-            type="submit"
+    <div className="m-2">
+      {!wallet || (wallet && wallet.balance) < 1 ? (
+        <div>
+          <p className="text-white text-lg mt-10">
+            You can only cash out when you have earned at least 1 reward.
+          </p>
+          <p className="text-white text-lg mb-10 mt-1">
+            Click the link below to earn cash!
+          </p>
+          <Link
+            to="/offerwall"
             className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-ebp-cta-green hover:bg-ebp-cta-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
-            Redeem
-          </button>
-        </form>
-        <h2 className="text-sm text-left text-gray-400 mt-5">
-          * Please note that redemptions from your wallet can only be made in whole dollar amounts. Any remaining cents will stay in your wallet for future use.
-        </h2>
+            Earn
+          </Link>
+        </div>
+      ) : (
+        <>
+          <h3 className="items-start text-left space-x-1 text-xl font-bold text-white mb-5">
+            <span>${wallet ? Math.floor(wallet.balance) : "Loading..."}</span>
+            <span>
+              Available to redeem for cash or choose from our vast gift card
+              selection.
+            </span>
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+          {selectedReward && (
+            <button
+              className="mt-4 px-4 py-2 bg-ebp-cta-green text-white rounded hover:bg-ebp-cta-green"
+              onClick={handleCashOut}
+            >
+              Cash Out Selected Reward
+            </button>
+          )}
+          <form onSubmit={handleCashOut} className="bg-ebp-header p-5 mb-5">
+            <div className="mb-4">
+              <label
+                htmlFor="formBasicUsername"
+                className="block text-md font-medium text-gray-200"
+              >
+                Amount available to redeem: $
+                {wallet ? Math.floor(wallet.balance) : "Loading..."}
+              </label>
+            </div>
+            <button
+              type="submit"
+              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-ebp-cta-green hover:bg-ebp-cta-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              Redeem
+            </button>
+          </form>
 
-        <PayoutsTable />
-      </>
-    )}
-    <Modal
-      isOpen={isModalOpen}
-      setIsOpen={setIsModalOpen}
-      content={modalContent}
-    />
-  </div>
-);
+          <div className="bg-ebp-header p-5 mt-5 mb-5">
+            <h2 className="text-lg text-left text-white mb-5">
+              If you prefer to get your rewards as cash, clik the below to get a
+              PayPal transfer.
+            </h2>
+            <a
+              href={/paypal-withdrawal/}
+              rel="noopener noreferrer"
+              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-blue-500 focus:ring-offset-2"
+            >
+              Cash Out with PayPal
+            </a>
+          </div>
+
+          <h2 className="text-sm text-left text-gray-400 mt-5">
+            * Please note that redemptions from your wallet can only be made in
+            whole dollar amounts. Any remaining cents will stay in your wallet
+            for future use.
+          </h2>
+
+          <PayoutsTable />
+        </>
+      )}
+      <Modal
+        isOpen={isModalOpen}
+        setIsOpen={setIsModalOpen}
+        content={modalContent}
+      />
+    </div>
+  );
 
 };
 
