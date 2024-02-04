@@ -40,10 +40,10 @@ const LedgerEntriesComponent = () => {
                 <tr>
                   {/* Hidden ID column on small screens */}
                   <th className="px-1 sm:px-3 py-2 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider hidden sm:table-cell">ID</th>
-                  <th className="px-1 sm:px-3 py-2 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider"> Amount</th>
+                  <th className="px-1 sm:px-3 py-2 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider"> Date/Time</th>
                   <th className="px-1 sm:px-3 py-2 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider"> Type</th>
+                  <th className="px-1 sm:px-3 py-2 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider"> Amount</th>
                   {/* Adjusted header for mobile */}
-                  <th className="px-1 sm:px-3 py-2 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider"> Time</th>
                   <th className="px-1 sm:px-3 py-2 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider"> Desc</th>
                 </tr>
               </thead>
@@ -52,9 +52,9 @@ const LedgerEntriesComponent = () => {
                   <tr key={entry.id}>
                     {/* Hidden ID cell on small screens */}
                     <td className="px-1 sm:px-3 py-2 text-xs sm:text-sm hidden sm:table-cell">{entry.id}</td>
-                    <td className="px-1 sm:px-3 py-2 text-xs sm:text-sm text-gray-200">{entry.amount}</td>
-                    <td className="px-1 sm:px-3 py-2 text-xs sm:text-sm text-gray-200">{entry.transaction_type || 'N/A'}</td>
                     <td className="px-1 sm:px-3 py-2 text-xs sm:text-sm text-gray-200">{new Date(entry.timestamp).toLocaleString()}</td>
+                    <td className="px-1 sm:px-3 py-2 text-xs sm:text-sm text-gray-200">{entry.transaction_type || 'N/A'}</td>
+                    <td className="px-1 sm:px-3 py-2 text-xs sm:text-sm text-gray-200">{entry.amount}</td>
                     <td className="px-1 sm:px-3 py-2 text-xs sm:text-sm text-gray-200">{entry.description}</td>
                   </tr>
                 ))}
