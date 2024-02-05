@@ -12,6 +12,7 @@ module.exports = {
         'ebp-text-light': '#FFFFFF',
         'ebp-text-secondary': '#787878',
         'ebp-green-border': '#61b272',
+        'ebp-paypal-color': '#ffc439',
       },
       fontSize: {
         '2.5xl': '1.70rem', // for example, 20px

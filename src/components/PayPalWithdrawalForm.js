@@ -130,16 +130,11 @@ const PayPalWithdrawalForm = ({ submitWithdrawal }) => {
               />
               <button
                 type="submit"
-                className="p-2 w-full bg-ebp-cta-green rounded-md hover:bg-ebp-cta-hover focus:outline-none focus:ring focus:ring-ebp-focus transition ease-in duration-200 text-md font-semibold shadow-md"
+                className="bg-[#0070BA] hover:bg-[#005EA6] text-white font-semibold py-2 px-4 rounded-md flex items-center justify-center space-x-2"
               >
-                Submit Withdrawal
+                <span>Transfer with Paypal</span>
               </button>
             </form>
-            <h2 className="text-sm text-left text-gray-400 mt-5">
-              * Please note that redemptions from your wallet can only be made
-              in whole dollar amounts. Any remaining cents will stay in your
-              wallet for future use.
-            </h2>
           </div>
           <Modal
             isOpen={isModalOpen}
