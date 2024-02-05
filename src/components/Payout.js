@@ -146,33 +146,26 @@ const Payout = () => {
           )}
           <form onSubmit={handleCashOut} className="bg-ebp-header p-5 mb-5">
             <div className="mb-4">
-              <label
-                htmlFor="formBasicUsername"
-                className="block text-md font-medium text-gray-200"
-              >
-                Amount available to redeem: $
-                {wallet ? Math.floor(wallet.balance) : "Loading..."}
-              </label>
             </div>
             <button
               type="submit"
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-ebp-cta-green hover:bg-ebp-cta-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-white bg-ebp-cta-green hover:bg-ebp-cta-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-              Redeem
+              Withdraw Gift Cards
             </button>
           </form>
 
+          <h3 className="text-center space-x-1 text-xl font-bold text-white mb-5">
+            Or
+          </h3>
+
           <div className="bg-ebp-header p-5 mt-5 mb-5">
-            <h2 className="text-lg text-left text-white mb-5">
-              If you prefer to get your rewards as cash, clik the below to get a
-              PayPal transfer.
-            </h2>
             <a
               href={/paypal-withdrawal/}
               rel="noopener noreferrer"
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-blue-500 focus:ring-offset-2"
+              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-blue-500 focus:ring-offset-2"
             >
-              Cash Out with PayPal
+              Withdraw Cash via PayPal
             </a>
           </div>
 
