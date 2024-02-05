@@ -11,10 +11,10 @@ const Home= () => {
   const navigate = useNavigate();
   
   return (
-    <div className="text-center min-h-screen h-auto">
+    <div className="text-center min-h-screen h-auto mt-0">
 
-      <h2 className="text-2.5xl font-bold mb-6 text-center">
-        <span className="text-ebp-cta-green-earn-font">Earn by Play </span> 
+      <h2 className="text-2.5xl font-bold mb-4 text-center">
+        {/* <span className="text-ebp-cta-green-earn-font">Earn by Play </span>  */}
         <div className="text-white">Turn Gameplay into Paydays!</div>
       </h2>
 

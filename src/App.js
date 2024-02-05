@@ -88,7 +88,7 @@ function App() {
           <Navbar />
 
           {/* Content */}
-          <div className="flex-grow justify-center container w-full md:pb-16 mt-8 px-2 sm:px-6 lg:px-8">
+          <div className="flex-grow justify-center container w-full md:pb-8 mt-4 px-2 sm:px-6 lg:px-8">
             <Routes>
               <Route path="/" element={ <Home /> } />
               <Route path="/login" element={

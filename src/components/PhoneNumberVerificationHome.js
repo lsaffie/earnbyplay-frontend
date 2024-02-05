@@ -65,58 +65,39 @@ const PhoneNumberForm = ({
 
   return (
     <>
-
       <form onSubmit={onSubmit} className="space-y-4">
-        <h2 className="text-2xl font-bold text-white mt-6 mb-6 text-center">
-          Earn up to 
-          <span className="text-ebp-cta-green"> $300/week </span>
-          & get a 
+        <h2 className="text-2.5xl font-bold text-white mt-0 mb-0 text-center">
+          Earn up to
+          <span className="text-ebp-cta-green"> $300/week </span>& <br />get a
           <span className="text-ebp-cta-green"> $20 </span>
           welcome offer
         </h2>
-      <div className="bg-ebp-bg-dark p-2 mb-5">
+        <div className="p-2 mb-2">
+          <h2 className="text-xl font-bold text-center text-white">
+            1. Choose a game
+          </h2>
 
-        <h2 className="text-xl font-bold text-center text-white">
-          1. Choose a game
-        </h2>
+          <div className="text-gray-500 mb-2">
+            Pick a game from our selection
+          </div>
 
-        <div className="text-gray-500 mb-5">
-          Pick a game from our selection
+          <h2 className="text-xl font-bold text-center text-white">
+            2. Complete a level
+          </h2>
+          <div className="text-gray-500 mb-2">Finish simple in-game tasks.</div>
+
+          <h2 className="text-xl font-bold text-center text-white">
+            3. Earn cash
+          </h2>
+          <div className="text-gray-500">
+            Earn coins for tasks, redeem for rewards.
+          </div>
         </div>
 
-        <h2 className="text-xl font-bold text-center text-white">
-          2. Complete the game
-        </h2>
-        <div className="text-gray-500 mb-5">
-          Finish simple in-game tasks.
-        </div>
+        {/* <button className="w-full bg-ebp-cta-green text-ebp-text-light p-3 rounded-md font-semibold mb-4 hover:bg-ebp-cta-green"> */}
+          {/* Get Started */}
+        {/* </button> */}
 
-        <h2 className="text-xl font-bold text-center text-white">
-          3. Earn cash
-        </h2>
-        <div className="text-gray-500">
-          Earn coins for tasks, redeem for rewards.
-        </div>
-      </div>
-
-        <button className="w-full bg-ebp-cta-green text-ebp-text-light p-3 rounded-md font-semibold mb-4 hover:bg-ebp-cta-green">
-          Get Started
-        </button>
-
-        <p className="text-gray-100 mb-4 text-base sm:text-xs md:text-xs">
-          Earn cash by playing games anywhere, anytime. See
-          <a
-            href="#"
-            className="text-ebp-cta-green hover:underline"
-            onClick={handleMembershipDetailsClick}
-          >
-            {" "}
-            Membership details
-          </a>
-          <br />
-          Get these exclusive member perks with a 7 day trial for only $1.97 and
-          then only $14.99/month†.
-        </p>
         <ProgressBar currentStep="1" />
 
         <div className="mb-4">
@@ -140,10 +121,24 @@ const PhoneNumberForm = ({
         </div>
         <button
           type="submit"
-          className="w-full justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-ebp-cta-green hover:bg-ebp-cta-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          className="w-full justify-center p-3 border border-transparent shadow-sm text-md font-medium rounded-md text-white bg-ebp-cta-green hover:bg-ebp-cta-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
           Send Code
         </button>
+        <p className="text-gray-100 mb-4 text-base sm:text-xs md:text-xs">
+          Earn cash by playing games anywhere, anytime. See
+          <a
+            href="#"
+            className="text-ebp-cta-green hover:underline"
+            onClick={handleMembershipDetailsClick}
+          >
+            {" "}
+            Membership details
+          </a>
+          <br />
+          Get these exclusive member perks with a 7 day trial for only $1.97 and
+          then only $14.99/month†.
+        </p>
         <p className="text-xs text-gray-500 mt-3 text-center">
           Click "Send code" to agree to our
           <a href="#" className="text-ebp-cta-green hover:underline">
@@ -152,7 +147,6 @@ const PhoneNumberForm = ({
           </a>{" "}
           and receive marketing messages. Rates may apply to messages, which may
           be sent by automated system.
-
           <p className="mt-3"> †All amounts are in US Dollars (USD) </p>
         </p>
       </form>
