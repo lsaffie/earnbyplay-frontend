@@ -121,7 +121,7 @@ const UserSubscription= () => {
                 <div className="px-4 py-4 sm:px-6 text-right">
                   <button
                     onClick={() => handleCancelSubscription(subscription.id)}
-                    className="px-4 py-2 bg-ebp-cta-green text-white rounded-md hover:bg-ebp-cta-green focus:outline-none focus:ring-2 focus:ring-blue-300">
+                    className="px-4 py-2 bg-ebp-header text-white text-center py-2 px-4 rounded hover:bg-black focus:outline-none focus:ring-2 focus:ring-red-700 transition ease-in duration-200 text-md font-semibold shadow-md focus:ring-opacity-50 border border-red-700">
                     Cancel Subscription
                   </button>
                 </div>

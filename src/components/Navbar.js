@@ -207,7 +207,12 @@ const Navbar = () => {
                     <a href="/user-subscription" className="block py-2 text-ebp-text-light">
                       Manage Subscription
                     </a>
-                    <a href="/user-payouts" className="block py-2 text-ebp-text-light">
+                    {!currentUser.active_subscription  && (
+                      <a href="/subscribe" className="block py-2 text-ebp-cta-green-earn-font">
+                        subscribe
+                      </a>
+                    )}
+                      <a href="/user-payouts" className="block py-2 text-ebp-text-light">
                       Payouts
                     </a>
                   </>
