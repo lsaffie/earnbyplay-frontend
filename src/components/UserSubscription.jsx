@@ -103,10 +103,6 @@ const UserSubscription= () => {
                     <td className="px-4 py-2 text-sm text-gray-200">{subscription.start_date}</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-2 text-sm font-medium text-gray-200">End Date</td>
-                    <td className="px-4 py-2 text-sm text-gray-200">{subscription.end_date}</td>
-                  </tr>
-                  <tr>
                     <td className="px-4 py-2 text-sm font-medium text-gray-200">Braintree Subscription ID</td>
                     <td className="px-4 py-2 text-sm text-gray-200">{subscription.braintree_subscription_id}</td>
                   </tr>
