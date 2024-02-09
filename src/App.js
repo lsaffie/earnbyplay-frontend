@@ -36,37 +36,14 @@ axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
 axios.defaults.withCredentials = true;
 
-// const client = axios.create({
-//   baseURL: `${appConfig.SERVER_URL}`,
-// });
-
 function App() {
-  // const [currentUser, setCurrentUser] = useState();
   const [registrationToggle, setRegistrationToggle] = useState(false);
+  const [mode, setMode] = useState("signIn"); // signIn or signUp
 
-  // const handleUserChange = (userData) => {
-  //   setCurrentUser(userData);
-  // };
-
-  // const getJwtToken = () => {
-  //   return localStorage.getItem("access_token"); // Or however you've named the token in storage
-  // };
 
   useEffect(() => {
     // Initialize Amplitude instance
     amplitude.init(process.env.REACT_APP_AMPLITUDE_API_KEY);
-
-    // client
-    //   .get("/api/user", {
-    //     headers: {
-    //       Authorization: `Bearer ${getJwtToken()}`,
-    //     },
-    //   })
-    //   .then((res) => {
-    //     setCurrentUser(res.data.user);
-    //   })
-    //   .catch((error) => setCurrentUser(null));
-
   }, []);
 
   function update_form_btn() {
@@ -93,10 +70,14 @@ function App() {
               <Route path="/" element={ <Home /> } />
               <Route path="/login" element={
                   <div className="center">
-                    <PhoneLogin />
+                    <PhoneLogin mode="signIn" />
                   </div>
               } />
-              <Route path="/signup"            element={<PhoneNumberVerification /> } />
+              <Route path="/signup" element={
+                <div className="center">
+                  <PhoneLogin mode="signUp" />
+                </div>
+              } />
               <Route path="/phone-verify"      element={<PhoneNumberVerification />} />
 
               <Route path="/phone-login"       element={<PhoneLogin /> } />

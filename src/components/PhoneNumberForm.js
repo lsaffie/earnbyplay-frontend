@@ -6,16 +6,38 @@ import ProgressBar from "./ProgressBar";
 import { trackEventWithUrlParams } from '../utils/amplitudeUtils';
 
 
+
 const PhoneNumberForm = ({
   onSubmit,
   phoneNumber,
   setPhoneNumber,
   fullName,
   setFullName,
+  mode,
+  acceptTerms,
+  setAcceptTerms
 }) => {
+
+  // const [mode, setMode] = useState("signIn"); // signIn or signUp
+  // const [acceptTerms, setAcceptTerms] = useState(false);
+
+  const handleTermsChange = (e) => {
+    setAcceptTerms(e.target.checked);
+  };
 
   return (
     <>
+      {mode === "signIn" ? (
+        <h2 className="text-2.5xl font-bold mb-4 text-left">
+          Welcome back!
+        </h2>
+      ):(
+        <h2 className="text-2.5xl font-bold mb-4 text-left">
+          Welcome to Earn by Play.
+          <br />
+          Sign up below!
+        </h2>
+      )}
       <form onSubmit={onSubmit} className="space-y-4">
 
         <div className="mb-4">
@@ -43,16 +65,32 @@ const PhoneNumberForm = ({
         >
           Send Code
         </button>
-        <p className="text-xs text-gray-500 mt-3 text-center">
-          Click "Send code" to agree to our
-          <a href="#" className="text-ebp-cta-green hover:underline">
-            {" "}
-            Terms
-          </a>{" "}
-          and receive marketing messages. Rates may apply to messages, which may
-          be sent by automated system.
-        </p>
+        {mode === "signIn" && (
+          <p className="text-xs text-gray-500 mt-3 text-center w-80">
+            Click "Send code" to agree to our
+            <a href="#" className="text-ebp-cta-green hover:underline">
+              {" "}
+              Terms
+            </a>{" "}
+            and receive marketing messages. Rates may apply to messages, which may
+            be sent by automated system.
+          </p>
+        )}
       </form>
+      {mode === "signUp" && (
+        <div className="text-xs text-gray-500 mt-3 text-center w-80">
+          <label htmlFor="acceptTerms" className="flex items-center">
+            <input
+              type="checkbox"
+              id="acceptTerms"
+              checked={acceptTerms}
+              onChange={handleTermsChange}
+              className="mr-2"
+            />
+            I accept the <a href="/terms" className="text-ebp-cta-green underline">Terms and Conditions</a>
+          </label>
+        </div>
+      )}
     </>
   );
 };
