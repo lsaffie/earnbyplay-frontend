@@ -96,11 +96,24 @@ const Payout = () => {
       }
     };
 
-  if (!currentUser?.active_subscription) {
+  if (!currentUser) {
+    return (
+      <div className="w-full px-4">
+        <p className="text-3xl mt-3 text-red-500">
+          Sign up to earnbyplay!
+        </p>
+        <a href="/signup" className="w-full py-100 m-10 text-center bg-ebp-cta-green rounded hover:bg-ebp-cta-green transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-300 shadow-lg text-sm font-medium">
+          Sign Up 
+        </a>
+      </div>
+    );
+  }
+
+  if ( currentUser && !currentUser?.active_subscription) {
     return (
       <>
         <p className="text-md mt-3 text-red-500">
-          Only subscribed users can cashout. Please subscribe or contact us.
+          Subscribe to cashout!
         </p>
         <a href="/subscribe" className="inline-block text-center bg-ebp-cta-green text-white py-2 px-4 mt-4 rounded hover:bg-ebp-cta-green transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-300 shadow-lg text-sm font-medium">
           Subscribe

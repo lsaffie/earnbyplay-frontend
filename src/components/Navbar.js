@@ -217,8 +217,8 @@ const Navbar = () => {
                     </a>
                   </>
                 ) : (
-                  <a href="/subscribe" className="block py-2 text-ebp-cta-green hover:text-ebp-cta-green-earn-font">
-                    Subscribe
+                  <a href="/signup" className="block py-2 text-ebp-cta-green hover:text-ebp-cta-green-earn-font">
+                    Sign up!
                   </a>
                 )}
                 <a
