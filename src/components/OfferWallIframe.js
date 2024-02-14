@@ -14,8 +14,8 @@ const OfferWallIframe = () => {
   const bitlabsUrl = (
     'https://web.bitlabs.ai/?uid=' + uid +
     '&token=' + process.env.REACT_APP_BITLABS_TOKEN+
-    '&width=full_width' +
-    '&display_mode=offers'
+    '&width=full_width'
+    //'&display_mode=offers'
   ).replace(/\s+/g, '');
 
 
