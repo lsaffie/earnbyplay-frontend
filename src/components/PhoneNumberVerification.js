@@ -120,7 +120,7 @@ const PhoneNumberForm = ({
         >
           Send Code
         </button>
-        <p className="text-xs text-gray-500 mt-3 text-center">
+        <p className="text-xs text-gray-500 mt-3 text-left">
           By clicking 'Send code', you agree to our
           <a href="#" className="text-ebp-cta-green hover:underline">
             {" "}

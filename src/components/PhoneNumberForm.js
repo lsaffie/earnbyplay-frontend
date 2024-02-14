@@ -13,17 +13,15 @@ const PhoneNumberForm = ({
   setPhoneNumber,
   fullName,
   setFullName,
-  mode,
-  acceptTerms,
-  setAcceptTerms
+  mode
 }) => {
 
   // const [mode, setMode] = useState("signIn"); // signIn or signUp
   // const [acceptTerms, setAcceptTerms] = useState(false);
 
-  const handleTermsChange = (e) => {
-    setAcceptTerms(e.target.checked);
-  };
+  // const handleTermsChange = (e) => {
+  //   setAcceptTerms(e.target.checked);
+  // };
 
   return (
     <>
@@ -66,7 +64,7 @@ const PhoneNumberForm = ({
           Send Code
         </button>
         {mode === "signIn" && (
-          <p className="text-xs text-gray-500 mt-3 text-center">
+          <p className="text-xs text-gray-500 mt-3 text-left">
             By clicking 'Send code', you agree to our
             <a href="#" className="text-ebp-cta-green hover:underline">
               {" "}
@@ -78,8 +76,17 @@ const PhoneNumberForm = ({
         )}
       </form>
       {mode === "signUp" && (
-        <div className="text-xs text-gray-500 mt-3 text-center w-80">
-          <label htmlFor="acceptTerms" className="flex items-center">
+        <div className="text-xs text-gray-500 mt-3 text-leftw-80">
+            <p className="text-xs text-gray-500 mt-3 text-left">
+              By clicking 'Send code', you agree to our
+              <a href="#" className="text-ebp-cta-green hover:underline">
+                {" "}
+                Terms
+              </a>{" "}
+              , confirm that you are 18 years of age or older, and receive marketing messages. Rates may apply to messages, which may
+              be sent by automated system.
+            </p>
+          {/* <label htmlFor="acceptTerms" className="flex items-center">
             <input
               type="checkbox"
               id="acceptTerms"
@@ -87,8 +94,8 @@ const PhoneNumberForm = ({
               onChange={handleTermsChange}
               className="mr-2"
             />
-            I accept the <a href="/terms" className="text-ebp-cta-green underline">Terms and Conditions</a>
-          </label>
+            I accept
+          </label> */}
         </div>
       )}
     </>

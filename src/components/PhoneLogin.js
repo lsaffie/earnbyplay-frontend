@@ -33,27 +33,27 @@ const PhoneLogin = ({mode, setMode}) => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
   // const [mode, setMode] = useState("signIn"); // signIn or signUp
-  const [acceptTerms, setAcceptTerms] = useState(false);
+  // const [acceptTerms, setAcceptTerms] = useState(false);
 
   const handleModeToggle = () => {
     setMode(mode === "signIn" ? "signUp" : "signIn");
     // Reset relevant states if needed
-    setAcceptTerms(false);
+    // setAcceptTerms(false);
   };
 
-  const handleTermsChange = (e) => {
-    setAcceptTerms(e.target.checked);
-  };
+  // const handleTermsChange = (e) => {
+  //   setAcceptTerms(e.target.checked);
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     trackEventWithUrlParams("Login with phone initiatied")
 
     // terms acceptance check
-    if (mode === "signUp" && !acceptTerms) {
-      setError("You must accept the terms and conditions to sign up.");
-      return;
-    }
+    // if (mode === "signUp" && !acceptTerms) {
+    //   setError("You must accept the terms and conditions to sign up.");
+    //   return;
+    // }
 
     setError(''); // Clear any existing errors
     const { formatted, error: formatError } = formatToE164(phoneNumber);
@@ -100,8 +100,8 @@ const PhoneLogin = ({mode, setMode}) => {
               fullName={fullName}
               setFullName={setFullName}
               mode={mode}
-              acceptTerms={acceptTerms}
-              setAcceptTerms={setAcceptTerms}
+              // acceptTerms={acceptTerms}
+              // setAcceptTerms={setAcceptTerms}
             />
           </>
         ) : (
