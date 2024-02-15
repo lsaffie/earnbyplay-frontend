@@ -153,28 +153,19 @@ const Navbar = () => {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  class="line-1"
+                  className="line-1"
                   d="M0.75 0.75H15.25"
                   stroke="white"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
                 ></path>
                 <path
-                  class="line-2"
+                  className="line-2"
                   d="M0.75 13.25H15.25"
                   stroke="white"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
                 ></path>
                 <path
-                  class="line-3"
+                  className="line-3"
                   d="M1 7H9"
                   stroke="white"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
                 ></path>
               </svg>
               <span className="block text-xs text-gray-300">More</span>
