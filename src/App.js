@@ -10,6 +10,7 @@ import WalletView from "./components/WalletView";
 import BraintreeDropin from "./components/BraintreeDropin";
 import UserDetails from "./components/UserDetail";
 import LedgerEntries from "./components/LedgerEntries";
+import TermsAndConditions from "./components/TermsAndConditions";
 
 // import LoginForm from "./components/LoginForm";
 // import SignupForm from "./components/SignupForm";
@@ -94,6 +95,7 @@ function App() {
               <Route path="/ledger-entries"    element={<LedgerEntries /> } />
               <Route path="/user-subscription" element={<UserSubscription /> } />
               <Route path="/paypal-withdrawal" element={<PayPalWithdrawalForm/> } />
+              <Route path="/terms" element={<TermsAndConditions /> } />
             </Routes>
           </div>
           <Footer />

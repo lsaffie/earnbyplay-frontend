@@ -122,7 +122,7 @@ const PhoneNumberForm = ({
         </button>
         <p className="text-xs text-gray-500 mt-3 text-left">
           By clicking 'Send code', you agree to our
-          <a href="#" className="text-ebp-cta-green hover:underline">
+          <a href="/terms" className="text-ebp-cta-green hover:underline">
             {" "}
             Terms
           </a>{" "}

@@ -66,7 +66,7 @@ const PhoneNumberForm = ({
         {mode === "signIn" && (
           <p className="text-xs text-gray-500 mt-3 text-left">
             By clicking 'Send code', you agree to our
-            <a href="#" className="text-ebp-cta-green hover:underline">
+            <a href="/terms" className="text-ebp-cta-green hover:underline">
               {" "}
               Terms
             </a>{" "}
@@ -79,7 +79,7 @@ const PhoneNumberForm = ({
         <div className="text-xs text-gray-500 mt-3 text-leftw-80">
             <p className="text-xs text-gray-500 mt-3 text-left">
               By clicking 'Send code', you agree to our
-              <a href="#" className="text-ebp-cta-green hover:underline">
+              <a href="/terms" className="text-ebp-cta-green hover:underline">
                 {" "}
                 Terms
               </a>{" "}
