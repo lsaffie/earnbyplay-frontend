@@ -37,6 +37,27 @@ const PhoneNumberForm = ({
         </h2>
       )}
       <form onSubmit={onSubmit} className="space-y-4">
+        {mode == "signUp" && (
+          <div>
+            <label
+              htmlFor="fullName"
+              className="block text-sm font-medium text-slate-50"
+            >
+              Full Name
+            </label>
+            <input
+              type="text"
+              required
+              placeholder="Full Name"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black"
+              name="name"
+              autoComplete="name"
+              id="fullName"
+            />
+          </div>
+        )}
 
         <div className="mb-4">
           <label
@@ -45,6 +66,7 @@ const PhoneNumberForm = ({
           >
             Phone Number
           </label>
+          {/* this is used as the sign-in. skip the phone number */}
           <input
             type="tel"
             required
