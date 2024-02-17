@@ -5,6 +5,7 @@ import ProgressBar from './ProgressBar'
 import Modal from './Modal'
 import { useNavigate } from "react-router-dom";
 import { trackEventWithUrlParams } from '../utils/amplitudeUtils';
+import ReactPixel from 'react-facebook-pixel'
 
 
 
@@ -92,6 +93,10 @@ const BraintreeDropin = () => {
             if (response.data.success) {
               setModalContent("Payment successful!");
               setIsModalOpen(true);
+
+              // Send event to meta campaign
+              ReactPixel.track('Subscribe')
+              ReactPixel.track('StartTrial')
 
               // Track success payment event
               trackEventWithUrlParams("payment successful")

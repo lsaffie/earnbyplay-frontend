@@ -11,6 +11,7 @@ import BraintreeDropin from "./components/BraintreeDropin";
 import UserDetails from "./components/UserDetail";
 import LedgerEntries from "./components/LedgerEntries";
 import TermsAndConditions from "./components/TermsAndConditions";
+import ReactPixel from 'react-facebook-pixel'
 
 // import LoginForm from "./components/LoginForm";
 // import SignupForm from "./components/SignupForm";
@@ -42,9 +43,14 @@ function App() {
   const [mode, setMode] = useState("signIn"); // signIn or signUp
 
 
+
   useEffect(() => {
     // Initialize Amplitude instance
     amplitude.init(process.env.REACT_APP_AMPLITUDE_API_KEY);
+
+    // Facebook pixel
+    ReactPixel.init(process.env.REACT_APP_FACEBOOK_PIXEL_ID);
+    ReactPixel.pageView(); 
   }, []);
 
   function update_form_btn() {

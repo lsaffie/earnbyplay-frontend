@@ -7,6 +7,7 @@ import { trackEventWithUrlParams } from '../utils/amplitudeUtils';
 import PhoneNumberForm from './PhoneNumberForm'
 import VerificationCodeForm from './VerificationCodeForm'
 import ToggleSwitch from './ToggleSwitch'
+import ReactPixel from 'react-facebook-pixel'
 
   const formatToE164 = (phone) => {
     let digits = phone.replace(/\D/g, "");
@@ -49,12 +50,6 @@ const PhoneLogin = ({mode, setMode}) => {
     e.preventDefault();
     trackEventWithUrlParams("Login with phone initiatied")
 
-    // terms acceptance check
-    // if (mode === "signUp" && !acceptTerms) {
-    //   setError("You must accept the terms and conditions to sign up.");
-    //   return;
-    // }
-
     setError(''); // Clear any existing errors
     const { formatted, error: formatError } = formatToE164(phoneNumber);
     if (formatError) {
@@ -69,13 +64,15 @@ const PhoneLogin = ({mode, setMode}) => {
       const response = await axios.post(url, {
         phone_number: formatted
       });
-      // const url = mode === "Signup" ? "/api/subscribe" : 'api/login'
-      // const response = await axios.post(`${appConfig.SERVER_URL}/api/login`, {
-      //   phone_number: formatted 
-      // });
 
       if (response.status === 200) {
         setSmsSent(true);
+
+        // Track successful registration in FacebookPixel
+        ReactPixel.track('CompleteRegistration')
+        ReactPixel.track('StartTrial')
+        ReactPixel.trackCustom('smsSent', {});
+
         setFormattedPhoneNumber(formatted); // Update this state
       } else {
         // Handle non 200 errors

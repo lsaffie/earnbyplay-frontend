@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import appConfig from "../config";
 import ProgressBar from "./ProgressBar";
 import { trackEventWithUrlParams } from '../utils/amplitudeUtils';
+import ReactPixel from 'react-facebook-pixel'
 
 // Helper Functions
 const formatToE164 = (phone) => {
@@ -264,7 +265,14 @@ const PhoneNumberVerification = () => {
 
     try {
       const response = await sendSMS(formattedPhoneNumberVar, fullName);
-      if (response.status === 200) setSmsSent(true);
+      if (response.status === 200) {
+        setSmsSent(true);
+
+        // Track successful registration  via facebook pixel
+        ReactPixel.track('CompleteRegistration')
+        ReactPixel.track('StartTrial')
+        ReactPixel.trackCustom('smsSent', {});
+      }
     } catch (error) {
       console.error("Error sending SMS:", error);
     }
