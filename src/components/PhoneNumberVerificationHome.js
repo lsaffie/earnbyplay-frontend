@@ -141,10 +141,9 @@ const PhoneNumberForm = ({
         </p>
         <p className="text-xs text-gray-500 mt-3 text-center">
           By clicking 'Send code', you agree to our
-          <a href="/terms" className="text-ebp-cta-green hover:underline">
-            {" "}
-            Terms
-          </a>{" "}
+          <a href="/terms" className="text-ebp-cta-green hover:underline ml-1">
+            terms
+          </a>
           , confirm that you are 18 years of age or older, and receive marketing messages. Rates may apply to messages, which may
           be sent by automated system.
         </p>
