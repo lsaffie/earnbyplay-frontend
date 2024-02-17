@@ -95,7 +95,7 @@ const PhoneNumberForm = ({
         <div>
           <label
             htmlFor="fullName"
-            className="block text-sm font-medium text-slate-50"
+            className="block text-sm font-medium text-slate-50 text-left"
           >
             Full Name
           </label>
@@ -115,7 +115,7 @@ const PhoneNumberForm = ({
         <div className="mb-4">
           <label
             htmlFor="verifyPhoneNumber"
-            className="block text-sm font-medium text-slate-50"
+            className="block text-sm font-medium text-slate-50 text-left"
           >
             Phone Number
           </label>
