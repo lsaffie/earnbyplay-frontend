@@ -11,6 +11,7 @@ import BraintreeDropin from "./components/BraintreeDropin";
 import UserDetails from "./components/UserDetail";
 import LedgerEntries from "./components/LedgerEntries";
 import TermsAndConditions from "./components/TermsAndConditions";
+import Privacy from "./components/Privacy";
 import ReactPixel from 'react-facebook-pixel'
 
 // import LoginForm from "./components/LoginForm";
@@ -102,6 +103,8 @@ function App() {
               <Route path="/user-subscription" element={<UserSubscription /> } />
               <Route path="/paypal-withdrawal" element={<PayPalWithdrawalForm/> } />
               <Route path="/terms" element={<TermsAndConditions /> } />
+              <Route path="/privacy" element={<Privacy /> } />
+              <Route path="/privacy-policy" element={<Privacy /> } />
             </Routes>
           </div>
           <Footer />
