@@ -2,7 +2,7 @@ import React from 'react';
 
 const Privacy = () => {
   return (
-    <div className="privacy bg-white">
+    <div className="privacy bg-white p-2 text-left">
 
 <h1 class="text-3xl font-bold">Privacy Policy</h1>
 <p class="mt-4">Last updated: February 20, 2024</p>
