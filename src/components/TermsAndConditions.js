@@ -3,7 +3,7 @@ import React from 'react';
 const TermsAndConditions = () => {
   return (
     <div className="terms-and-conditions bg-white">
-      <h1 className="size-6">Terms and Conditions</h1>
+      <h1 className="size-6">Terms of Use</h1>
 
 
 

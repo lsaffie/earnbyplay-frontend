@@ -91,7 +91,7 @@ const SignupForm = ({ onUserChange }) => {
 
       <div className="mb-4 text-xs text-gray-500 mt-3 text-center">
         By signing up, you agree with Earn By Play's
-        <a href="/terms" className="text-blue-600 hover:underline"> Terms of service</a>.
+        <a href="/terms" className="text-blue-600 hover:underline"> Terms of Use</a>.
       </div>
 
 
