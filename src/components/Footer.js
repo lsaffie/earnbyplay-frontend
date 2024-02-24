@@ -44,7 +44,11 @@ const Footer = () => {
             </button>
             {(isAboutOpen || isSupportOpen)&& (
               <div className="flex flex-col mt-2">
-                <a href="/contact" className="hover:text-gray-300">
+                <a href="https://tawk.to/chat/659853700ff6374032bd0622/1hjdgbsgi"
+                  className="hover:text-gray-300"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Contact Us
                 </a>
                 <a href="/privacy-policy" className="hover:text-gray-300">
@@ -66,9 +70,6 @@ const Footer = () => {
             </button>
             {(isSupportOpen || isAboutOpen) && (
               <div className="flex flex-col mt-2">
-                <a href="/faq" className="hover:text-gray-300">
-                  FAQ
-                </a>
                 <a href="https://tawk.to/chat/659853700ff6374032bd0622/1hjdgbsgi"
                   className="hover:text-gray-300"
                   target="_blank"
