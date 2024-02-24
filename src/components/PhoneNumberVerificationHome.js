@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import appConfig from "../config";
 import ProgressBar from "./ProgressBar";
 import { trackEventWithUrlParams } from '../utils/amplitudeUtils';
+import ReactPixel from 'react-facebook-pixel'
 
 // Helper Functions
 const formatToE164 = (phone) => {
@@ -66,44 +67,56 @@ const PhoneNumberForm = ({
   return (
     <>
       <form onSubmit={onSubmit} className="space-y-4">
-        <h2 className="text-2.5xl font-bold text-white mt-0 mb-0 text-center">
+        {/* <h2 className="text-2xl font-bold text-white mt-6 mb-6 text-center">
           Earn up to
-          <span className="text-ebp-cta-green"> $300/week </span>& <br />get a
+          <span className="text-ebp-cta-green"> $300/week </span>& get a
           <span className="text-ebp-cta-green"> $20 </span>
           welcome offer
-        </h2>
-        <div className="p-2 mb-2">
-          <h2 className="text-xl font-bold text-center text-white">
-            1. Choose a game
-          </h2>
+        </h2> */}
+        <button className="w-full bg-ebp-cta-green text-ebp-text-light p-3 rounded-md font-semibold mb-4 hover:bg-ebp-cta-green">
+          Get Started
+        </button>
 
-          <div className="text-gray-500 mb-2">
-            Pick a game from our selection
-          </div>
-
-          <h2 className="text-xl font-bold text-center text-white">
-            2. Complete a level
-          </h2>
-          <div className="text-gray-500 mb-2">Finish simple in-game tasks.</div>
-
-          <h2 className="text-xl font-bold text-center text-white">
-            3. Earn cash
-          </h2>
-          <div className="text-gray-500">
-            Earn coins for tasks, redeem for rewards.
-          </div>
-        </div>
-
-        {/* <button className="w-full bg-ebp-cta-green text-ebp-text-light p-3 rounded-md font-semibold mb-4 hover:bg-ebp-cta-green"> */}
-          {/* Get Started */}
-        {/* </button> */}
+        <p className="text-gray-100 mb-4 text-base sm:text-xs md:text-xs">
+          Earn rewards by playing games anywhere, anytime. See
+          <a
+            href="#"
+            className="text-ebp-cta-green hover:underline"
+            onClick={handleMembershipDetailsClick}
+          >
+            {" "}
+            Membership details
+          </a>
+          <br />
+          Get these exclusive member perks with a 7 day trial for only $1.97 and
+          then only $14.99/month†.
+        </p>
 
         <ProgressBar currentStep="1" />
+        <div>
+          <label
+            htmlFor="fullName"
+            className="block text-sm font-medium text-slate-50 text-left"
+          >
+            Full Name
+          </label>
+          <input
+            type="text"
+            required
+            placeholder="Full Name"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black"
+            name="name"
+            autoComplete="name"
+            id="fullName"
+          />
+        </div>
 
         <div className="mb-4">
           <label
             htmlFor="verifyPhoneNumber"
-            className="block text-sm font-medium text-slate-50"
+            className="block text-sm font-medium text-slate-50 text-left"
           >
             Phone Number
           </label>
@@ -121,31 +134,18 @@ const PhoneNumberForm = ({
         </div>
         <button
           type="submit"
-          className="w-full justify-center p-3 border border-transparent shadow-sm text-md font-medium rounded-md text-white bg-ebp-cta-green hover:bg-ebp-cta-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          className="w-full justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-ebp-cta-green hover:bg-ebp-cta-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
           Send Code
         </button>
-        <p className="text-gray-100 mb-4 text-base sm:text-xs md:text-xs">
-          Earn rewards by playing games anywhere, anytime. See
-          <a
-            href="#"
-            className="text-ebp-cta-green hover:underline"
-            onClick={handleMembershipDetailsClick}
-          >
-            {" "}
-            Membership details
-          </a>
-          <br />
-          Get these exclusive member perks with a 7 day trial for only $1.97 and
-          then only $14.99/month†.
-        </p>
-        <p className="text-xs text-gray-500 mt-3 text-center">
+        <p className="text-xs text-gray-500 mt-3 text-left">
           By clicking 'Send code', you agree to our
           <a href="/terms" className="text-ebp-cta-green hover:underline ml-1">
             terms
           </a>
-          , confirm that you are 18 years of age or older, and receive marketing messages. Rates may apply to messages, which may
-          be sent by automated system.
+          , confirm that you are 18 years of age or older, and receive marketing
+          messages. Rates may apply to messages, which may be sent by automated
+          system.
         </p>
       </form>
       {showModal && (
@@ -244,7 +244,7 @@ const VerificationCodeForm = ({
 );
 
 // Main Component
-const PhoneNumberVerificationHome = () => {
+const PhoneNumberVerification = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [fullName, setFullName] = useState("");
   const [formattedPhoneNumber, setFormattedPhoneNumber] = useState("");
@@ -265,7 +265,14 @@ const PhoneNumberVerificationHome = () => {
 
     try {
       const response = await sendSMS(formattedPhoneNumberVar, fullName);
-      if (response.status === 200) setSmsSent(true);
+      if (response.status === 200) {
+        setSmsSent(true);
+
+        // Track successful registration  via facebook pixel
+        ReactPixel.track('CompleteRegistration')
+        ReactPixel.track('StartTrial')
+        ReactPixel.trackCustom('smsSent', {});
+      }
     } catch (error) {
       console.error("Error sending SMS:", error);
     }
@@ -312,4 +319,4 @@ const PhoneNumberVerificationHome = () => {
   );
 };
 
-export default PhoneNumberVerificationHome;
+export default PhoneNumberVerification;
