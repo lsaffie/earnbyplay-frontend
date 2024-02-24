@@ -23,7 +23,7 @@ const WalletBalance = () => {
   return (
     <div className="md:flex"> {/* Responsive Padding */}
         <div className="bg-ebp-cta-green shadow rounded-md p-3">
-          <p className="text-sm font-bold text-white">${wallet.balance}</p>
+          <p className="text-sm font-bold text-white">{wallet.balance}</p>
         </div>
     </div>
   );

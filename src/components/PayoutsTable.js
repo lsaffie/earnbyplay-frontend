@@ -44,7 +44,7 @@ const PayoutsTable = () => {
                   Award Date
                 </th>
                 <th className="px-1 sm:px-3 py-2 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
-                  Amount
+                  Points 
                 </th>
                 <th className="px-1 sm:px-3 py-2 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
                   Payout url

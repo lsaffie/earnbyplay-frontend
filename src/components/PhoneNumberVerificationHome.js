@@ -126,7 +126,7 @@ const PhoneNumberForm = ({
           Send Code
         </button>
         <p className="text-gray-100 mb-4 text-base sm:text-xs md:text-xs">
-          Earn cash by playing games anywhere, anytime. See
+          Earn rewards by playing games anywhere, anytime. See
           <a
             href="#"
             className="text-ebp-cta-green hover:underline"

@@ -34,7 +34,7 @@ const Home= () => {
         <div className="text-gray-500 mb-2">Finish simple in-game tasks.</div>
 
         <h2 className="text-xl font-bold text-center text-white">
-          3. Earn cash
+          3. Earn rewards
         </h2>
         <div className="text-gray-500">
           Earn coins for tasks, redeem for rewards.

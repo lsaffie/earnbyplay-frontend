@@ -184,7 +184,7 @@ const Payout = () => {
 
           <h2 className="text-sm text-left text-gray-400 mt-5">
             * Please note that redemptions from your wallet can only be made in
-            whole dollar amounts. Any remaining cents will stay in your wallet
+            whole points. Any remaining points will stay in your wallet
             for future use.
           </h2>
 

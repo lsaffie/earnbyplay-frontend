@@ -62,7 +62,7 @@ const WalletView = () => {
           <div>
             <div className="bg-ebp-header shadow rounded-sm p-4 sm:p-6">
               <h2 className="text-lg font-semibold text-gray-200 mb-4">Wallet Details</h2>
-              <p className="text-md text-gray-200">Balance:</p>
+              <p className="text-md text-gray-200">Points Balance:</p>
               <p className="text-xl font-bold text-gray-200">{wallet.balance}</p>
               {/* Render additional wallet details here */}
               {currentUser?.active_subscription ? (
