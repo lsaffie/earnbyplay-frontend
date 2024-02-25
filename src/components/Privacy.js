@@ -36,6 +36,12 @@ const Privacy = () => {
 <p class="mt-4"><strong>Personal Data</strong> is any information that relates to an identified or identifiable individual.</p>
 </li>
 <li>
+<p class="mt-4"><strong>Identity Data</strong> includes first name, last name, username, telephone numbers, country of residence, gender, driver’s license, state ID, passport, passport card, permanent resident card, non-citizen travel document, visa, or similar identifier.</p>
+</li>
+<li>
+<p class="mt-4"><strong>Identity Verification:</strong> Verify your identity to our complete satisfaction prior to crediting or allowing redemption of any Rewards, issuing or delivering any Redemption Prizes in any Rewards Program, or otherwise providing you with access to or any benefit associated with the Website and features, or your Account.</p>
+</li>
+<li>
 <p class="mt-4"><strong>Service</strong> refers to the Website.</p>
 </li>
 <li>
