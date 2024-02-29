@@ -36,12 +36,6 @@ const Privacy = () => {
 <p class="mt-4"><strong>Personal Data</strong> is any information that relates to an identified or identifiable individual.</p>
 </li>
 <li>
-<p class="mt-4"><strong>Identity Data</strong> includes first name, last name, username, telephone numbers, country of residence, gender, driver’s license, state ID, passport, passport card, permanent resident card, non-citizen travel document, visa, or similar identifier.</p>
-</li>
-<li>
-<p class="mt-4"><strong>Identity Verification:</strong> Verify your identity to our complete satisfaction prior to crediting or allowing redemption of any Rewards, issuing or delivering any Redemption Prizes in any Rewards Program, or otherwise providing you with access to or any benefit associated with the Website and features, or your Account.</p>
-</li>
-<li>
 <p class="mt-4"><strong>Service</strong> refers to the Website.</p>
 </li>
 <li>
@@ -69,13 +63,14 @@ const Privacy = () => {
 <p class="mt-4">First name and last name</p>
 </li>
 <li>
-<p class="mt-4">Phone number</p>
+<p class="mt-4"><strong>Identity Data:</strong> includes first name, last name, username, telephone numbers, country of residence, gender, driver’s license, state ID, passport, passport card, permanent resident card, non-citizen travel document, visa, or similar identifier.</p>
 </li>
 <li>
-<p class="mt-4">Usage Data</p>
+<p class="mt-4">Phone number</p>
 </li>
 </ul>
-<h4>Usage Data</h4>
+<br />
+<h4><strong>Usage Data</strong></h4>
 <p class="mt-4">Usage Data is collected automatically when using the Service.</p>
 <p class="mt-4">Usage Data may include information such as Your Device's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that You visit, the time and date of Your visit, the time spent on those pages, unique device identifiers and other diagnostic data.</p>
 <p class="mt-4">When You access the Service by or through a mobile device, We may collect certain information automatically, including, but not limited to, the type of mobile device You use, Your mobile device unique ID, the IP address of Your mobile device, Your mobile operating system, the type of mobile Internet browser You use, unique device identifiers and other diagnostic data.</p>
@@ -114,6 +109,9 @@ const Privacy = () => {
 <ul class="list-disc pl-5 mt-2">
 <li>
 <p class="mt-4"><strong>To provide and maintain our Service</strong>, including to monitor the usage of our Service.</p>
+</li>
+<li>
+<p class="mt-4"><strong>To verify your identity:</strong> Users will be required to verify their identity to our complete satisfaction prior to crediting or allowing redemption of any Rewards, issuing or delivering any Redemption Prizes in any Rewards Program, or otherwise providing you with access to or any benefit associated with the Website and features, or your Account.</p>
 </li>
 <li>
 <p class="mt-4"><strong>To manage Your Account:</strong> to manage Your registration as a user of the Service. The Personal Data You provide can give You access to different functionalities of the Service that are available to You as a registered user.</p>
