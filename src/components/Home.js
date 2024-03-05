@@ -5,6 +5,7 @@ import axios from 'axios';
 import appConfig from '../config';
 import SignupForm from './SignupForm'
 import PhoneNumberVerificationHome from './PhoneNumberVerificationHome'
+import PhoneLogin from './PhoneLogin'
 
 
 const Home= () => {
@@ -42,7 +43,8 @@ const Home= () => {
       </div>
 
       <div className="bg-ebp-header p-5">
-        <PhoneNumberVerificationHome />
+        {/* <PhoneNumberVerificationHome /> */}
+        <PhoneLogin mode="signUp" />
       </div>
 
     </div>
