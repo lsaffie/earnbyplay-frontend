@@ -26,11 +26,11 @@ const PhoneNumberForm = ({
   return (
     <>
       {mode === "signIn" ? (
-        <h2 className="text-2.5xl font-bold mb-4 text-left">
+        <h2 className="text-2.5xl font-bold mb-4 text-center">
           Welcome back!
         </h2>
       ):(
-        <h2 className="text-2.5xl font-bold mb-4 text-left">
+        <h2 className="text-2.5xl font-bold mb-4 text-center">
           Welcome to Earn by Play.
           <br />
           Sign up below!
